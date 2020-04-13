@@ -1,0 +1,1 @@
+<view class="content"><top-search vue-id="8dd740cc-1" bind:__l="__l"></top-search><view class="click-feedback"><image src="../../static/images/01.png"></image><image src="../../static/images/02.png"></image><image src="../../static/images/03.png"></image><image src="../../static/images/04.png"></image></view></view>

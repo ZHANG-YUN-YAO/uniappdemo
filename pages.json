@@ -1,0 +1,74 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/teaGarden/teaGarden",
+			"style": {
+				"navigationBarTitleText": "茶园"
+			}
+		},
+		{
+			"path": "pages/teaCeremony/teaCeremony",
+			"style": {
+				"navigationBarTitleText": "茶艺"
+			}
+		},
+		{
+			"path": "pages/teaHouse/teaHouse",
+			"style": {
+				"navigationBarTitleText": "茶社"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	],
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3cc51f",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [				
+				{
+				    "pagePath": "pages/index/index",
+				    "iconPath": "static/images/tab01.png",
+				    "selectedIconPath": "static/images/tab01.png",
+				    "text": "首页"
+				}, 
+				{
+	        "pagePath": "pages/teaGarden/teaGarden",
+	        "iconPath": "static/images/tab02.png",
+					"selectedIconPath": "static/images/tab02.png",
+	        "text": "茶园"
+	    }, {
+	        "pagePath": "pages/teaCeremony/teaCeremony",
+	        "iconPath": "static/images/tab03.png",
+					"selectedIconPath": "static/images/tab03.png",
+	        "text": "茶艺"
+	    },{
+	        "pagePath": "pages/teaHouse/teaHouse",
+	        "iconPath": "static/images/tab04.png",
+					"selectedIconPath": "static/images/tab04.png",
+	        "text": "茶社"
+	    },{
+	        "pagePath": "pages/mine/mine",
+	        "iconPath": "static/images/tab05.png",
+					"selectedIconPath": "static/images/tab05.png",
+	        "text": "我的"
+	    }]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
