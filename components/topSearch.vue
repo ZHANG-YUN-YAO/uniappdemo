@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="searchWapper">
-			<view class="searchView">
+			<view class="searchView" @click="cliSearch()">
 				<icon type="search" size="16"></icon>
 				<text style="padding-left: 22rpx;">初级禅茶教学</text>
 				<uni-icons class="closeempty" type="closeempty" size="18" color="#999999"></uni-icons>
@@ -17,6 +17,13 @@
 			return {
 				
 			};
+		},
+		methods:{
+			cliSearch(){
+				uni.navigateTo({
+				  url: '/pages/search/search'
+				});
+			}
 		}
 	}
 </script>
@@ -28,6 +35,8 @@
 		.chat{
 			display: inline-block;
 			margin-left: 19rpx;
+			position: relative;
+			top: 16rpx;
 		}
 		.searchView{
 			width:611rpx;
@@ -42,7 +51,7 @@
 			box-sizing: border-box;
 			.closeempty{
 				position: relative;
-				left:310rpx;
+				left:328rpx;
 			}
 		}
 	}

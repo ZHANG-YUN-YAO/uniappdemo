@@ -14,4 +14,7 @@
 
 <style>
 	/*每个页面公共css */
+	ul{
+		list-style: none;
+	}
 </style>
