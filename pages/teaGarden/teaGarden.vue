@@ -64,12 +64,40 @@
 					</view>
 					<view class="author">
 						<view class="info">
-							<image src="../../static/images/01.png"></image>
+							<image src="../../static/images/6.png"></image>
 							<text class="authorname">王鸥</text>
 						</view>
 						<view class="infodesc font-info">
 							茶汤气味香，色泽纯正，口感很好，而且很耐泡，回甘微甜，浓淡适中、清香怡人、 茶粒，肥壮圆结，干净无杂质，香气馥郁。不错，价格不
 							<!-- <text class="font-info" style="font-size:21rpx!important">茶汤气味香，色泽纯正，口感很好，而且很耐泡，回甘微甜，浓淡适中、清香怡人、 茶粒，肥壮圆结，干净无杂质，香气馥郁。不错，价格不</text> -->
+						</view>
+					</view>
+				</view>
+				<view class="goodslist">
+					<view class="img">
+						<image src="../../static/images/uihu.png" mode=""></image>
+					</view>
+					<view class="desc">
+						<text class="descdetail">中茶牌 云南普洱茶 2019年冰岛铜庆台大树春茶生茶饼10饼箱...</text>
+						<text class="price">￥168000.00</text>
+					</view>
+					<view class="discuss">
+						<text>商品评价(568)</text>
+						<text>收藏(89)</text>
+					</view>
+					<view class="tag">
+						<ul>
+							<li>糯干春润  丝丝顺滑</li>
+							<li>口味纯正</li>
+						</ul>
+					</view>
+					<view class="author">
+						<view class="info">
+							<image src="../../static/images/01.png"></image>
+							<text class="authorname">王鸥</text>
+						</view>
+						<view class="infodesc font-info">
+							茶汤气味香，色泽纯正，口感很好，而且很耐泡，回甘微甜，浓淡适中、清香怡人、 茶粒，肥壮圆结，干净无杂质，香气馥郁。不错，价格不
 						</view>
 					</view>
 				</view>
@@ -79,7 +107,7 @@
 </template>
 
 <script>
-	export default {
+	export default {		
 		data() {
 			return {
 				background: ['color1', 'color2', 'color3'],
@@ -88,6 +116,11 @@
 				interval: 2000,
 				duration: 500
 			}
+		},
+		onNavigationBarButtonTap(e) {
+			uni.navigateTo({
+			  url: '/pages/goodsList/goodsList'
+			});
 		},
 		methods: {
 			changeIndicatorDots(e) {
@@ -230,25 +263,22 @@
 					}
 				}
 				.infodesc{
-					padding-left: 28rpx;
-					
-					
+					padding:0 28rpx;					
 					font-size:21rpx!important;
 					font-family:FZLTZHUNHK;
 					font-weight:normal;
 					color:rgba(153,153,153,1);
-					white-space: nowrap;
-					text-overflow:ellipsis; 	
-					// display: -webkit;
+					// white-space: nowrap;
+					text-overflow:ellipsis;
 					overflow:hidden;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;					
 					.font-info{
 						font-size:21rpx!important;
 						font-family:FZLTZHUNHK;
 						font-weight:normal;
-						color:rgba(153,153,153,1);
-						// white-space: nowrap;
-						// text-overflow:ellipsis; 					
-						// overflow:hidden;
+						color:rgba(153,153,153,1);						
 					}
 				}
 			}

@@ -1,0 +1,79 @@
+{
+  "id": "1755750",
+  "name": "fontyy",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "689319",
+      "name": "心",
+      "font_class": "xin",
+      "unicode": "e82a",
+      "unicode_decimal": 59434
+    },
+    {
+      "icon_id": "880158",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1009220",
+      "name": "火",
+      "font_class": "huo",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "1810277",
+      "name": "火",
+      "font_class": "icon-test",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "2681693",
+      "name": "火",
+      "font_class": "huo1",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "4294080",
+      "name": "火",
+      "font_class": "huo2",
+      "unicode": "e78a",
+      "unicode_decimal": 59274
+    },
+    {
+      "icon_id": "4539890",
+      "name": "星星",
+      "font_class": "xingxing",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "11495052",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "13604156",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "5387538",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "eaf8",
+      "unicode_decimal": 60152
+    }
+  ]
+}

@@ -3,19 +3,55 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页"				
 			}
 		},
 		{
-			"path": "pages/teaGarden/teaGarden",
+			"path": "pages/goodsList/goodsList",
 			"style": {
-				"navigationBarTitleText": "茶园"
+				"navigationBarTitleText": "商品分类"				
+			}
+		},
+		{
+			"path": "pages/teaArticle/teaArticle",
+			"style": {
+				"navigationBarTitleText": "文章详情",
+				"app-plus":{
+					"titleNView":{
+						"buttons": [{
+							"color": "#fff",
+							"colorPressed": "#eee",
+							"float":"right",
+							"fontSize": "36rpx",
+							"fontSrc": "/static/iconfont.ttf", // 字体文件
+							"text": "\ue600" // 字体图标\u 开头，加上字体图标unicode后面四位
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path":"pages/teaGarden/teaGarden",
+			"style":{
+				"navigationBarTitleText": "茶园",
+				"app-plus":{
+					"titleNView":{
+						"buttons": [{
+							"color": "#fff",
+							"colorPressed": "#eee",
+							"float":"right",
+							"fontSize": "36rpx",
+							"fontSrc": "/static/iconfont.ttf", // 字体文件
+							"text": "\ueaf8" // 字体图标\u 开头，加上字体图标unicode后面四位
+						}]
+					}
+				}
 			}
 		},
 		{
 			"path": "pages/teaCeremony/teaCeremony",
 			"style": {
-				"navigationBarTitleText": "茶艺"
+				"navigationBarTitleText": ""
 			}
 		},
 		{
@@ -35,7 +71,15 @@
 			"style" : {
 				"navigationBarTitleText": "搜索"
 			}			
-    }],
+    }    ,{
+            "path" : "pages/goodsList/goodsList",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/teaArticle/teaArticle",
+            "style" : {}
+        }
+    ],
 	"tabBar": {
 	    "color": "#7A7E83",
 	    "selectedColor": "#3cc51f",
@@ -71,9 +115,10 @@
 	    }]
 	},
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#161E49",
 		"backgroundColor": "#F8F8F8"
 	}
 }
+

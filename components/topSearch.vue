@@ -49,9 +49,10 @@
 			align-items: center;
 			padding: 0 20rpx;
 			box-sizing: border-box;
+			position: relative;
 			.closeempty{
-				position: relative;
-				left:328rpx;
+				position: absolute;
+				right:10rpx;
 			}
 		}
 	}
