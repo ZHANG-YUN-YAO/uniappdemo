@@ -6,7 +6,9 @@
 			id="chunleiVideo" ref="chunleiVideo" class="video">
 			<cover-view  class="video-view" v-if="!fullScreen" :style="{ width: `750rpx`,height: `200px` }">
 				<div class="move-view" @touchend="videoTouchEnd" @touchmove="videoTouchMove" @touchstart="videoTouchStart" :style="{ height: `200px`,width: `750rpx` }"></div>
-				<div class="stop" v-if="!play"><text class="ios-title">已暂停</text></div>
+				<div class="stop" v-if="!play">
+					<!-- <text class="ios-title">已暂停</text> -->
+				</div>
 				<image class="video-view" :style="{ width: `750rpx`,height: `200px` }" :src="poster" v-if="poster!=''&&playFirst"></image>
 				<div class="rate-view" @click.stop="" v-if="!rateView">
 					<!-- <text class="ios-title" @click="rateView=true">{{rate}}x</text> -->
@@ -46,7 +48,9 @@
 				</div>
 				<div class="move-view" @touchend="videoTouchEnd" @touchmove="videoTouchMove" @touchstart="videoTouchStart" :style="{ width: `${fullControlsWidth}px`,height: `${fullControlsHeigt}px` }"></div>
 				
-				<div class="stop" v-if="!play"><text :class="`${platform}-title`">已暂停</text></div>
+				<div class="stop" v-if="!play">
+					<!-- <text :class="`${platform}-title`">已暂停</text> -->
+				</div>
 			</cover-view>
 					
 			<cover-view class="controls-top" ref="controlsTop" :style="{ width: `${fullControlsWidth}px` }" @click.stop="" v-if="fullScreen&&showControls&&!lock">

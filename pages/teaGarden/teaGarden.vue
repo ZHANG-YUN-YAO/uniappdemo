@@ -6,13 +6,13 @@
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 							<swiper-item class="swiper-item">
-								<image src="../../static/images/swiper.png" mode=""></image>
+								<image src="../../static/images/swiper.png" mode="widthFix"></image>
 							</swiper-item>
 							<swiper-item class="swiper-item">								
-								<image src="../../static/images/sw2.png" mode=""></image>
+								<image src="../../static/images/swiper2.png" mode="widthFix"></image>
 							</swiper-item>
 							<swiper-item class="swiper-item">
-								<image src="../../static/images/aa.png" mode=""></image>
+								<image src="../../static/images/swiper3.png" mode="widthFix"></image>
 							</swiper-item>
 						</swiper>
 					</view>

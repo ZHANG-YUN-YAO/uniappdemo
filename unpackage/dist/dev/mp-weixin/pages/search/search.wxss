@@ -1,0 +1,77 @@
+.search .searchWapper {
+  background-color: #161E49;
+  padding: 28rpx;
+}
+.search .searchWapper .reback {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff;
+  display: inline-block;
+  margin-left: 19rpx;
+  position: relative;
+  top: 12rpx;
+}
+.search .searchWapper .searchView {
+  width: 611rpx;
+  height: 50rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  font-size: 15px;
+  color: #c0c0c0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.search .searchWapper .searchView .closeempty {
+  position: absolute;
+  right: 10rpx;
+}
+.search .searchSort {
+  padding: 42rpx 28rpx;
+}
+.search .searchSort .searchSortlist {
+  padding: 42rpx 0;
+}
+.search .searchSort .searchSortlist .sortHead {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.search .searchSort .searchSortlist .sortHead text {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #161e49;
+}
+.search .searchSort .searchSortlist .sortHead image {
+  width: 26rpx;
+  height: 26rpx;
+}
+.search .searchSort .searchSortlist .sortBody {
+  padding-top: 38rpx;
+}
+.search .searchSort .searchSortlist .sortBody .bodylist ._ul {
+  margin-left: -40px;
+}
+.search .searchSort .searchSortlist .sortBody .bodylist ._ul ._li {
+  display: inline-block;
+  padding: 10rpx 21rpx;
+  margin-right: 21rpx;
+  font-size: 25rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #333333;
+  background: #f6f6f6;
+  border-radius: 23px;
+}
+

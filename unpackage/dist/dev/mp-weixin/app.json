@@ -1,40 +1,43 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/goodsList/goodsList",
+    "pages/teaArticle/teaArticle",
     "pages/teaGarden/teaGarden",
     "pages/teaCeremony/teaCeremony",
     "pages/teaHouse/teaHouse",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/search/search"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarBackgroundColor": "#161E49",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "color": "#3E455E",
+    "selectedColor": "black",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/images/tab01.png",
+        "iconPath": "static/images/tab011.png",
         "selectedIconPath": "static/images/tab01.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/teaGarden/teaGarden",
         "iconPath": "static/images/tab02.png",
-        "selectedIconPath": "static/images/tab02.png",
+        "selectedIconPath": "static/images/tab022.png",
         "text": "茶园"
       },
       {
         "pagePath": "pages/teaCeremony/teaCeremony",
         "iconPath": "static/images/tab03.png",
-        "selectedIconPath": "static/images/tab03.png",
+        "selectedIconPath": "static/images/tab033.png",
         "text": "茶艺"
       },
       {
@@ -51,5 +54,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap49.json"
 }

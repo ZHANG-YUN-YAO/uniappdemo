@@ -1,4 +1,10 @@
 {
-  "navigationBarTitleText": "茶艺",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "ms-tabs": "/components/ms-tabs/ms-tabs",
+    "chunlei-video": "/components/chunlei-video/chunlei-video",
+    "uni-grid": "/components/uni-grid/uni-grid",
+    "uni-grid-item": "/components/uni-grid-item/uni-grid-item",
+    "goods-swiper": "/components/pyh-goodsSwiper/pyh-goodsSwiper"
+  }
 }

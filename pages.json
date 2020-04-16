@@ -51,7 +51,7 @@
 		{
 			"path": "pages/teaCeremony/teaCeremony",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -63,7 +63,7 @@
 		{
 			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationStyle": "custom"				
 			}
 		},
 		{
@@ -81,26 +81,26 @@
         }
     ],
 	"tabBar": {
-	    "color": "#7A7E83",
-	    "selectedColor": "#3cc51f",
+	    "color": "#3E455E",
+	    "selectedColor": "black",
 	    "borderStyle": "black",
 	    "backgroundColor": "#ffffff",
 	    "list": [				
 				{
 				    "pagePath": "pages/index/index",
-				    "iconPath": "static/images/tab01.png",
+				    "iconPath": "static/images/tab011.png",
 				    "selectedIconPath": "static/images/tab01.png",
 				    "text": "首页"
 				}, 
 				{
 	        "pagePath": "pages/teaGarden/teaGarden",
 	        "iconPath": "static/images/tab02.png",
-					"selectedIconPath": "static/images/tab02.png",
+					"selectedIconPath": "static/images/tab022.png",
 	        "text": "茶园"
 	    }, {
 	        "pagePath": "pages/teaCeremony/teaCeremony",
 	        "iconPath": "static/images/tab03.png",
-					"selectedIconPath": "static/images/tab03.png",
+					"selectedIconPath": "static/images/tab033.png",
 	        "text": "茶艺"
 	    },{
 	        "pagePath": "pages/teaHouse/teaHouse",
