@@ -17,6 +17,10 @@
 	ul{
 		list-style: none;
 	}
+	.uni-radio-input-checked{
+		background-color: #EF104A!important;
+		border-color: #EF104A!important;
+	}
 	.uni-list-item__content-title{
 		font-size:28rpx!important;
 		font-family:FZLTZHUNHK;

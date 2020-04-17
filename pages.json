@@ -93,7 +93,9 @@
 				}
         ,{
             "path" : "pages/confirmOrder/confirmOrder",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText":"确认订单"
+						}
         }
     ],
 	"tabBar": {

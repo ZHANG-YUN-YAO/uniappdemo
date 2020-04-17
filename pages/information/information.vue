@@ -10,8 +10,7 @@
 			<uni-list-item title="交易物流" thumb="../../static/images/info2.png" :showArrow="false"></uni-list-item>
 			<uni-list-item title="互动消息" thumb="../../static/images/info3.png" :showArrow="false"></uni-list-item>
 		</uni-list>	
-		<view class="second">
-		
+		<view class="second">		
 			<uni-list>
 				<uni-list-item title="收到的评论" thumb="../../static/images/info4.png" :showArrow="false">
 					<template v-slot:right="">

@@ -1,113 +1,115 @@
 <!-- glance 店铺购物车单页模板 -->
 <template name="glanceShopcart">
-	<view class="glance-shop-cart" style="background-color: #F5F5F5;" @touchmove ="scrollhoming" @touchend="scrollhomed">
-		<!-- 我是分割 -->
-		<view style="height: 10px;background-color: #F5F5F5;"></view>
-		
-		<!-- 空购物车背景 -->
-		<view v-if="shownullcart" style="width: 100%;height: 250px;" >
-			<view class="glance-shop-cart-nullcart"></view>
-			<view style="height: 30px;width: 100%;font-size: 15px;line-height: 30px;text-align: center;">您的购物车为空，快去添加心爱的商品吧！</view>
-		</view>
-		
-		<!-- 购物车商品 -->
-		<view v-for="(thiscart,index) in cart" :key="index" style="background-color: #FFFFFF;">
-			<!-- 营销标签 加购 换购或其他 -->
-			<!-- <view style="height: 30px;line-height: 30px; width: 100%;font-size: 15px;" v-if="thiscart.groupkey && cntitems >0" @click="clickgroupkey(thiscart.groupkey)">{{ thiscart.groupkey }}</view> -->
-			<!-- 按营销活动分组的商品 -->
-			<view v-for="(item,i) in thiscart.items" :key="i">
-				<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.id > -99">
-					<view class="glance-shop-cart-scrollx-items" style="display: inline-block;width: 100%;">
-						<view class="glance-shop-cart-scrollx-items-item">
-							<!-- 勾选 -->
-							<!-- <view style="width: 10%;height: 100%;background-color: #FFFFFF;"> -->
+	<view class="glanceShopcart">
+		<view class="glance-shop-cart" style="background-color: #F5F5F5;" @touchmove ="scrollhoming" @touchend="scrollhomed">
+			<!-- 我是分割 -->
+			<view style="height: 10px;background-color: #F5F5F5;"></view>
+			
+			<!-- 空购物车背景 -->
+			<view v-if="shownullcart" style="width: 100%;height: 250px;" >
+				<view class="glance-shop-cart-nullcart"></view>
+				<view style="height: 30px;width: 100%;font-size: 15px;line-height: 30px;text-align: center;">您的购物车为空，快去添加心爱的商品吧！</view>
+			</view>
+			
+			<!-- 购物车商品 -->
+			<view v-for="(thiscart,index) in cart" :key="index" style="background-color: #FFFFFF;">
+				<!-- 营销标签 加购 换购或其他 -->
+				<!-- <view style="height: 30px;line-height: 30px; width: 100%;font-size: 15px;" v-if="thiscart.groupkey && cntitems >0" @click="clickgroupkey(thiscart.groupkey)">{{ thiscart.groupkey }}</view> -->
+				<!-- 按营销活动分组的商品 -->
+				<view v-for="(item,i) in thiscart.items" :key="i">
+					<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.id > -99">
+						<view class="glance-shop-cart-scrollx-items" style="display: inline-block;width: 100%;">
+							<view class="glance-shop-cart-scrollx-items-item">
 								<!-- 勾选 -->
-								<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.id)"></view> -->
-							<!-- </view> -->
-							<!-- 图片 -->
-							<view style="width: 30%;height: 100%;text-align:center;">
-								<image src="../../static/logo.png" mode="widthFix" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
-							</view>
-							<!-- 描述 -->
-							<view class="glance-shop-cart-items-item-des">
-								<!-- 名称 -->
-								<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.name }}</view>
-								<!-- 属性 -->
-								<view class="glance-shop-cart-items-item-pq">
-									<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">净含量：{{ item.attributes }}克</view>
-									<view class="glance-shop-cart-items-item-opt">
-										<!-- 减数量 -->
-										<view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view>
-										<!-- 数量 -->
-										<view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view>
-										<!-- 加数量 -->
-										<view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view>
-									</view>
+								<!-- <view style="width: 10%;height: 100%;background-color: #FFFFFF;"> -->
+									<!-- 勾选 -->
+									<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.id)"></view> -->
+								<!-- </view> -->
+								<!-- 图片 -->
+								<view style="width: 30%;height: 100%;text-align:center;">
+									<image src="../../static/logo.png" mode="widthFix" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
 								</view>
-								<!-- 价格 & 数量-->
-								<view class="glance-shop-cart-items-item-pq">
-									<!-- <view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;">￥{{item.price}}</view> -->
-									<view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;font-family:经典繁毛楷 ;">										
-										<view class="" style="width:139rpx;height:56rpx;line-height: 56rpx;color: #fff;
-										background:rgba(237,196,134,1);text-align: center;border-radius:28rpx;">
-											品鉴级
+								<!-- 描述 -->
+								<view class="glance-shop-cart-items-item-des">
+									<!-- 名称 -->
+									<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.name }}</view>
+									<!-- 属性 -->
+									<view class="glance-shop-cart-items-item-pq">
+										<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">净含量：{{ item.attributes }}克</view>
+										<view class="glance-shop-cart-items-item-opt">
+											<!-- 减数量 -->
+											<view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view>
+											<!-- 数量 -->
+											<view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view>
+											<!-- 加数量 -->
+											<view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view>
 										</view>
 									</view>
-									<!-- <view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;display: block;">￥{{item.price}}</view> -->
-									<!-- 数量操作 -->
-									<view class="glance-shop-cart-items-item-opt">
-										<!-- 减数量 -->
-										<!-- <view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view> -->
-										<!-- 数量 -->
-										<!-- <view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view> -->
-										<!-- 加数量 -->
-										<!-- <view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view> -->
-										<view class="glance-shop-cart-total-cnt">
-											<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);float: right;">￥ {{ cntitems }} </text>	
+									<!-- 价格 & 数量-->
+									<view class="glance-shop-cart-items-item-pq">
+										<!-- <view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;">￥{{item.price}}</view> -->
+										<view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;font-family:经典繁毛楷 ;">										
+											<view class="" style="width:139rpx;height:56rpx;line-height: 56rpx;color: #fff;
+											background:rgba(237,196,134,1);text-align: center;border-radius:28rpx;">
+												品鉴级
+											</view>
+										</view>
+										<!-- <view class="sigle-line-text" style="font-size: 15px;text-align: left;width: 50%;display: block;">￥{{item.price}}</view> -->
+										<!-- 数量操作 -->
+										<view class="glance-shop-cart-items-item-opt">
+											<!-- 减数量 -->
+											<!-- <view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view> -->
+											<!-- 数量 -->
+											<!-- <view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view> -->
+											<!-- 加数量 -->
+											<!-- <view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view> -->
+											<view class="glance-shop-cart-total-cnt">
+												<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);float: right;">￥ {{ item.price }} </text>	
+											</view>
 										</view>
 									</view>
 								</view>
 							</view>
 						</view>
-					</view>
-					
-					<!-- 删除 -->
-					<view class="glance-shop-cart-del" @click="clickdel(item.id)">
-						<view class="glance-shop-cart-del-img"></view>
-					</view>
+						
+						<!-- 删除 -->
+						<view class="glance-shop-cart-del" @click="clickdel(item.id)">
+							<view class="glance-shop-cart-del-img"></view>
+						</view>
 
-				</scroll-view>
+					</scroll-view>
+				</view>
+				<view style="height: 10px;background-color: #F5F5F5;"></view>
 			</view>
-			<view style="height: 10px;background-color: #F5F5F5;"></view>
+			<!-- 购买此商品的人还买了 -->
+			<<!-- view style="height: 750px;background-color: #FFFFFF;" v-if="cntitems>0">购买此商品的人还买了</view>
+			<view style="height: 10px;background-color: #F5F5F5;"></view> -->
+			<!-- 猜你喜欢 -->
+			<!-- <view style="height: 750px;background-color: #FFFFFF;">	猜你喜欢</view> -->
+		
+		<view style="height: 10px;background-color: #F5F5F5;"></view>
+		<!-- 金额合计 -->
+		<view class="glance-shop-cart-order">
+			<!-- 全选 -->
+			<!-- <view style="width: 12%;"> -->
+				<!-- 勾选 -->
+				<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ isselectedall ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselectedall"></view> -->
+			<!-- </view> -->
+			<!-- 总数量 -->
+			<!-- <view class="glance-shop-cart-total-cnt">已选：( {{ cntitems }} )</view> -->
+			<view class="glance-shop-cart-total-cnt">
+				<text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);">合计</text>
+				<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥ {{ cntitems }} </text>
+				
+			</view>
+			<!-- 总金额 -->
+			<view class="glance-shop-cart-total-amt">
+				<!-- ￥{{ totalamount }} -->
+			</view>
+			<!-- 立即下单 -->
+			<view class="glance-shop-cart-create-order" @click="createorder">去结算</view>
 		</view>
-		<!-- 购买此商品的人还买了 -->
-		<<!-- view style="height: 750px;background-color: #FFFFFF;" v-if="cntitems>0">购买此商品的人还买了</view>
-		<view style="height: 10px;background-color: #F5F5F5;"></view> -->
-		<!-- 猜你喜欢 -->
-		<!-- <view style="height: 750px;background-color: #FFFFFF;">	猜你喜欢</view> -->
-	
-	<view style="height: 10px;background-color: #F5F5F5;"></view>
-	<!-- 金额合计 -->
-	<view class="glance-shop-cart-order">
-		<!-- 全选 -->
-		<!-- <view style="width: 12%;"> -->
-			<!-- 勾选 -->
-			<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ isselectedall ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselectedall"></view> -->
-		<!-- </view> -->
-		<!-- 总数量 -->
-		<!-- <view class="glance-shop-cart-total-cnt">已选：( {{ cntitems }} )</view> -->
-		<view class="glance-shop-cart-total-cnt">
-			<text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);">合计</text>
-			<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥ {{ cntitems }} </text>
-			
 		</view>
-		<!-- 总金额 -->
-		<view class="glance-shop-cart-total-amt">
-			<!-- ￥{{ totalamount }} -->
-		</view>
-		<!-- 立即下单 -->
-		<view class="glance-shop-cart-create-order" @click="createorder">去结算</view>
-	</view>
 	</view>
 </template>
 
@@ -503,7 +505,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="less" scoped>
 	uni-page-body{
 		padding: 0 28rpx;
 	}
