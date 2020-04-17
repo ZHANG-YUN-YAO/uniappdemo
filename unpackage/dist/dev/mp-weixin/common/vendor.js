@@ -1555,18 +1555,18 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 135:
+/***/ 137:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 136);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 138);
 
 /***/ }),
 
-/***/ 136:
+/***/ 138:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -1597,7 +1597,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 137);
+module.exports = __webpack_require__(/*! ./runtime */ 139);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -1614,7 +1614,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 137:
+/***/ 139:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9595,7 +9595,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "top-search": "/components/topSearch", "top-tabbar": "/components/topTabbar" }, "usingAutoImportComponents": {} }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园", "usingComponents": {}, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom", "usingComponents": { "chunlei-video": "/components/chunlei-video/chunlei-video", "goods-swiper": "/components/pyh-goodsSwiper/pyh-goodsSwiper", "ms-tabs": "/components/ms-tabs/ms-tabs" }, "usingAutoImportComponents": { "ms-tabs": "/components/ms-tabs/ms-tabs", "chunlei-video": "/components/chunlei-video/chunlei-video", "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationStyle": "custom", "usingComponents": { "uni-grid": "/components/uni-grid/uni-grid" }, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "top-search": "/components/topSearch" }, "usingAutoImportComponents": { "uni-icons": "/components/uni-icons/uni-icons" } } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "top-search": "/components/topSearch", "top-tabbar": "/components/topTabbar" }, "usingAutoImportComponents": {} }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园", "usingComponents": {}, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom", "usingComponents": { "chunlei-video": "/components/chunlei-video/chunlei-video", "goods-swiper": "/components/pyh-goodsSwiper/pyh-goodsSwiper", "ms-tabs": "/components/ms-tabs/ms-tabs" }, "usingAutoImportComponents": { "ms-tabs": "/components/ms-tabs/ms-tabs", "chunlei-video": "/components/chunlei-video/chunlei-video", "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationStyle": "custom", "usingComponents": { "uni-grid": "/components/uni-grid/uni-grid" }, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "top-search": "/components/topSearch" }, "usingAutoImportComponents": { "uni-icons": "/components/uni-icons/uni-icons" } }, "pages/information/information": { "navigationBarTitleText": "消息", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" }, "usingAutoImportComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

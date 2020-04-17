@@ -2,10 +2,10 @@
 	<view class="mine">		
 		<view class="topbtn">
 			<view class="lef">
-				<image src="../../static/images/talk.png" mode=""></image>
+				<image src="../../static/images/talk.png"  @click="infopage"mode=""></image>
 			</view>
 			<view class="rig">
-				<image src="../../static/images/btncar.png" mode=""></image>
+				<image src="../../static/images/btncar.png" @click="tocar" mode=""></image>
 				<image src="../../static/images/btnclo.png" mode=""></image>
 			</view>
 		</view>
@@ -136,7 +136,16 @@
 			}
 		},
 		methods: {
-			
+			tocar(){
+				uni.navigateTo({
+				  url: '/pages/car/car'
+				});
+			},
+			infopage(){
+				uni.navigateTo({
+				  url: '/pages/information/information'
+				});
+			}
 		}
 	}
 </script>
@@ -151,7 +160,7 @@
 			background: #161E49;
 			justify-content: space-between;
 			margin: -28rpx;
-			padding: 28rpx;
+			padding: 48rpx 28rpx 28rpx 28rpx;
 			image{
 				width: 47rpx;
 				height: 39rpx;

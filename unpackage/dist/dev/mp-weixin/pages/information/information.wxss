@@ -1,0 +1,28 @@
+.uni-badge {
+  padding: 0!important;
+  width: 22rpx!important;
+  height: 22rpx!important;
+  margin-top: -14rpx !important;
+  margin-left: 4rpx!important;
+}
+.second {
+  border-top: 28rpx solid #EEEEEE;
+}
+.uni-list-item__icon-img {
+  width: 44rpx!important;
+  height: 42rpx!important;
+}
+.uni-badge--error {
+  background-color: #FF2829;
+}
+.uni-list-item {
+  margin-top: 15rpx;
+}
+.uni-list-item__extra text {
+  font-size: 28rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+  line-height: 13rpx;
+}
+

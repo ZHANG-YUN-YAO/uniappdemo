@@ -78,7 +78,7 @@
   -webkit-justify-content: space-between;
           justify-content: space-between;
   margin: -28rpx;
-  padding: 28rpx;
+  padding: 48rpx 28rpx 28rpx 28rpx;
 }
 .mine .topbtn image {
   width: 47rpx;

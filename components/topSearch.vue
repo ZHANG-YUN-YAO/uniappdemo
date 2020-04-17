@@ -6,7 +6,7 @@
 				<text style="padding-left: 22rpx;">初级禅茶教学</text>
 				<uni-icons class="closeempty" type="closeempty" size="18" color="#999999"></uni-icons>
 			</view>
-			<uni-icons class="chat" type="chat" size="18" color="#fff"></uni-icons>
+			<uni-icons class="chat" @click="infopage" type="chat" size="18" color="#fff"></uni-icons>
 		</view>
 	</view>
 </template>
@@ -19,6 +19,11 @@
 			};
 		},
 		methods:{
+			infopage(){
+				uni.navigateTo({
+				  url: '/pages/information/information'
+				});
+			},
 			cliSearch(){
 				uni.navigateTo({
 				  url: '/pages/search/search'

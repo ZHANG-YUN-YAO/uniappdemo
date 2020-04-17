@@ -7,7 +7,10 @@
     "pages/teaCeremony/teaCeremony",
     "pages/teaHouse/teaHouse",
     "pages/mine/mine",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/goodsList/goodsList",
+    "pages/teaArticle/teaArticle",
+    "pages/information/information"
   ],
   "subPackages": [],
   "window": {
@@ -24,8 +27,8 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/images/tab011.png",
-        "selectedIconPath": "static/images/tab01.png",
+        "iconPath": "static/images/tab01.png",
+        "selectedIconPath": "static/images/tab011.png",
         "text": "首页"
       },
       {
@@ -43,17 +46,16 @@
       {
         "pagePath": "pages/teaHouse/teaHouse",
         "iconPath": "static/images/tab04.png",
-        "selectedIconPath": "static/images/tab04.png",
+        "selectedIconPath": "static/images/tab044.png",
         "text": "茶社"
       },
       {
         "pagePath": "pages/mine/mine",
         "iconPath": "static/images/tab05.png",
-        "selectedIconPath": "static/images/tab05.png",
+        "selectedIconPath": "static/images/tab055.png",
         "text": "我的"
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap49.json"
+  "usingComponents": {}
 }

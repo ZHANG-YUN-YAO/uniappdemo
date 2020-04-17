@@ -17,6 +17,13 @@
 ._ul{
 	list-style: none;
 }
+.uni-list-item__content-title{
+	font-size:28rpx!important;
+	font-family:FZLTZHUNHK;
+	font-weight:normal;
+	color:rgba(51,51,51,1)!important;
+	/* line-height:13rpx!important; */
+}
 .gswSw{height: 160rpx!important;padding-bottom: 0rpx;}
 .gswGoods{width:111rpx!important;padding-left: 20rpx!important;font-weight: bold;}
 .goodsSwiperBox{width: 694rpx!important;margin: 0rpx!important;border-radius: 20rpx;background: #161E49!important;padding: 0 10rpx 0 0rpx!important;position: relative;box-sizing: border-box;}
@@ -28,6 +35,9 @@
 .shadowRight{display:none;position: absolute;right: 0;top: 80rpx;width: 111x;height: 111rpx;background-image: -webkit-linear-gradient(right,rgba(255,255,255,1),rgba(255,255,225,0));background-image: linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,225,0));}
 .uni-video-container{
 	background-color: #161E49!important;
+}
+.uni-list-item__container:after{
+	background-color: #fff!important;
 }
 
 @charset "UTF-8";
