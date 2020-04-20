@@ -97,6 +97,12 @@
 							"navigationBarTitleText":"确认订单"
 						}
         }
+        ,{
+            "path" : "pages/teaFriends/teaFriends",
+            "style" : {
+							"navigationBarTitleText":" "
+						}
+        }
     ],
 	"tabBar": {
 	    "color": "#3E455E",

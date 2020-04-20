@@ -138,8 +138,7 @@
 			},
 			zhifubao(newValue){
 				console.log(newValue);
-			},
-			
+			},			
 		},
 		
 		onLoad:function() {

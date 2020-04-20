@@ -1,6 +1,6 @@
 <template>
 	<view class="teaCaremoney">
-		<ms-tabs style="background: #161E49;" :list="list" v-model="active" itemColor="#fff" lineColor="#fff" :lineAnimated="false"></ms-tabs>
+		<ms-tabs style="background: #161E49;padding: 0 274rpx!important;" :list="list" v-model="active" itemColor="#fff" lineColor="#fff" :lineAnimated="false"></ms-tabs>
 		<!-- 茶界 -->
 		<view class="first" v-if="first">
 			<view class="topvideo">	
@@ -310,7 +310,7 @@
 				gDuration:60,
 				first:true,
 				second:false,
-				 list: [{
+				list: [{
 						title: '茶界'
 					}, {
 						title: '茶道'
@@ -361,8 +361,7 @@
 
 <style lang="less">
 	.teaCaremoney{	
-		// padding-top: 28rpx;
-		background-color: #161E49;
+		background-color: #161E49;		
 		.tab__item-title{
 			color:rgba(255,255,255,.4);		
 		}
@@ -577,8 +576,7 @@
 										margin-left: 10rpx;
 										line-height:13rpx;
 									}
-								}
-								
+								}								
 							}
 						}
 					}

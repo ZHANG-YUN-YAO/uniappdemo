@@ -23,8 +23,8 @@
 								<!-- 勾选 -->
 								<!-- <view style="width: 10%;height: 100%;background-color: #FFFFFF;"> -->
 									<!-- 勾选 -->
-									<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.id)"></view> -->
-								<!-- </view> -->
+									<!-- <view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.id)"></view>
+								</view> -->
 								<!-- 图片 -->
 								<view style="width: 30%;height: 100%;text-align:center;">
 									<image src="../../static/logo.png" mode="widthFix" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>

@@ -138,7 +138,7 @@
 				// width: 30%;
 				text-align: center;
 				line-height: 90rpx;
-				color: rgba(255,255,255,.4);
+				// color: rgba(255,255,255,.4);
 				// color: $uni-text-color;
 				&--active {
 					color: $uni-color-primary;
