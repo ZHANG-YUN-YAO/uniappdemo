@@ -1,0 +1,239 @@
+.teaFriend .tab__item {
+  text-align: left;
+}
+.teaFriend .top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 42rpx 28rpx 28rpx 28rpx;
+}
+.teaFriend .top .friendinfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+}
+.teaFriend .top .friendinfo .leftimg {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.teaFriend .top .friendinfo .right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin-left: 28rpx;
+}
+.teaFriend .top .friendinfo .right .name {
+  font-size: 32rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #161e49;
+}
+.teaFriend .top .friendinfo .right .sex {
+  width: 61px;
+  height: 21px;
+  text-align: center;
+  line-height: 16px;
+  background: #f87db8;
+  border-radius: 10px;
+}
+.teaFriend .top .friendinfo .right .sex image {
+  width: 14rpx;
+  height: 14rpx;
+}
+.teaFriend .top .friendinfo .right .sex .women {
+  width: 17rpx;
+  height: 13rpx;
+  font-size: 15rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  margin-left: 8rpx;
+  color: #ffffff;
+}
+.teaFriend .top .friendinfo .right .status {
+  font-size: 21rpx;
+  font-family: Microsoft YaHei;
+  color: #333333;
+}
+.teaFriend .top .friendinfo .right .status .meter {
+  font-weight: bold;
+}
+.teaFriend .top .friendinfo .right .area {
+  font-size: 21rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #666666;
+}
+.teaFriend .top .pencontent {
+  font-size: 21rpx;
+  padding-bottom: 28rpx;
+  font-family: MicrosoftYaHei;
+  border-bottom: 2rpx solid rgba(22, 30, 73, 0.4);
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666666;
+}
+.teaFriend .teabody .cup {
+  padding-left: 28rpx;
+  font-size: 32rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #161e49;
+  line-height: 27rpx;
+}
+.teaFriend .teabody .cup .num {
+  font-size: 21rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #666666;
+}
+.teaFriend .teabody .actswiper {
+  padding: 28rpx;
+}
+.teaFriend .teabody .actswiper .imageContainer .swiperitem {
+  width: 278rpx!important;
+  height: 222rpx!important;
+  padding: 0rpx 8rpx;
+}
+.teaFriend .teabody .teamiddle .cup {
+  padding-left: 28rpx;
+  font-size: 32rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #161e49;
+  line-height: 27rpx;
+}
+.teaFriend .teabody .teamiddle .garden {
+  width: 694rpx;
+  height: 324rpx;
+  padding: 42rpx 0;
+  margin: 0 auto;
+  margin-top: 15rpx;
+  background: #ffffff;
+  border: 2rpx solid #999999;
+  border-radius: 11rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.teaFriend .teabody .teamiddle .garden .lef {
+  margin-left: 42rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.teaFriend .teabody .teamiddle .garden .lef .lefone {
+  font-size: 56rpx;
+  font-family: AvantGarde;
+  font-weight: normal;
+  color: #161e49;
+  line-height: 52rpx;
+}
+.teaFriend .teabody .teamiddle .garden .lef .leftwo {
+  font-size: 22rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  margin-top: 12rpx;
+  color: #666666;
+}
+.teaFriend .teabody .teamiddle .garden .rig .rigtitle {
+  width: 139rpx;
+  height: 42rpx;
+  font-size: 25rpx;
+  line-height: 42rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  background: #161e49;
+  border-radius: 21rpx;
+}
+.teaFriend .teabody .teamiddle .garden .rig .list .li {
+  padding: 14rpx 14rpx 14rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+}
+.teaFriend .teabody .teamiddle .garden .rig .list .li .licontent {
+  width: 18rpx;
+  display: block;
+  margin-right: 10rpx;
+  height: 18rpx;
+  background: #ffffff;
+  border: 4rpx solid #161e49;
+  border-radius: 50%;
+}
+.teaFriend .teabody .teamiddle .garden .rig .list .li .lipub {
+  font-size: 22rpx;
+  line-height: 24rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #666666;
+}
+.teaFriend .teabody .teamiddle .tabthree .imageContainer {
+  padding-left: 28rpx!important;
+}
+.teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitem {
+  width: 250rpx;
+  text-align: center;
+  height: 278rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  box-shadow: 0px 3rpx 6rpx 0px rgba(0, 0, 0, 0.2);
+  border-radius: 11rpx;
+  margin-right: 14px;
+}
+.teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitem .swiperimg {
+  width: 250rpx;
+  height: 181rpx;
+  border-top-left-radius: 11rpx;
+  border-top-right-radius: 11rpx;
+}
+.teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitem .swipernav {
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  margin-top: 20rpx;
+  color: #161e49;
+  line-height: 13rpx;
+}
+.teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitem .swipernum {
+  font-size: 21rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  margin-top: 12rpx;
+  color: #666666;
+}
+

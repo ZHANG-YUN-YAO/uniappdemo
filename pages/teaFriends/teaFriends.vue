@@ -109,18 +109,10 @@
 									<block v-for="(item,index) in suggestList" :key="index">
 										<swiper-item class="swiperitem">	
 											<view class="" style="width: 100%;">
-												<image style="width:250rpx;height:181rpx;border-top-left-radius:11rpx;border-top-right-radius:11rpx;" :src="item.img" mode=""></image>							
-												<view style="font-size:25rpx;
-font-family:MicrosoftYaHei;
-font-weight:400;margin-top:20rpx;
-color:rgba(22,30,73,1);
-line-height:13rpx;">{{item.name}}</view>
-												<view style="font-size:21rpx;
-font-family:MicrosoftYaHei;
-font-weight:400;margin-top: 12rpx;
-color:rgba(102,102,102,1);">{{item.number}}</view>
-											</view>
-												
+												<image class="swiperimg" :src="item.img" mode=""></image>							
+												<view class="swipernav">{{item.name}}</view>
+												<view class="swipernum">{{item.number}}</view>
+											</view>												
 										</swiper-item>
 									</block>
 								</swiper>		
@@ -190,44 +182,8 @@ color:rgba(102,102,102,1);">{{item.number}}</view>
 
 <style lang="less">
 	.teaFriend{
-		// .Tabs-Page {
-		//   .article {
-		//     &:not(:first-child) {
-		//       margin-top: 40rpx;
-		//     }
-		//     .title {
-		//       padding: 20rpx;
-		//       font-size: 28rpx;
-		//       text-align: center;
-		//     }
-		//     .desc {
-		//       padding: 0 40rpx;
-		//       font-size: 26rpx;
-		//     }
-		//   }
-		//   /deep/.s-tabs {
-		//     .s-tab-panel {
-		//       padding: 30rpx;
-		//     }
-		//   }
-		//   .custom-tabs {
-		//     /deep/.s-tab-nav-view {
-		//       display: flex;
-		//       justify-content: center;
-		//       .s-tab-nav {
-		//         &:not(:first-child) {
-		//           margin-left: 40rpx;
-		//         }
-		//       }
-		//     }
-		//   }
-		// }
 		.tab__item{
 			text-align: left;
-		}
-		.tab{
-			// padding: 0!important;
-			padding-left: 28rpx!important;
 		}
 		.top{
 			display: flex;
@@ -404,8 +360,9 @@ color:rgba(102,102,102,1);">{{item.number}}</view>
 						}
 					}
 				}
-				.tabthree{
+				.tabthree{					
 					.imageContainer{
+						padding-left: 28rpx!important;
 						.swiperitem{
 							width:250rpx;
 							text-align: center;
@@ -416,7 +373,28 @@ color:rgba(102,102,102,1);">{{item.number}}</view>
 							justify-content: center;
 							box-shadow:0px 3rpx 6rpx 0px rgba(0, 0, 0, 0.2);
 							border-radius:11rpx;
-							margin-right: 14px;
+							margin-right: 14px;			
+							.swiperimg{
+								width:250rpx;
+								height:181rpx;
+								border-top-left-radius:11rpx;
+								border-top-right-radius:11rpx;
+							}
+							.swipernav{
+								font-size:25rpx;
+								font-family:MicrosoftYaHei;
+								font-weight:400;
+								margin-top:20rpx;
+								color:rgba(22,30,73,1);
+								line-height:13rpx;
+							}
+							.swipernum{
+								font-size:21rpx;
+								font-family:MicrosoftYaHei;
+								font-weight:400;
+								margin-top: 12rpx;
+								color:rgba(102,102,102,1);
+							}
 						}
 					}
 				}				

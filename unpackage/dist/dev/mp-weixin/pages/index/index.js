@@ -131,7 +131,139 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var topSearch = function topSearch() {__webpack_require__.e(/*! require.ensure | components/topSearch */ "components/topSearch").then((function () {return resolve(__webpack_require__(/*! ../../components/topSearch.vue */ 111));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var topTabbar = function topTabbar() {__webpack_require__.e(/*! require.ensure | components/topTabbar */ "components/topTabbar").then((function () {return resolve(__webpack_require__(/*! ../../components/topTabbar.vue */ 118));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var topSearch = function topSearch() {__webpack_require__.e(/*! require.ensure | components/topSearch */ "components/topSearch").then((function () {return resolve(__webpack_require__(/*! ../../components/topSearch.vue */ 176));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var topTabbar = function topTabbar() {__webpack_require__.e(/*! require.ensure | components/topTabbar */ "components/topTabbar").then((function () {return resolve(__webpack_require__(/*! ../../components/topTabbar.vue */ 183));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,6 +284,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     topSearch: topSearch,
     topTabbar: topTabbar },
 
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    if (e.index == 0) {
+      //扫码
+    } else if (e.index == 1) {
+      uni.navigateTo({
+        url: '/pages/information/information' });
+
+    }
+  },
   data: function data() {
     return {
       title: 'Hello' };
@@ -161,6 +302,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   },
   methods: {} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

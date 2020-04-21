@@ -79,16 +79,18 @@
 		<uni-list-item title="请填写收货地址" thumb="../../static/images/didian.png" :showArrow="true"></uni-list-item>
 	</uni-list>	
 	<uni-list>
-		<uni-list-item title="支付宝支付" thumb="../../static/images/zhifubao.png" :showArrow="false">
-			<template v-slot:right="">
-				<radio :checked="zhifubao" value="zhifubao" />
-			</template>
-		</uni-list-item>
-		<uni-list-item title="微信支付" thumb="../../static/images/weixins.png" :showArrow="false">
-			<template v-slot:right="">
-				<radio :checked="weixin" value="weixin" />
-			</template>
-		</uni-list-item>
+		<radio-group @change="radioChange">
+			<uni-list-item title="支付宝支付" thumb="../../static/images/zhifubao.png" :showArrow="false">
+				<template v-slot:right="">
+					<radio :checked="zhifubao" value="zhifubao" />
+				</template>
+			</uni-list-item>
+			<uni-list-item title="微信支付" thumb="../../static/images/weixins.png" :showArrow="false">
+				<template v-slot:right="">
+					<radio :checked="weixin" value="weixin" />
+				</template>
+			</uni-list-item>
+		</radio-group>
 	</uni-list>	
 	<!-- 金额合计 -->
 	<view class="glance-shop-cart-order">
@@ -213,6 +215,9 @@
 			}
 		},
 		methods:{
+			radioChange(e){
+				console.log(e)
+			},
 			// scroll x 归位
 			scrollhoming(){
 				this.scrollposition = this.scrollposition -1

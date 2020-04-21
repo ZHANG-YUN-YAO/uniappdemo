@@ -1,0 +1,108 @@
+.registerlogin {
+  width: 100%;
+  height: 100vh;
+  background: #20223b;
+  text-align: center;
+}
+.registerlogin .toptitle {
+  font-size: 70rpx;
+  font-family: 经典繁毛楷;
+  font-weight: 400;
+  text-align: center;
+  color: #161e49;
+  padding-top: 94rpx;
+  margin-bottom: 115rpx;
+}
+.registerlogin .button1 {
+  background-color: #fff !important;
+  color: #20223c !important;
+}
+.registerlogin .button1 .img {
+  width: 28rpx;
+  height: 24rpx;
+  margin-right: 18rpx;
+}
+.registerlogin .button2 {
+  margin-top: 35rpx!important;
+  border-radius: 40rpx!important;
+  background: #3b4266 !important;
+}
+.registerlogin .button2 .img {
+  width: 22rpx;
+  height: 28rpx;
+  margin-right: 18rpx;
+}
+.registerlogin .btn-row {
+  width: 74%;
+  margin: 0 auto;
+  margin-top: 306rpx;
+}
+.registerlogin .btn-row uni-button {
+  background: #CCCCCC;
+  border: 0;
+  border-radius: 40rpx;
+}
+.registerlogin .btn-row .cu-btn {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff;
+}
+.registerlogin .zhuyi {
+  font-size: 21rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  margin-top: 26rpx;
+  color: #161e49;
+}
+.registerlogin .zhuyi .one {
+  color: #161E49;
+}
+.registerlogin .zhuyi .two {
+  color: #2443EA;
+}
+.registerlogin .input-row {
+  width: 74%;
+  border-bottom: 2rpx solid #999999;
+  margin: 0 auto;
+  padding-bottom: 15rpx;
+}
+.registerlogin .input-row .inputimg {
+  width: 22rpx;
+  height: 26rpx;
+}
+.registerlogin .action-row {
+  margin-top: 255rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  color: #39B54A;
+}
+.registerlogin .action-row navigator {
+  font-size: 25rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #999999;
+}
+.registerlogin .action-row navigator .weiboimg {
+  width: 30rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.registerlogin .action-row navigator .qqimg {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.registerlogin .logo {
+  width: 250rpx;
+  height: 250rpx;
+  margin: 50px auto 20px auto;
+}
+

@@ -146,6 +146,11 @@ var _uniGridItem = _interopRequireDefault(__webpack_require__(/*! ../../componen
 
   },
   methods: {
+    tocar: function tocar() {
+      uni.navigateTo({
+        url: '/pages/car/car' });
+
+    },
     infopage: function infopage() {
       uni.navigateTo({
         url: '/pages/information/information' });

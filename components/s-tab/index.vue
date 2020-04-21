@@ -65,7 +65,7 @@ export default {
         navWidth: $tabs.navWidth,
         color: $tabs.color,
         activeColor: $tabs.activeColor,
-        lazyRender: $tabs.lazyRender
+        lazyRender: $tabs.lazyRender,				
       };
     }
   },
@@ -121,6 +121,7 @@ export default {
   &.is-active {
     height: auto;
     overflow: visible;
+		font-size: 32rpx!important;
   }
 }
 </style>

@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1660741",
+      "name": "扫码",
+      "font_class": "saoma",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "7629067",
+      "name": "扫码",
+      "font_class": "saoma1",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "7874515",
+      "name": "扫码",
+      "font_class": "saoma2",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "830292",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
       "icon_id": "689319",
       "name": "心",
       "font_class": "xin",

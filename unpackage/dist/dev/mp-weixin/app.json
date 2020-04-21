@@ -10,7 +10,15 @@
     "pages/search/search",
     "pages/goodsList/goodsList",
     "pages/teaArticle/teaArticle",
-    "pages/information/information"
+    "pages/information/information",
+    "pages/car/car",
+    "pages/confirmOrder/confirmOrder",
+    "pages/teaFriends/teaFriends",
+    "pages/registerLogin/codeLogin/codeLogin",
+    "pages/registerLogin/registerLogin/registerLogin",
+    "pages/registerLogin/forgectPassword/forgectPassword",
+    "pages/registerLogin/passwordLogin/passwordLogin",
+    "pages/orders/allOrders/allOrders"
   ],
   "subPackages": [],
   "window": {

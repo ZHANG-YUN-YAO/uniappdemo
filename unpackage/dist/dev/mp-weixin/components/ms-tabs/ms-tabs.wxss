@@ -43,7 +43,6 @@
               flex: 1;
       text-align: center;
       line-height: 90rpx;
-      color: rgba(255, 255, 255, 0.4);
 }
 .tabBlock .tab__item--active {
         color: #007aff;

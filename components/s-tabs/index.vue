@@ -21,7 +21,7 @@
             </template>
             <slot v-else></slot>
           </div>
-          <div
+          <!-- <div
             v-if="line"
             class="s-tab-line"
             :style="{
@@ -30,7 +30,7 @@
               background:lineColor,
               transform:'translateX('+lineLeft+'px)'
             }"
-          ></div>
+          ></div> -->
         </div>
       </scroll-view>
     </div>
@@ -67,7 +67,7 @@ export default {
     // 导航选中颜色
     activeColor: {
       type: String,
-      default: '#406BDC'
+      default: '#161E49'
     },
     // 导航高度 rpx
     height: {
@@ -214,6 +214,7 @@ export default {
 <style lang="scss">
 .s-tabs {
   width: 100%;
+	padding-left:28rpx;
   position: relative;
   overflow-x: hidden;
   &-nav-wrap {
