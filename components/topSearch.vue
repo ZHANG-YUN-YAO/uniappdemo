@@ -6,7 +6,7 @@
 				<text style="padding-left: 22rpx;">初级禅茶教学</text>
 				<uni-icons class="closeempty" type="closeempty" size="18" color="#999999"></uni-icons>
 			</view>
-			<uni-icons class="chat" @click="infopage" type="chat" size="18" color="#fff"></uni-icons>
+			<!-- <uni-icons class="chat" @click="infopage" type="chat" size="18" color="#fff"></uni-icons> -->
 		</view>
 	</view>
 </template>
@@ -44,7 +44,8 @@
 			top: 16rpx;
 		}
 		.searchView{
-			width:611rpx;
+			// width:611rpx;
+			width:694rpx;
 			height: 50rpx;
 			background:#FFFFFF;
 			border-radius:40rpx;
