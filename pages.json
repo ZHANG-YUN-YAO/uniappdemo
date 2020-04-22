@@ -161,9 +161,34 @@
 						}
         }
         ,{
-            "path" : "pages/orders/allOrders/allOrders",
+            "path" : "pages/allOrders/allOrders",
             "style" : {
 							"navigationBarTitleText":"我的订单"
+						}
+        }
+        
+        ,{
+            "path" : "pages/waitPayOrder/waitPayOrder",
+            "style" : {
+							"navigationBarTitleText":"待支付"
+						}
+        }
+        ,{
+            "path" : "pages/waitSendgoodsOrder/waitSendgoodsOrder",
+            "style" : {
+							"navigationBarTitleText":"待发货"
+						}
+        }
+        ,{
+            "path" : "pages/waitReceiveOrder/waitReceiveOrder",
+            "style" : {
+							"navigationBarTitleText":"待收货"
+						}
+        }
+        ,{
+            "path" : "pages/waitEvaluateOrder/waitEvaluateOrder",
+            "style" : {
+							"navigationBarTitleText":"待评价"
 						}
         }
     ],
