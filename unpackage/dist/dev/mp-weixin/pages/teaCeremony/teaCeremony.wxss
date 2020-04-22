@@ -1,6 +1,14 @@
 .teaCaremoney {
   background-color: #161E49;
 }
+#myVideo {
+  width: 100%!important;
+  height: 225px;
+  display: inline-block;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+}
 .teaCaremoney .tab__item-title {
   color: rgba(255, 255, 255, 0.4);
 }

@@ -1,0 +1,274 @@
+.waitevaluateorder .address {
+  height: 112rpx;
+  line-height: 112rpx;
+  padding: 40rpx 28rpx 44rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.waitevaluateorder .address .left {
+  max-width: 95%;
+  width: 95%;
+}
+.waitevaluateorder .address .left .addicon {
+  display: inline-block;
+  margin-right: 28rpx;
+}
+.waitevaluateorder .address .left .addicon .addressimg {
+  width: 35rpx;
+  height: 35rpx;
+}
+.waitevaluateorder .address .left .buyerinfo {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  position: relative;
+  top: -24rpx;
+  font-weight: 400;
+  height: 90rpx;
+  line-height: 46rpx;
+  color: #848484;
+}
+.waitevaluateorder .address .left .buyerinfo .addressinfo {
+  width: 546rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.waitevaluateorder .address .right .arrowright {
+  width: 14rpx;
+  height: 25rpx;
+}
+.waitevaluateorder .orderlist .orderli {
+  background-color: #F4F4F4;
+}
+.waitevaluateorder .orderlist .orderli .timestatus {
+  padding: 20rpx 28rpx 0rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-bottom: -28rpx;
+}
+.waitevaluateorder .orderlist .orderli .timestatus .lef .timeicon {
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+  top: 4rpx;
+}
+.waitevaluateorder .orderlist .orderli .timestatus .lef .status {
+  font-size: 25rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-right: 4rpx;
+  color: #babdcf;
+  line-height: 13rpx;
+}
+.waitevaluateorder .orderlist .orderli .timestatus .rig {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ef104a;
+  line-height: 44rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods {
+  width: 694rpx;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 0;
+  padding-bottom: 42rpx;
+  border-bottom: 2rpx solid #BABDCF;
+  margin-top: 56rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods .left .goodsimg {
+  width: 200rpx;
+  height: 191rpx;
+  border-radius: 21rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods .right {
+  width: 100%;
+  margin-left: 45rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.waitevaluateorder .orderlist .orderli .goods .right .goodsname {
+  font-size: 35rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-top: 18rpx;
+  color: #161e49;
+  line-height: 27rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods .right .goodsweigh {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  font-size: 25rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-top: 28rpx;
+  color: #babdcf;
+  line-height: 13rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods .right .goodsprice {
+  padding-top: 33rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.waitevaluateorder .orderlist .orderli .goods .right .goodsprice .goodstype {
+  width: 140rpx;
+  height: 56rpx;
+  font-size: 28rpx;
+  font-family: 经典繁毛楷;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 56rpx;
+  text-align: center;
+  background: #edc486;
+  border-radius: 28rpx;
+}
+.waitevaluateorder .orderlist .orderli .goods .right .goodsprice .goodsmoney {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #c1c4d4;
+  line-height: 56rpx;
+}
+.waitevaluateorder .orderdetail {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 0 28rpx;
+}
+.waitevaluateorder .orderdetail .detailtime,
+.waitevaluateorder .orderdetail .detailprice,
+.waitevaluateorder .orderdetail .detailcarprice,
+.waitevaluateorder .orderdetail .detailrealmoney {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.waitevaluateorder .orderdetail .detailtime .nametime,
+.waitevaluateorder .orderdetail .detailprice .nametime,
+.waitevaluateorder .orderdetail .detailcarprice .nametime,
+.waitevaluateorder .orderdetail .detailrealmoney .nametime,
+.waitevaluateorder .orderdetail .detailtime .namepaytime,
+.waitevaluateorder .orderdetail .detailprice .namepaytime,
+.waitevaluateorder .orderdetail .detailcarprice .namepaytime,
+.waitevaluateorder .orderdetail .detailrealmoney .namepaytime,
+.waitevaluateorder .orderdetail .detailtime .namepaytype,
+.waitevaluateorder .orderdetail .detailprice .namepaytype,
+.waitevaluateorder .orderdetail .detailcarprice .namepaytype,
+.waitevaluateorder .orderdetail .detailrealmoney .namepaytype {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #c1c4d4;
+  line-height: 56rpx;
+}
+.waitevaluateorder .orderdetail .detailtime .nameprice,
+.waitevaluateorder .orderdetail .detailprice .nameprice,
+.waitevaluateorder .orderdetail .detailcarprice .nameprice,
+.waitevaluateorder .orderdetail .detailrealmoney .nameprice,
+.waitevaluateorder .orderdetail .detailtime .namesendtype,
+.waitevaluateorder .orderdetail .detailprice .namesendtype,
+.waitevaluateorder .orderdetail .detailcarprice .namesendtype,
+.waitevaluateorder .orderdetail .detailrealmoney .namesendtype {
+  font-size: 28rpx;
+}
+.waitevaluateorder .orderdetail .detailtime .namemoney,
+.waitevaluateorder .orderdetail .detailprice .namemoney,
+.waitevaluateorder .orderdetail .detailcarprice .namemoney,
+.waitevaluateorder .orderdetail .detailrealmoney .namemoney {
+  font-size: 28rpx;
+}
+.waitevaluateorder .orderdetail .detailtime .namecar,
+.waitevaluateorder .orderdetail .detailprice .namecar,
+.waitevaluateorder .orderdetail .detailcarprice .namecar,
+.waitevaluateorder .orderdetail .detailrealmoney .namecar {
+  color: red;
+  font-size: 28rpx;
+}
+.waitevaluateorder .pricebtn {
+  padding: 21rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.waitevaluateorder .pricebtn .realprice {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #161e49;
+  line-height: 56rpx;
+}
+.waitevaluateorder .pricebtn .btngroup {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.waitevaluateorder .pricebtn .btngroup .btn {
+  width: 139rpx;
+  height: 56rpx;
+  font-size: 21rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 56rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  margin-left: 14rpx;
+}
+.waitevaluateorder .pricebtn .btngroup .btn1,
+.waitevaluateorder .pricebtn .btngroup .btn4,
+.waitevaluateorder .pricebtn .btngroup .btn6,
+.waitevaluateorder .pricebtn .btngroup .btn8,
+.waitevaluateorder .pricebtn .btngroup .btn9 {
+  color: #bcbfd1;
+  border: 2rpx solid #c1c4d4;
+}
+.waitevaluateorder .pricebtn .btngroup .btn2 {
+  color: #fff;
+  background: #ef104a;
+}
+.waitevaluateorder .pricebtn .btngroup .btn5,
+.waitevaluateorder .pricebtn .btngroup .btn7,
+.waitevaluateorder .pricebtn .btngroup .btn3 {
+  color: #EF104A;
+  border: 2rpx solid #ef104a;
+}
+

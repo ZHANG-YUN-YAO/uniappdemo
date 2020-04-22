@@ -57,8 +57,8 @@
 			box-sizing: border-box;
 			position: relative;
 			.closeempty{
-				position: absolute;
-				right:10rpx;
+				position: absolute;				
+				right:10rpx;				
 			}
 		}
 	}

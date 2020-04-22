@@ -9,7 +9,7 @@
   top: 16rpx;
 }
 .searchWapper .searchView {
-  width: 611rpx;
+  width: 694rpx;
   height: 50rpx;
   background: #FFFFFF;
   border-radius: 40rpx;

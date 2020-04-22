@@ -90,8 +90,8 @@
   border-radius: 50%;
   display: inline-block;
   margin-right: -150rpx;
-  position: relative;
-  z-index: 9;
+  position:relative;
+  z-index:3;
 }
 .content .sayhi .saylist .sayli .avatar .content {
   display: -webkit-inline-box;

@@ -8,8 +8,6 @@
     "pages/teaHouse/teaHouse",
     "pages/mine/mine",
     "pages/search/search",
-    "pages/goodsList/goodsList",
-    "pages/teaArticle/teaArticle",
     "pages/information/information",
     "pages/car/car",
     "pages/confirmOrder/confirmOrder",
@@ -18,7 +16,12 @@
     "pages/registerLogin/registerLogin/registerLogin",
     "pages/registerLogin/forgectPassword/forgectPassword",
     "pages/registerLogin/passwordLogin/passwordLogin",
-    "pages/orders/allOrders/allOrders"
+    "pages/allOrders/allOrders",
+    "pages/waitPayOrder/waitPayOrder",
+    "pages/waitSendgoodsOrder/waitSendgoodsOrder",
+    "pages/waitReceiveOrder/waitReceiveOrder",
+    "pages/waitEvaluateOrder/waitEvaluateOrder",
+    "pages/addressList/addressList"
   ],
   "subPackages": [],
   "window": {
@@ -65,5 +68,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap24.json"
 }

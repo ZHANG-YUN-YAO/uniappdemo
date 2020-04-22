@@ -4,12 +4,38 @@
 		<!-- 茶界 -->
 		<view class="first" v-if="first">
 			<view class="topvideo">	
-				<template>
+				<!-- <template>
 					<div class="content">
 						<chunlei-video :title="title" :poster="poster" :autoplay="true" :srcList="videosrc" class="video" ref="video" color="#c93756" :gDuration="gDuration">				
 						</chunlei-video>
 					</div>
-				</template>	
+				</template>	 -->
+				<template>
+				    <view>
+				        <view class="uni-padding-wrap uni-common-mt">
+				            <view>
+											<!-- :poster="poster" controls -->
+				                <video id="myVideo" :src="videosrc"
+				                    @error="videoErrorCallback" show-center-play-btn ></video>
+				            </view>
+				            <!-- #ifndef MP-ALIPAY -->
+				            <!-- <view class="uni-list uni-common-mt">
+				                <view class="uni-list-cell">
+				                    <view>
+				                        <view class="uni-label">弹幕内容</view>
+				                    </view>
+				                    <view class="uni-list-cell-db">
+				                        <input v-model="danmuValue" class="uni-input" type="text" placeholder="在此处输入弹幕内容" />
+				                    </view>
+				                </view>
+				            </view>
+				            <view class="uni-btn-v">
+				                <button @click="sendDanmu" class="page-body-button">发送弹幕</button>
+				            </view> -->
+				            <!-- #endif -->
+				        </view>
+				    </view>
+				</template>
 			</view>			
 			<view class="gardenbody">
 				<view class="bodytop">
@@ -252,11 +278,11 @@
 			return {
 				currentIndex:'0',
 				imgList:[
-				'../../static/images/swiper.png',
-				'../../static/images/swiper2.png',
-				'../../static/images/swiper3.png',
-				'../../static/images/swiper.png',
-				'../../static/images/swiper2.png'],
+					'../../static/images/swiper.png',
+					'../../static/images/swiper2.png',
+					'../../static/images/swiper3.png',
+					'../../static/images/swiper.png',
+					'../../static/images/swiper2.png'],
 				background: ['color1', 'color2', 'color3'],
 				indicatorDots: false,
 				autoplay: false,
@@ -324,7 +350,18 @@
 				active: 0
 			}
 		},
+		onReady: function(res) {
+				// #ifndef MP-ALIPAY
+				this.videoContext = uni.createVideoContext('myVideo')
+				// #endif
+		},
 		methods: {
+			videoErrorCallback: function(e) {
+					uni.showModal({
+							content: e.target.errMsg,
+							showCancel: false
+					})
+			},
 			handleChange(){},
 			changeIndicatorDots(e) {
 					this.indicatorDots = !this.indicatorDots
@@ -361,7 +398,15 @@
 
 <style lang="less">
 	.teaCaremoney{	
-		background-color: #161E49;		
+		background-color: #161E49;
+		uni-video {
+				width: 100%!important;
+				height: 225px;
+				display: inline-block;
+				line-height: 0;
+				overflow: hidden;
+				position: relative;
+		}
 		.tab__item-title{
 			color:rgba(255,255,255,.4);		
 		}

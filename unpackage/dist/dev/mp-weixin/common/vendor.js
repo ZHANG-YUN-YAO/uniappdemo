@@ -757,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8167,7 +8167,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8188,14 +8188,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8271,7 +8271,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8807,18 +8807,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 202:
+/***/ 248:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 203);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 249);
 
 /***/ }),
 
-/***/ 203:
+/***/ 249:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8849,7 +8849,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 204);
+module.exports = __webpack_require__(/*! ./runtime */ 250);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8866,7 +8866,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 204:
+/***/ 250:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -10546,7 +10546,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "top-search": "/components/topSearch", "top-tabbar": "/components/topTabbar" }, "usingAutoImportComponents": {} }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园", "usingComponents": {}, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom", "usingComponents": { "chunlei-video": "/components/chunlei-video/chunlei-video", "goods-swiper": "/components/pyh-goodsSwiper/pyh-goodsSwiper", "ms-tabs": "/components/ms-tabs/ms-tabs" }, "usingAutoImportComponents": { "ms-tabs": "/components/ms-tabs/ms-tabs", "chunlei-video": "/components/chunlei-video/chunlei-video", "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationStyle": "custom", "usingComponents": { "uni-grid": "/components/uni-grid/uni-grid" }, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "top-search": "/components/topSearch" }, "usingAutoImportComponents": { "uni-icons": "/components/uni-icons/uni-icons" } }, "pages/information/information": { "navigationBarTitleText": "消息", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" }, "usingAutoImportComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" } }, "pages/car/car": { "navigationBarTitleText": "购物车", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/confirmOrder/confirmOrder": { "navigationBarTitleText": "确认订单", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" }, "usingAutoImportComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } }, "pages/teaFriends/teaFriends": { "navigationBarTitleText": " ", "usingComponents": { "s-tabs": "/components/s-tabs/index", "s-tab": "/components/s-tab/index" }, "usingAutoImportComponents": {} }, "pages/registerLogin/codeLogin/codeLogin": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/registerLogin/registerLogin": { "navigationBarTitleText": " ", "navigationBarBackgroundColor": "#20223b", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/forgectPassword/forgectPassword": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/passwordLogin/passwordLogin": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/orders/allOrders/allOrders": { "navigationBarTitleText": "我的订单", "usingComponents": { "s-tabs": "/components/s-tabs/index", "s-tab": "/components/s-tab/index" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园" }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom" }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社" }, "pages/mine/mine": { "navigationStyle": "custom" }, "pages/search/search": { "navigationBarTitleText": "搜索" }, "pages/information/information": { "navigationBarTitleText": "消息" }, "pages/car/car": { "navigationBarTitleText": "购物车" }, "pages/confirmOrder/confirmOrder": { "navigationBarTitleText": "确认订单" }, "pages/teaFriends/teaFriends": { "navigationBarTitleText": " " }, "pages/registerLogin/codeLogin/codeLogin": { "navigationBarTitleText": " " }, "pages/registerLogin/registerLogin/registerLogin": { "navigationBarTitleText": " ", "navigationBarBackgroundColor": "#20223b" }, "pages/registerLogin/forgectPassword/forgectPassword": { "navigationBarTitleText": " " }, "pages/registerLogin/passwordLogin/passwordLogin": { "navigationBarTitleText": " " }, "pages/allOrders/allOrders": { "navigationBarTitleText": "我的订单" }, "pages/waitPayOrder/waitPayOrder": { "navigationBarTitleText": "待支付" }, "pages/waitSendgoodsOrder/waitSendgoodsOrder": { "navigationBarTitleText": "待发货" }, "pages/waitReceiveOrder/waitReceiveOrder": { "navigationBarTitleText": "待收货" }, "pages/waitEvaluateOrder/waitEvaluateOrder": { "navigationBarTitleText": "待评价" }, "pages/addressList/addressList": { "navigationBarTitleText": "收货地址" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

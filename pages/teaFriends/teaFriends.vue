@@ -105,13 +105,31 @@
 					<div class="article">
 					  <s-tabs effect @change="change" @render="render">
 					    <s-tab title="推荐">
-								<swiper class="imageContainer" @change="handleChange2" circular :autoplay="false" previous-margin="0" next-margin="460rpx">
+								<swiper class="imageContainer" @change="handleChange2"  :autoplay="false" previous-margin="0" next-margin="460rpx">
 									<block v-for="(item,index) in suggestList" :key="index">
-										<swiper-item class="swiperitem">	
+										<swiper-item class="swiperitemli" style="width:250rpx;
+							text-align: center;
+							height:278rpx;
+							box-sizing: border-box;
+							background:rgba(255,255,255,1);
+							display: flex;
+							justify-content: center;
+							box-shadow:0px 3rpx 6rpx 0px rgba(0, 0, 0, 0.2);
+							border-radius:11rpx;
+							margin-left: 14px;		">	
 											<view class="" style="width: 100%;">
-												<image class="swiperimg" :src="item.img" mode=""></image>							
-												<view class="swipernav">{{item.name}}</view>
-												<view class="swipernum">{{item.number}}</view>
+												<image class="swiperimg" style="height:181rpx" :src="item.img" mode=""></image>							
+												<view class="swipernav" style="font-size:25rpx;
+								font-family:MicrosoftYaHei;
+								font-weight:400;
+								margin-top:20rpx;
+								color:rgba(22,30,73,1);
+								line-height:13rpx;">{{item.name}}</view>
+												<view class="swipernum" style="font-size:21rpx;
+								font-family:MicrosoftYaHei;
+								font-weight:400;
+								margin-top: 12rpx;
+								color:rgba(102,102,102,1);">{{item.number}}</view>
 											</view>												
 										</swiper-item>
 									</block>
@@ -363,7 +381,7 @@
 				.tabthree{					
 					.imageContainer{
 						padding-left: 28rpx!important;
-						.swiperitem{
+						.swiperitemli{
 							width:250rpx;
 							text-align: center;
 							height:278rpx;
@@ -376,7 +394,7 @@
 							margin-right: 14px;			
 							.swiperimg{
 								width:250rpx;
-								height:181rpx;
+								height:181rpx!important;
 								border-top-left-radius:11rpx;
 								border-top-right-radius:11rpx;
 							}

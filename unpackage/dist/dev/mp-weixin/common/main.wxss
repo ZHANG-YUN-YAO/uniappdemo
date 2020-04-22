@@ -17,6 +17,12 @@
 ._ul{
 	list-style: none;
 }
+/* uni-radio { */
+.uni-radio-input{
+		width: 28rpx!important;
+		height: 28rpx!important;
+}
+/* } */
 .uni-radio-input-checked{
 	background-color: #EF104A!important;
 	border-color: #EF104A!important;

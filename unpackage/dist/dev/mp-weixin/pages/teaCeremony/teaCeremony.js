@@ -95,10 +95,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "ms-tabs": function() {
-    return __webpack_require__.e(/*! import() | components/ms-tabs/ms-tabs */ "components/ms-tabs/ms-tabs").then(__webpack_require__.bind(null, /*! @/components/ms-tabs/ms-tabs.vue */ 190))
+    return __webpack_require__.e(/*! import() | components/ms-tabs/ms-tabs */ "components/ms-tabs/ms-tabs").then(__webpack_require__.bind(null, /*! @/components/ms-tabs/ms-tabs.vue */ 236))
   },
   "chunlei-video": function() {
-    return Promise.all(/*! import() | components/chunlei-video/chunlei-video */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/chunlei-video/chunlei-video")]).then(__webpack_require__.bind(null, /*! @/components/chunlei-video/chunlei-video.nvue */ 197))
+    return Promise.all(/*! import() | components/chunlei-video/chunlei-video */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/chunlei-video/chunlei-video")]).then(__webpack_require__.bind(null, /*! @/components/chunlei-video/chunlei-video.nvue */ 243))
   },
   "uni-grid": function() {
     return __webpack_require__.e(/*! import() | components/uni-grid/uni-grid */ "components/uni-grid/uni-grid").then(__webpack_require__.bind(null, /*! @/components/uni-grid/uni-grid.vue */ 23))
@@ -144,7 +144,33 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var msTabs = function msTabs() {__webpack_require__.e(/*! require.ensure | components/ms-tabs/ms-tabs */ "components/ms-tabs/ms-tabs").then((function () {return resolve(__webpack_require__(/*! @/components/ms-tabs/ms-tabs.vue */ 190));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var chunleiVideo = function chunleiVideo() {Promise.all(/*! require.ensure | components/chunlei-video/chunlei-video */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/chunlei-video/chunlei-video")]).then((function () {return resolve(__webpack_require__(/*! ../../components/chunlei-video/chunlei-video.nvue */ 197));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var goodsSwiper = function goodsSwiper() {__webpack_require__.e(/*! require.ensure | components/pyh-goodsSwiper/pyh-goodsSwiper */ "components/pyh-goodsSwiper/pyh-goodsSwiper").then((function () {return resolve(__webpack_require__(/*! ../../components/pyh-goodsSwiper/pyh-goodsSwiper.vue */ 207));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var msTabs = function msTabs() {__webpack_require__.e(/*! require.ensure | components/ms-tabs/ms-tabs */ "components/ms-tabs/ms-tabs").then((function () {return resolve(__webpack_require__(/*! @/components/ms-tabs/ms-tabs.vue */ 236));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var chunleiVideo = function chunleiVideo() {Promise.all(/*! require.ensure | components/chunlei-video/chunlei-video */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/chunlei-video/chunlei-video")]).then((function () {return resolve(__webpack_require__(/*! ../../components/chunlei-video/chunlei-video.nvue */ 243));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var goodsSwiper = function goodsSwiper() {__webpack_require__.e(/*! require.ensure | components/pyh-goodsSwiper/pyh-goodsSwiper */ "components/pyh-goodsSwiper/pyh-goodsSwiper").then((function () {return resolve(__webpack_require__(/*! ../../components/pyh-goodsSwiper/pyh-goodsSwiper.vue */ 253));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -470,7 +496,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       active: 0 };
 
   },
+  onReady: function onReady(res) {
+
+    this.videoContext = uni.createVideoContext('myVideo');
+
+  },
   methods: {
+    videoErrorCallback: function videoErrorCallback(e) {
+      uni.showModal({
+        content: e.target.errMsg,
+        showCancel: false });
+
+    },
     handleChange: function handleChange() {},
     changeIndicatorDots: function changeIndicatorDots(e) {
       this.indicatorDots = !this.indicatorDots;
@@ -501,6 +538,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         this.second = true;
       }
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
