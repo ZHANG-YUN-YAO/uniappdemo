@@ -1,6 +1,6 @@
 <template>
 	<view class="waitevaluateorder">
-		<view class="address">
+		<view class="address" @click="toaddress()">
 			<view class="left">
 				<view class="addicon">
 					<image class="addressimg" src="../../static/images/didian.png" mode=""></image>
@@ -118,6 +118,13 @@
 			return {
 				
 			};
+		},
+		methods:{
+			toaddress(){
+				uni.navigateTo({
+					url:'../addressList/addressList'
+				})
+			}
 		}
 	}
 </script>

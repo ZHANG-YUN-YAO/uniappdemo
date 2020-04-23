@@ -28,7 +28,7 @@
 		<view class="mybody myfoot">			
 			<view class="foottitle">
 				<text class="word">订单中心</text>
-				<text class="word">全部订单&nbsp;></text>
+				<text class="word" @click="toall()">全部订单&nbsp;></text>
 			</view>
 			<view class="mybodyli">
 				<uni-grid :showBorder="false" :column="4">
@@ -51,7 +51,7 @@
 						</view>						
 					</uni-grid-item>	
 					<uni-grid-item>
-						<view class="item">
+						<view class="item" @click="todiss()">
 							<image class="tagimg" src="../../static/images/order4.png" mode=""></image>
 							<text class="text">待评价</text>
 						</view>						
@@ -92,7 +92,7 @@
 						</view>						
 					</uni-grid-item>
 					<uni-grid-item>
-						<view class="item">
+						<view class="item" @click="toaddress()">
 							<image class="tagimg" src="../../static/images/cen8.png" mode=""></image>
 							<text class="text">收货地址</text>
 						</view>						
@@ -136,6 +136,21 @@
 			}
 		},
 		methods: {
+			toaddress(){
+				uni.navigateTo({
+					url:'../addressList/addressList'
+				})
+			},
+			todiss(){
+				uni.navigateTo({
+				  url: '/pages/waitEvaluateOrder/waitEvaluateOrder'
+				});
+			},
+			toall(){
+				uni.navigateTo({
+				  url: '/pages/allOrders/allOrders'
+				});
+			},
 			tocar(){
 				uni.navigateTo({
 				  url: '/pages/car/car'

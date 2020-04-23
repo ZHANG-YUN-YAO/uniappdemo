@@ -205,6 +205,14 @@
 							"navigationBarTitleText":"评价"
 						}
         }
+        ,{
+            "path" : "pages/gardenDetail/gardenDetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/sortSearch/sortSearch",
+            "style" : {}
+        }
     ],
 	"tabBar": {
 	    "color": "#3E455E",

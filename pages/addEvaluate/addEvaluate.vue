@@ -88,8 +88,11 @@
 				<image class="picture" src="../../static/images/go02.png" mode=""></image>
 				<image class="picture" src="../../static/images/go03.png" mode=""></image>
 				<image class="picturelast" src="../../static/images/go04.png" mode=""></image>
-				<view class="camber">				
+				<!-- <view class="camber">				
 					<text>完成\n评价</text>
+				</view> -->
+				<view class="camber2">
+					<text>立即\n评价</text>
 				</view>
 			</view>
 		</view>
@@ -252,6 +255,23 @@
 				color:rgba(186,189,207,1);
 				border-radius:28rpx;
 				text-align: center;
+			}
+			.camber2{
+				width:111rpx;
+				display: inline-block;
+				height:111rpx;
+				// border:2rpx solid rgba(186,189,207,1);
+				font-size:29rpx;
+				font-family:PingFang SC;
+				font-weight:400;
+				line-height: 50rpx;
+				position: relative;
+				top: -22rpx;
+				color:#FEFEFE;
+				border-radius:28rpx;
+				text-align: center;
+				background: #EF2E5A;
+				
 			}
 		}
 		uni-textarea{

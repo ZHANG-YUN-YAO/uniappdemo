@@ -44,7 +44,7 @@
 				<view class="title">
 					精品推荐
 				</view>
-				<view class="goodslist">
+				<view class="goodslist" @click="articledetail">
 					<view class="img">
 						<image src="../../static/images/uihu.png" mode=""></image>
 					</view>
@@ -73,7 +73,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="goodslist">
+				<view class="goodslist" @click="articledetail">
 					<view class="img">
 						<image src="../../static/images/uihu.png" mode=""></image>
 					</view>
@@ -123,6 +123,11 @@
 			});
 		},
 		methods: {
+			articledetail(){
+				uni.navigateTo({
+					url:'../teaArticle/teaArticle'
+				})
+			},
 			changeIndicatorDots(e) {
 				this.indicatorDots = !this.indicatorDots;
 			},
