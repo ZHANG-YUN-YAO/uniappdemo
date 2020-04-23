@@ -97,7 +97,9 @@
         }
         ,{
             "path" : "pages/teaArticle/teaArticle",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText":"文章详情"
+						}
         }
         ,{
             "path" : "pages/information/information",

@@ -257,28 +257,40 @@
 			display: flex;
 			flex-direction: column;
 			padding: 0 28rpx;
+			padding-top:36rpx;
 			.detailtime,.detailprice,.detailcarprice,.detailrealmoney{
 				display: flex;
 				justify-content: space-between;
 				.detailname{
+					font-size:28rpx;
+					font-family:Adobe Heiti Std;
+					font-weight:normal;
+					color:rgba(22,30,73,1);
+				}								
+				.nametime,.namepaytime,.namepaytype{
+					font-size:25rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(186,189,207,1);
+					line-height:56rpx;
 					
 				}
-				.nametime{
+				.nameprice,.namesendtype{
 					font-size:28rpx;
 					font-family:PingFang SC;
 					font-weight:400;
-					color:rgba(193,196,212,1);
+					color:rgba(22,30,73,1);
 					line-height:56rpx;
-				}
-				.nameprice{
-					font-size:28rpx;
 				}
 				.namemoney{
 					font-size:28rpx;
+					line-height:56rpx;
 				}
 				.namecar{
-					color:red;
 					font-size:28rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(239,16,74,1);
 				}
 			}
 		}

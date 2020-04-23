@@ -10,12 +10,12 @@
 					伯时代A座603北京市 海淀区 中关村南大街18号韦
 					伯时代A座603
 				</view>
-				<view class="use">
+				<view class="use" @click="touse()" v-if="ifuse">
 					使用
 				</view>
-				<!-- <view class="use2">
+				<view class="use2" @click="nouse()" v-if="useok">
 					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view> -->
+				</view>
 			</view>			
 			<view class="btns">
 				<view class="btnfir">
@@ -42,7 +42,7 @@
 					伯时代A座603北京市 海淀区 中关村南大街18号韦
 					伯时代A座603
 				</view>
-				<!-- <view class="use">
+				<!-- <view class="use" @click="touse()" v-if="ifuse">
 					使用
 				</view> -->
 				<view class="use2">
@@ -64,59 +64,146 @@
 				</view>
 			</view>
 		</view>
-		<view class="addarea">
+		<view class="addarea" @click="addarea()">
 			<image class="addicon" src="../../static/images/add.png" mode=""></image>
 			添加收货地址
 		</view>
-		<view class="addfrime" style="width: 100vw;height: 100vh;position: absolute;top: 0;z-index: 9;background: rgba(0,0,0,.7);">
-			<view class=" " style="width:556rpx;
-				height:625rpx;margin:0 auto;
-				position: relative;top: 50%;margin-top:-312rpx;
-				background:rgba(255,255,255,1);
-				border-radius:14rpx;">		
-				<view class="">
-					<view class="" style="font-size:32rpx;
-						font-family:PingFang SC;
-						font-weight:400;text-align: center;
-						color:rgba(22,30,73,1);
-						line-height:13rpx;">
+		<view class="addfrime" v-if="add">
+			<view class="whiteback">		
+				<view class="writetop">
+					<view class="toptitle">
 						添加收货地址
 					</view>
-					<image style="width: 18rpx;height: 18rpx;" src="../../static/images/close.png" mode=""></image>
+					<image class="closebtn" @click="closeadd()" src="../../static/images/close.png" mode=""></image>
 				</view>
 				<view class="writeinfo">
-					<view class="" style="padding: 32rpx 28rpx;border-bottom:2rpx solid #D5D5D5;">
-						<view class="" style="font-size:28rpx;
-							font-family:PingFang SC;
-							font-weight:400;
-							color:rgba(120,120,120,1);
-							line-height:13rpx;">
-							收货人
-						</view>			
-						<input style="display: inline-block;font-size:28rpx;
-						font-family:PingFang SC;
-						font-weight:400;
-						color:rgba(186,189,207,1);
-						line-height:13rpx;" type="text" value="" placeholder="收货人姓名"/>
+					<view class="infoli">
+						<view class="uni-form-item uni-column">
+								<view class="title">收货人</view>
+								<input class="uni-input" maxlength="10" @input="receivename" placeholder="收货人姓名" />
+						</view>
+					</view>
+					<view class="infoli">
+						<view class="uni-form-item uni-column">
+								<view class="title">手机号</view>
+								<input class="uni-input" maxlength="11" @input="receivephone" placeholder="收货人手机号" />
+						</view>
+					</view>
+					<view class="infoli">
+						<view class="uni-form-item uni-column">
+								<view class="title">选择地区</view>
+								<button class="margin10px_0" type="" @tap="changeShow('QS_Picekr_city')">
+									>
+								</button>
+								<QSpicker type="city" ref="QS_Picekr_city" mode="top" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
+								 @showQSPicker="showQSPicker($event)" @confirm="confirm($event)" />
+						</view>
+					</view>
+					<view class="infoli">
+						<view class="uni-form-item uni-column">
+								<view class="title">详细地址</view>
+								<input class="uni-input" @input="receiveaddress" placeholder="如街道、门牌号、小区、乡镇、村等" />
+						</view>
 					</view>
 				</view>
+				<view class="save" @click="save()">保存</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import QSpicker from '@/components/QuShe-picker/QuShe-picker.vue';
 	export default {
+		components: {
+			QSpicker
+		},
 		data() {
 			return {
-				
+				ifuse:true,
+				useok:false,
+				citySet: {
+					defaultValue: [0, 0, 0]
+				},
+				add:false,
+				name:'',
+				phone:'',
+				address:'',
+				city:''
 			};
+		},
+		methods:{
+			receivename(e){				
+				this.name = e.target.value;
+			},
+			receivephone(e){
+				this.phone = e.target.value;
+			},
+			receiveaddress(e){
+				this.address = e.target.value;
+			},
+			nouse(){
+				this.useok = false;
+				this.ifuse = true;
+			},
+			touse(){				
+				this.useok = true;
+				this.ifuse = false;
+			},
+			changeShow(name) {
+				this.$refs[name].show();
+			},
+			showQSPicker(res) {
+				console.log(`pickerId为${res.pickerId},类型为${res.type}的QS-picker显示了`);
+			},
+			hideQSPicker(res) {
+				console.log(`pickerId为${res.pickerId},类型为${res.type}的QS-picker隐藏了了`);
+			},
+			confirm(res) {
+				console.log(JSON.stringify(res));
+				let selearea = JSON.stringify(res).data;
+				this.city = selearea.value;
+			},
+			addarea(){
+				this.add = true;
+			},
+			closeadd(){
+				this.add = false;
+			},
+			save(){
+				this.add = false;
+				uni.request({
+				    url: '',
+				    data: {
+				      name: this.name,
+							phone:this.phone,
+							city:this.city,
+							address:this.address
+				    },
+				    header: {
+				      'custom-header': 'hello' //自定义请求头信息
+				    },
+				    success: (res) => {
+				      console.log(res.data);
+				      this.text = 'request success';
+				    }
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="less">
 	.addresslist{
+		.uni-input-placeholder{
+			color: #BABDCF;
+			font-size:28rpx!important;
+			font-family:PingFang SC;
+			font-weight:400;
+		}
+		uni-button:after{
+			border: 0;
+		}
 		.address{
 			display: flex;
 			flex-direction: column;
@@ -212,6 +299,90 @@
 				margin-right: 10rpx;
 				position: relative;
 				top:6rpx;
+			}
+		}
+		.addfrime{
+			width: 100vw;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			z-index: 9;
+			background: rgba(0,0,0,.7);
+			.whiteback{
+				width:556rpx;
+				height:625rpx;
+				margin:0 auto;
+				position: relative;
+				top: 50%;
+				margin-top:-330rpx;
+				padding-bottom: 34rpx;
+				background:rgba(255,255,255,1);
+				border-radius:14rpx;
+				.writetop{
+					padding-top: 28rpx;
+					position: relative;
+					.toptitle{
+						font-size:32rpx;
+						font-family:PingFang SC;	
+						font-weight:400;
+						text-align: center;
+						color:rgba(22,30,73,1);
+						line-height:31rpx;
+					}
+					.closebtn{
+						display: inline-block;
+						width: 18rpx;
+						height: 18rpx;
+						position: absolute;
+						right: 28rpx;
+						top:34rpx;
+					}
+				}
+				.writeinfo{
+					.infoli{
+						padding: 32rpx 28rpx;
+						border-bottom:2rpx solid #D5D5D5;
+						.title{
+							font-size:28rpx;
+							font-family:PingFang SC;
+							font-weight:400;display: inline-block;
+							color:rgba(120,120,120,1);
+							line-height:27rpx;
+						}
+						.margin10px_0{
+							position: relative;
+							top: 2rpx;
+							color: #BABDCF;
+							left: 67%;
+							display: inline-block;
+							line-height: 27rpx;
+						}
+						.uni-input{
+							display: inline-block;
+							font-size:28rpx;
+							font-family:PingFang SC;
+							top: 10rpx;
+							left: 30rpx;
+							font-weight:400;
+							position: relative;
+							color:rgba(186,189,207,1);    
+							line-height:27rpx;
+						}
+					}
+				}
+				.save{
+					width:417rpx;
+					margin: 34rpx auto;
+					height:69rpx;
+					background:rgba(239,16,74,1);
+					line-height:69rpx;
+					border-radius:35rpx;
+					font-size:28rpx;
+					text-align: center;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(255,255,255,1);
+				}
 			}
 		}
 	}	
