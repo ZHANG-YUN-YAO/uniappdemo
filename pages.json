@@ -199,6 +199,12 @@
 							"navigationBarTitleText":"收货地址"
 						}
         }
+        ,{
+            "path" : "pages/addEvaluate/addEvaluate",
+            "style" : {
+							"navigationBarTitleText":"评价"
+						}
+        }
     ],
 	"tabBar": {
 	    "color": "#3E455E",
