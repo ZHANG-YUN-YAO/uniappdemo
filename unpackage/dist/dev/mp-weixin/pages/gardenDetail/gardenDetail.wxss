@@ -1,1 +1,99 @@
+.gardendetail uni-video {
+  width: 100%!important;
+  height: 225px;
+  display: inline-block;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+.gardendetail .gardenname {
+  width: 694rpx;
+  margin: 0 auto;
+  font-size: 31rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+  color: #161e49;
+  line-height: 44rpx;
+}
+.gardendetail .moneynum {
+  text-align: center;
+}
+.gardendetail .moneynum .money {
+  display: inline-block;
+  font-size: 32rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #ff2829;
+  line-height: 37rpx;
+}
+.gardendetail .moneynum .line {
+  display: inline-block;
+  margin-left: 20rpx;
+  font-size: 25rpx;
+  color: #989898;
+}
+.gardendetail .moneynum .num {
+  margin-left: 20rpx;
+  display: inline-block;
+  font-size: 25rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #989898;
+  line-height: 38px;
+}
+.gardendetail .goodstalk {
+  width: 694rpx;
+  margin: 0 auto;
+  padding-bottom: 28rpx;
+}
+.gardendetail .goodsdetail {
+  width: 694rpx;
+  margin: 0 auto;
+  padding-top: 28rpx;
+}
+.gardendetail .special .top {
+  text-align: center;
+  margin-top: 150rpx;
+  font-size: 26rpx;
+  color: rgba(101, 101, 101, 0.7);
+  line-height: 46rpx;
+}
+.gardendetail .special .top .word {
+  font-size: 40rpx;
+  color: rgba(198, 163, 135, 0.6);
+}
+.gardendetail .special .bottom {
+  width: 694rpx;
+  margin: 50rpx auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.gardendetail .btns {
+  font-size: 31rpx;
+  font-family: MicrosoftYaHei;
+  color: #343434;
+  font-weight: bold;
+  width: 750rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.gardendetail .btns .btnlef {
+  width: 30%;
+  text-align: center;
+  border-right: 2rpx solid #D5D5D5;
+}
+.gardendetail .btns .btnmid {
+  width: 40%;
+  text-align: center;
+}
+.gardendetail .btns .btnrig {
+  width: 30%;
+  text-align: center;
+  color: #ffffff;
+  background: #F24646;
+}
 

@@ -207,7 +207,9 @@
         }
         ,{
             "path" : "pages/gardenDetail/gardenDetail",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText":" "
+						}
         }
         ,{
             "path" : "pages/sortSearch/sortSearch",
