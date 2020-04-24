@@ -247,6 +247,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   components: {
     QSpicker: QSpicker },
@@ -295,7 +296,8 @@ __webpack_require__.r(__webpack_exports__);
     confirm: function confirm(res) {
       console.log(JSON.stringify(res));
       var selearea = JSON.stringify(res).data;
-      this.city = selearea.value;
+      this.city = JSON.parse(JSON.stringify(res)).data.label;
+
     },
     addarea: function addarea() {
       this.add = true;

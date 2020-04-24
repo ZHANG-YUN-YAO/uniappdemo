@@ -171,6 +171,13 @@
   color: #787878;
   line-height: 27rpx;
 }
+.addresslist .addfrime .whiteback .writeinfo .infoli .read {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-left: -60rpx;
+  color: #787878;
+}
 .addresslist .addfrime .whiteback .writeinfo .infoli .margin10px_0 {
   position: relative;
   top: 2rpx;

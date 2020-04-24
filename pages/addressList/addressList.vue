@@ -95,6 +95,7 @@
 								<button class="margin10px_0" type="" @tap="changeShow('QS_Picekr_city')">
 									>
 								</button>
+								<text class="read">{{city}}</text>
 								<QSpicker type="city" ref="QS_Picekr_city" mode="top" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
 								 @showQSPicker="showQSPicker($event)" @confirm="confirm($event)" />
 						</view>
@@ -162,7 +163,8 @@
 			confirm(res) {
 				console.log(JSON.stringify(res));
 				let selearea = JSON.stringify(res).data;
-				this.city = selearea.value;
+				this.city = JSON.parse(JSON.stringify(res)).data.label;
+				
 			},
 			addarea(){
 				this.add = true;
@@ -348,6 +350,13 @@
 							font-weight:400;display: inline-block;
 							color:rgba(120,120,120,1);
 							line-height:27rpx;
+						}
+						.read{
+							font-size:28rpx;
+							font-family:PingFang SC;
+							font-weight:400;
+							margin-left:-60rpx;
+							color:rgba(120,120,120,1);
 						}
 						.margin10px_0{
 							position: relative;
