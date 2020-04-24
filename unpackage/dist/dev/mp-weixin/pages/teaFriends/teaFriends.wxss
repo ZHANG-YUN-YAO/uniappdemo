@@ -108,6 +108,11 @@
   height: 222rpx!important;
   padding: 0rpx 8rpx;
 }
+.teaFriend .teabody .actswiper .imageContainer .swiperitem .lef {
+  width: 278rpx;
+  height: 222rpx;
+  border-radius: 11rpx;
+}
 .teaFriend .teabody .teamiddle .cup {
   padding-left: 28rpx;
   font-size: 32rpx;
@@ -216,10 +221,10 @@
   margin-right: 14px;
 }
 .teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitemli .swiperimg {
-  width: 250rpx;
   height: 181rpx!important;
   border-top-left-radius: 11rpx;
   border-top-right-radius: 11rpx;
+  height: 181rpx;
 }
 .teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitemli .swipernav {
   font-size: 25rpx;
