@@ -168,6 +168,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   padding: 0 28rpx;
+  padding-top: 36rpx;
 }
 .waitrecesiveorder .orderdetail .detailtime,
 .waitrecesiveorder .orderdetail .detailprice,
@@ -179,6 +180,15 @@
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+}
+.waitrecesiveorder .orderdetail .detailtime .detailname,
+.waitrecesiveorder .orderdetail .detailprice .detailname,
+.waitrecesiveorder .orderdetail .detailcarprice .detailname,
+.waitrecesiveorder .orderdetail .detailrealmoney .detailname {
+  font-size: 28rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #161e49;
 }
 .waitrecesiveorder .orderdetail .detailtime .nametime,
 .waitrecesiveorder .orderdetail .detailprice .nametime,
@@ -192,10 +202,10 @@
 .waitrecesiveorder .orderdetail .detailprice .namepaytype,
 .waitrecesiveorder .orderdetail .detailcarprice .namepaytype,
 .waitrecesiveorder .orderdetail .detailrealmoney .namepaytype {
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-family: PingFang SC;
   font-weight: 400;
-  color: #c1c4d4;
+  color: #babdcf;
   line-height: 56rpx;
 }
 .waitrecesiveorder .orderdetail .detailtime .nameprice,
@@ -207,19 +217,26 @@
 .waitrecesiveorder .orderdetail .detailcarprice .namesendtype,
 .waitrecesiveorder .orderdetail .detailrealmoney .namesendtype {
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #161e49;
+  line-height: 56rpx;
 }
 .waitrecesiveorder .orderdetail .detailtime .namemoney,
 .waitrecesiveorder .orderdetail .detailprice .namemoney,
 .waitrecesiveorder .orderdetail .detailcarprice .namemoney,
 .waitrecesiveorder .orderdetail .detailrealmoney .namemoney {
   font-size: 28rpx;
+  line-height: 56rpx;
 }
 .waitrecesiveorder .orderdetail .detailtime .namecar,
 .waitrecesiveorder .orderdetail .detailprice .namecar,
 .waitrecesiveorder .orderdetail .detailcarprice .namecar,
 .waitrecesiveorder .orderdetail .detailrealmoney .namecar {
-  color: red;
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ef104a;
 }
 .waitrecesiveorder .pricebtn {
   padding: 21rpx 28rpx;

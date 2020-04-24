@@ -1,7 +1,7 @@
 .teaCaremoney {
   background-color: #161E49;
 }
-#myVideo {
+.teaCaremoney uni-video {
   width: 100%!important;
   height: 225px;
   display: inline-block;

@@ -21,7 +21,10 @@
     "pages/waitSendgoodsOrder/waitSendgoodsOrder",
     "pages/waitReceiveOrder/waitReceiveOrder",
     "pages/waitEvaluateOrder/waitEvaluateOrder",
-    "pages/addressList/addressList"
+    "pages/addressList/addressList",
+    "pages/addEvaluate/addEvaluate",
+    "pages/gardenDetail/gardenDetail",
+    "pages/sortSearch/sortSearch"
   ],
   "subPackages": [],
   "window": {
@@ -69,5 +72,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap24.json"
+  "sitemapLocation": "sitemap96.json"
 }

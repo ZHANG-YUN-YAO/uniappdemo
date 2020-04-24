@@ -1,0 +1,393 @@
+.sortsearch .s-tabs {
+  width: 750rpx!important;
+  padding-left: 0;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  height: 100%;
+}
+.sortsearch .s-tabs-nav-wrap {
+  width: 100%;
+  height: 100%!important;
+}
+.sortsearch .s-tabs-nav-wrap .s-tab-nav-view {
+  padding: 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  background: #161e49;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.sortsearch .s-tabs {
+  padding: 0;
+}
+.sortsearch .s-tabs-content-wrap {
+  padding-top: 28rpx;
+}
+.sortsearch .s-tabs .s-tab-nav {
+  border-radius: 28rpx;
+  height: 56rpx;
+  width: 139rpx;
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff !important;
+}
+.sortsearch .s-tabs .s-tab-nav.is-active {
+  color: #161e49 !important;
+  background-color: #fff;
+}
+.sortsearch .searchWapper {
+  background-color: #161E49;
+  padding: 28rpx;
+}
+.sortsearch .searchWapper .reback {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff;
+  display: inline-block;
+  margin-left: 19rpx;
+  position: relative;
+  top: 12rpx;
+}
+.sortsearch .searchWapper .searchView {
+  width: 611rpx;
+  height: 50rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  font-size: 15px;
+  color: #c0c0c0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.sortsearch .searchWapper .searchView .closeempty {
+  position: absolute;
+  right: 10rpx;
+}
+.sortsearch .tabarticle .article {
+  width: 694rpx;
+  padding: 0 28rpx  42rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.sortsearch .tabarticle .article .left {
+  margin-right: 31rpx;
+}
+.sortsearch .tabarticle .article .left .artpic {
+  width: 208rpx;
+  height: 139rpx;
+  border-radius: 17rpx;
+}
+.sortsearch .tabarticle .article .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.sortsearch .tabarticle .article .right .teaname {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #2852f2;
+}
+.sortsearch .tabarticle .article .right .author {
+  font-size: 21rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #999999;
+}
+.sortsearch .tabarticle .article .right .status {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-top: 30rpx;
+}
+.sortsearch .tabarticle .article .right .status .first,
+.sortsearch .tabarticle .article .right .status .second,
+.sortsearch .tabarticle .article .right .status .third,
+.sortsearch .tabarticle .article .right .status .fourth {
+  font-size: 18rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+}
+.sortsearch .tabarticle .article .right .status .first .hot,
+.sortsearch .tabarticle .article .right .status .second .hot,
+.sortsearch .tabarticle .article .right .status .third .hot,
+.sortsearch .tabarticle .article .right .status .fourth .hot {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabarticle .article .right .status .first .star,
+.sortsearch .tabarticle .article .right .status .second .star,
+.sortsearch .tabarticle .article .right .status .third .star,
+.sortsearch .tabarticle .article .right .status .fourth .star {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabarticle .article .right .status .first .heart,
+.sortsearch .tabarticle .article .right .status .second .heart,
+.sortsearch .tabarticle .article .right .status .third .heart,
+.sortsearch .tabarticle .article .right .status .fourth .heart {
+  width: 30rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabarticle .article .right .status .first .talk,
+.sortsearch .tabarticle .article .right .status .second .talk,
+.sortsearch .tabarticle .article .right .status .third .talk,
+.sortsearch .tabarticle .article .right .status .fourth .talk {
+  width: 28rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabvideo .article {
+  width: 694rpx;
+  padding: 0 28rpx  42rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.sortsearch .tabvideo .article .left {
+  margin-right: 31rpx;
+}
+.sortsearch .tabvideo .article .left .artpic {
+  width: 208rpx;
+  height: 139rpx;
+  border-radius: 17rpx;
+}
+.sortsearch .tabvideo .article .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.sortsearch .tabvideo .article .right .teaname {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #2852f2;
+}
+.sortsearch .tabvideo .article .right .author {
+  font-size: 21rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #999999;
+}
+.sortsearch .tabvideo .article .right .status {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-top: 30rpx;
+}
+.sortsearch .tabvideo .article .right .status .first,
+.sortsearch .tabvideo .article .right .status .second,
+.sortsearch .tabvideo .article .right .status .third,
+.sortsearch .tabvideo .article .right .status .fourth {
+  font-size: 18rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+}
+.sortsearch .tabvideo .article .right .status .first .hot,
+.sortsearch .tabvideo .article .right .status .second .hot,
+.sortsearch .tabvideo .article .right .status .third .hot,
+.sortsearch .tabvideo .article .right .status .fourth .hot {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabvideo .article .right .status .first .star,
+.sortsearch .tabvideo .article .right .status .second .star,
+.sortsearch .tabvideo .article .right .status .third .star,
+.sortsearch .tabvideo .article .right .status .fourth .star {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabvideo .article .right .status .first .heart,
+.sortsearch .tabvideo .article .right .status .second .heart,
+.sortsearch .tabvideo .article .right .status .third .heart,
+.sortsearch .tabvideo .article .right .status .fourth .heart {
+  width: 30rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabvideo .article .right .status .first .talk,
+.sortsearch .tabvideo .article .right .status .second .talk,
+.sortsearch .tabvideo .article .right .status .third .talk,
+.sortsearch .tabvideo .article .right .status .fourth .talk {
+  width: 28rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item {
+  text-align: center;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item image {
+  width: 333rpx;
+  height: 319rpx;
+  margin: 0 auto;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item .sortdesc {
+  padding-right: 18rpx;
+  background: #fff;
+  width: 278rpx;
+  height: 56rpx;
+  border-radius: 17rpx;
+  line-height: 50rpx;
+  position: relative;
+  top: -28rpx;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item .sortdesc text {
+  font-size: 25rpx;
+  font-family: 经典繁毛楷;
+  font-weight: 400;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item .sortdesc .teaname {
+  width: 80%;
+  color: #161e49;
+  text-align: center;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item .sortdesc .tealine {
+  width: 14rpx;
+  height: 28rpx;
+  color: #161E49;
+}
+.sortsearch .tabgoods .bodymiddle .uni-grid .uni-grid-item .sortdesc .tealook {
+  width: 20%;
+  color: #2852f2;
+}
+.sortsearch .tabfriends .friend {
+  width: 694rpx;
+  padding: 0 28rpx  42rpx 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.sortsearch .tabfriends .friend .left {
+  margin-right: 31rpx;
+}
+.sortsearch .tabfriends .friend .left .artpic {
+  width: 125rpx;
+  height: 125rpx;
+  border-radius: 50%;
+}
+.sortsearch .tabfriends .friend .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.sortsearch .tabfriends .friend .right .teaname {
+  font-size: 28rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #2852f2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.sortsearch .tabfriends .friend .right .teaname .length {
+  font-size: 18rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+}
+.sortsearch .tabfriends .friend .right .teaname .nosele {
+  color: #000000;
+}
+.sortsearch .tabfriends .friend .right .author {
+  font-size: 21rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #999999;
+  width: 61rpx;
+  height: 26rpx;
+  text-align: center;
+  background: #f87db8;
+  border-radius: 18rpx;
+  line-height: 28rpx;
+}
+.sortsearch .tabfriends .friend .right .author .sex {
+  width: 14rpx;
+  height: 20rpx;
+}
+.sortsearch .tabfriends .friend .right .author .old {
+  font-size: 15rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff;
+}
+.sortsearch .tabfriends .friend .right .status {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  margin-top: 30rpx;
+}
+.sortsearch .tabfriends .friend .right .status .first,
+.sortsearch .tabfriends .friend .right .status .second,
+.sortsearch .tabfriends .friend .right .status .third {
+  margin-right: 48rpx;
+  font-size: 18rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+}
+.sortsearch .tabfriends .friend .right .status .first .num,
+.sortsearch .tabfriends .friend .right .status .second .num,
+.sortsearch .tabfriends .friend .right .status .third .num {
+  color: black;
+}
+

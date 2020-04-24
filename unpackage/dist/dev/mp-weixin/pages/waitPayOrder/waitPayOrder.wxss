@@ -168,6 +168,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   padding: 0 28rpx;
+  padding-top: 36rpx;
 }
 .waitpayorder .orderdetail .detailtime,
 .waitpayorder .orderdetail .detailprice,
@@ -180,34 +181,62 @@
   -webkit-justify-content: space-between;
           justify-content: space-between;
 }
+.waitpayorder .orderdetail .detailtime .detailname,
+.waitpayorder .orderdetail .detailprice .detailname,
+.waitpayorder .orderdetail .detailcarprice .detailname,
+.waitpayorder .orderdetail .detailrealmoney .detailname {
+  font-size: 28rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #161e49;
+}
 .waitpayorder .orderdetail .detailtime .nametime,
 .waitpayorder .orderdetail .detailprice .nametime,
 .waitpayorder .orderdetail .detailcarprice .nametime,
-.waitpayorder .orderdetail .detailrealmoney .nametime {
-  font-size: 28rpx;
+.waitpayorder .orderdetail .detailrealmoney .nametime,
+.waitpayorder .orderdetail .detailtime .namepaytime,
+.waitpayorder .orderdetail .detailprice .namepaytime,
+.waitpayorder .orderdetail .detailcarprice .namepaytime,
+.waitpayorder .orderdetail .detailrealmoney .namepaytime,
+.waitpayorder .orderdetail .detailtime .namepaytype,
+.waitpayorder .orderdetail .detailprice .namepaytype,
+.waitpayorder .orderdetail .detailcarprice .namepaytype,
+.waitpayorder .orderdetail .detailrealmoney .namepaytype {
+  font-size: 25rpx;
   font-family: PingFang SC;
   font-weight: 400;
-  color: #c1c4d4;
+  color: #babdcf;
   line-height: 56rpx;
 }
 .waitpayorder .orderdetail .detailtime .nameprice,
 .waitpayorder .orderdetail .detailprice .nameprice,
 .waitpayorder .orderdetail .detailcarprice .nameprice,
-.waitpayorder .orderdetail .detailrealmoney .nameprice {
+.waitpayorder .orderdetail .detailrealmoney .nameprice,
+.waitpayorder .orderdetail .detailtime .namesendtype,
+.waitpayorder .orderdetail .detailprice .namesendtype,
+.waitpayorder .orderdetail .detailcarprice .namesendtype,
+.waitpayorder .orderdetail .detailrealmoney .namesendtype {
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #161e49;
+  line-height: 56rpx;
 }
 .waitpayorder .orderdetail .detailtime .namemoney,
 .waitpayorder .orderdetail .detailprice .namemoney,
 .waitpayorder .orderdetail .detailcarprice .namemoney,
 .waitpayorder .orderdetail .detailrealmoney .namemoney {
   font-size: 28rpx;
+  line-height: 56rpx;
 }
 .waitpayorder .orderdetail .detailtime .namecar,
 .waitpayorder .orderdetail .detailprice .namecar,
 .waitpayorder .orderdetail .detailcarprice .namecar,
 .waitpayorder .orderdetail .detailrealmoney .namecar {
-  color: red;
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ef104a;
 }
 .waitpayorder .pricebtn {
   padding: 21rpx 28rpx;

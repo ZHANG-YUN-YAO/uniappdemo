@@ -211,7 +211,9 @@
         }
         ,{
             "path" : "pages/sortSearch/sortSearch",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText":" "
+						}
         }
     ],
 	"tabBar": {

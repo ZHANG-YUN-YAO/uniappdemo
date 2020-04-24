@@ -168,6 +168,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   padding: 0 28rpx;
+  padding-top: 36rpx;
 }
 .waitevaluateorder .orderdetail .detailtime,
 .waitevaluateorder .orderdetail .detailprice,
@@ -179,6 +180,15 @@
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+}
+.waitevaluateorder .orderdetail .detailtime .detailname,
+.waitevaluateorder .orderdetail .detailprice .detailname,
+.waitevaluateorder .orderdetail .detailcarprice .detailname,
+.waitevaluateorder .orderdetail .detailrealmoney .detailname {
+  font-size: 28rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #161e49;
 }
 .waitevaluateorder .orderdetail .detailtime .nametime,
 .waitevaluateorder .orderdetail .detailprice .nametime,
@@ -192,10 +202,10 @@
 .waitevaluateorder .orderdetail .detailprice .namepaytype,
 .waitevaluateorder .orderdetail .detailcarprice .namepaytype,
 .waitevaluateorder .orderdetail .detailrealmoney .namepaytype {
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-family: PingFang SC;
   font-weight: 400;
-  color: #c1c4d4;
+  color: #babdcf;
   line-height: 56rpx;
 }
 .waitevaluateorder .orderdetail .detailtime .nameprice,
@@ -207,19 +217,26 @@
 .waitevaluateorder .orderdetail .detailcarprice .namesendtype,
 .waitevaluateorder .orderdetail .detailrealmoney .namesendtype {
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #161e49;
+  line-height: 56rpx;
 }
 .waitevaluateorder .orderdetail .detailtime .namemoney,
 .waitevaluateorder .orderdetail .detailprice .namemoney,
 .waitevaluateorder .orderdetail .detailcarprice .namemoney,
 .waitevaluateorder .orderdetail .detailrealmoney .namemoney {
   font-size: 28rpx;
+  line-height: 56rpx;
 }
 .waitevaluateorder .orderdetail .detailtime .namecar,
 .waitevaluateorder .orderdetail .detailprice .namecar,
 .waitevaluateorder .orderdetail .detailcarprice .namecar,
 .waitevaluateorder .orderdetail .detailrealmoney .namecar {
-  color: red;
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ef104a;
 }
 .waitevaluateorder .pricebtn {
   padding: 21rpx 28rpx;

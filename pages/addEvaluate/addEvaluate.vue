@@ -260,7 +260,6 @@
 				width:111rpx;
 				display: inline-block;
 				height:111rpx;
-				// border:2rpx solid rgba(186,189,207,1);
 				font-size:29rpx;
 				font-family:PingFang SC;
 				font-weight:400;

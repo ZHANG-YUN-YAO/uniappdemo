@@ -315,8 +315,25 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less">	
 	.allorders{
+		/deep/.s-tabs{	
+			// height:111rpx;
+			background:rgba(22,30,73,1);
+		}
+		/deep/.s-tabs .s-tab-nav{
+			border-radius:28rpx;		
+			height: 56rpx;
+			width: 139rpx;
+			font-size:28rpx;
+			font-family:Microsoft YaHei;
+			font-weight:400;
+			color:rgba(255,255,255,1)!important;		
+		}
+		/deep/.s-tabs .s-tab-nav.is-active{
+			color:rgba(22,30,73,1)!important;
+			background-color: #fff;
+		}
 		.noinfo{
 			margin-left: -28rpx;
 			text-align: center;
@@ -333,6 +350,7 @@
 			width:750rpx;
 			margin-left: -28rpx;
 			.orderli{
+				width: 100%;
 				background-color: #F4F4F4;
 				.timestatus{
 					padding:20rpx 28rpx 0rpx 28rpx;

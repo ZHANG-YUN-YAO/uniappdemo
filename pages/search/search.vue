@@ -25,7 +25,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="searchSortlist">
+			<view class="searchSortlist" @click="tosort()">
 				<view class="sortHead">
 					<text>分类搜索</text>
 					<!-- <image src="../../static/images/dele.png" mode=""></image> -->
@@ -72,6 +72,11 @@
 			};
 		},
 		methods:{
+			tosort(){
+				uni.navigateTo({
+					url:'../sortSearch/sortSearch'
+				})
+			},
 			reback(){
 				uni.switchTab({
 				  url: '/pages/index/index'

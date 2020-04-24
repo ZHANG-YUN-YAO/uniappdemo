@@ -168,6 +168,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   padding: 0 28rpx;
+  padding-top: 36rpx;
 }
 .waitsendgoodsorder .orderdetail .detailtime,
 .waitsendgoodsorder .orderdetail .detailprice,
@@ -179,6 +180,15 @@
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+}
+.waitsendgoodsorder .orderdetail .detailtime .detailname,
+.waitsendgoodsorder .orderdetail .detailprice .detailname,
+.waitsendgoodsorder .orderdetail .detailcarprice .detailname,
+.waitsendgoodsorder .orderdetail .detailrealmoney .detailname {
+  font-size: 28rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #161e49;
 }
 .waitsendgoodsorder .orderdetail .detailtime .nametime,
 .waitsendgoodsorder .orderdetail .detailprice .nametime,
@@ -192,30 +202,41 @@
 .waitsendgoodsorder .orderdetail .detailprice .namepaytype,
 .waitsendgoodsorder .orderdetail .detailcarprice .namepaytype,
 .waitsendgoodsorder .orderdetail .detailrealmoney .namepaytype {
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-family: PingFang SC;
   font-weight: 400;
-  color: #c1c4d4;
+  color: #babdcf;
   line-height: 56rpx;
 }
 .waitsendgoodsorder .orderdetail .detailtime .nameprice,
 .waitsendgoodsorder .orderdetail .detailprice .nameprice,
 .waitsendgoodsorder .orderdetail .detailcarprice .nameprice,
-.waitsendgoodsorder .orderdetail .detailrealmoney .nameprice {
+.waitsendgoodsorder .orderdetail .detailrealmoney .nameprice,
+.waitsendgoodsorder .orderdetail .detailtime .namesendtype,
+.waitsendgoodsorder .orderdetail .detailprice .namesendtype,
+.waitsendgoodsorder .orderdetail .detailcarprice .namesendtype,
+.waitsendgoodsorder .orderdetail .detailrealmoney .namesendtype {
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #161e49;
+  line-height: 56rpx;
 }
 .waitsendgoodsorder .orderdetail .detailtime .namemoney,
 .waitsendgoodsorder .orderdetail .detailprice .namemoney,
 .waitsendgoodsorder .orderdetail .detailcarprice .namemoney,
 .waitsendgoodsorder .orderdetail .detailrealmoney .namemoney {
   font-size: 28rpx;
+  line-height: 56rpx;
 }
 .waitsendgoodsorder .orderdetail .detailtime .namecar,
 .waitsendgoodsorder .orderdetail .detailprice .namecar,
 .waitsendgoodsorder .orderdetail .detailcarprice .namecar,
 .waitsendgoodsorder .orderdetail .detailrealmoney .namecar {
-  color: red;
   font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ef104a;
 }
 .waitsendgoodsorder .pricebtn {
   padding: 21rpx 28rpx;
