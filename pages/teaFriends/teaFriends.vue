@@ -105,7 +105,7 @@
 								<swiper class="imageContainer" @change="handleChange2"  :autoplay="false" previous-margin="0" next-margin="460rpx">
 									<block v-for="(item,index) in suggestList" :key="index">
 										<swiper-item class="swiperitemli">	
-											<view class="" style="width: 100%;">
+											<view class="">
 												<image class="swiperimg" :src="item.img" mode=""></image>							
 												<view class="swipernav">{{item.name}}</view>
 												<view class="swipernum">{{item.number}}</view>
@@ -121,94 +121,59 @@
 				</view>
 			</view>
 		</view>		
-		<view class="friendactive" style="width: 694rpx;margin:0 auto;height: 300rpx;border: 1px soid black;">
-			<view class="title" style="font-size:32rpx;
-				font-family:FZLTZHUNHK;font-weight:normal;
-				color:rgba(22,30,73,1);margin-bottom:30rpx;">
-				动态
-			</view>
-			<view class="actli" style="display: flex;justify-content: space-between;">
+		<view class="friendactive">
+			<view class="title">动态</view>		
+			<view class="actli">
 				<view class="left">
-					<view class="" style="display: inline-block;">
-						<image style="width: 56rpx;height: 56rpx;border-radius:50%;" src="../../static/avatar.png" mode=""></image>
+					<view class="lefpic">
+						<image class="avatar" src="../../static/avatar.png" mode=""></image>
 					</view>
-					<view class="" style="position: relative;margin-left;14rpx;top: -24rpx;display: inline-flex;flex-direction: column;">
-						<view class="" style="font-size:26rpx;font-family:MicrosoftYaHei;
-							font-weight:400;color:rgba(22,30,73,1);">子然姐姐</view>							
-						<view class="" style="font-size:21rpx;font-family:FZLTZHUNHK;
-							font-weight:normal;color:rgba(153,153,153,1);
-							line-height:13rpx;margin-top: 6rpx;">品茶圈主</view>
+					<view class="lefinfo">
+						<view class="name">子然姐姐</view>							
+						<view class="desc">品茶圈主</view>
 					</view>
 				</view>
-				<view class="right" style="display: inline-block;">
-					<view class="" style="display: inline-block;width:96rpx;
-						height:46rpx;background:rgba(255,255,255,1);text-align: center;
-						border:4rpx solid rgba(22, 30, 73, 1);line-height:46rpx;
-						border-radius:11rpx;font-size:21rpx;
-						font-family:FZLTZHUNHK;font-weight:normal;
-						color:rgba(22,30,73,1);">关注</view>						
-					<view class="" style="display: inline-block;">
-						<image style="width:7rpx;height: 31rpx;margin-left:38rpx;" src="../../static/images/andmore.png" mode=""></image>
+				<view class="right">
+					<view class="notice">关注</view>						
+					<view class="more">
+						<image class="morepic" src="../../static/images/andmore.png" mode=""></image>
 					</view>
 				</view>
 			</view>		
-			<view class="actpic" style="display: flex;justify-content: space-between;">
-				<image style="display: inline-block;width:333rpx;height:319rpx;
-					border-radius:21rpx;" src="../../static/images/actpic.png" mode=""></image>
-					<image style="display: inline-block;width:333rpx;height:319rpx;
-						border-radius:21rpx;" src="../../static/images/actpic.png" mode=""></image>
+			<view class="actpic">
+				<image class="lef" src="../../static/images/actpic.png" mode=""></image>
+				<image class="rig" src="../../static/images/actpic.png" mode=""></image>
 			</view>
 			<view class="daliy">
-				<view class="tag" style="font-size:26rpx;
-					font-family:MicrosoftYaHei;font-weight:400;
-					color:rgba(22,30,73,1);margin-top:28rpx;margin-bottom:25rpx;">#日签#</view>
-				<view class="" style="width: 100%;height: 92rpx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:3;
-					-webkit-box-orient: vertical;font-size:22rpx;
-					font-family:MicrosoftYaHei;font-weight:400;color:#999999;
-					line-height:31rpx;">
+				<view class="tag">#日签#</view>
+				<view class="content">
 				  打卡第一天 还是给最爱的仿古如意，颜色就如诗人吴梅鼎在
 					《阳羡茗壶》中写道：“有优秀而仓皇，激流黄玉葵路；暗飘金粟纸香；
 					或黄白堆沙“有优秀而仓皇，激流黄玉葵路；暗飘金粟纸香；或黄白堆沙，
 					激流黄玉葵路，激流...                            
 				</view>	
-				<view class="" style="display: flex;justify-content: space-between;padding-bottom:20rpx;border-bottom: 2rpx solid rgba(22,30,73,.4);">
-					<view class="">
-						<image style="width: 24rpx;height: 22rpx;margin-right: 10rpx;" src="../../static/images/heart.png" mode=""></image>
-						<text style="font-size:18rpx;font-family:MicrosoftYaHei;
-							font-weight:400;color:rgba(153,153,153,1);">2888</text>					
+				<view class="looknum">
+					<view class="one">
+						<image class="pic" src="../../static/images/heart.png" mode=""></image>
+						<text class="num">2888</text>					
 					</view>
-					<view class="">
-						<image style="width: 24rpx;height: 22rpx;margin-right: 10rpx;" src="../../static/images/talk.png" mode=""></image>
-						<text style="font-size:18rpx;font-family:MicrosoftYaHei;
-							font-weight:400;color:rgba(153,153,153,1);">3693</text>		
+					<view class="two">
+						<image class="pic" src="../../static/images/talk.png" mode=""></image>
+						<text class="num">3693</text>		
 					</view>
-					<view class="">
-						<image style="width: 24rpx;height: 22rpx;margin-right: 10rpx;" src="../../static/images/share.png" mode=""></image>
-						<text style="font-size:18rpx;font-family:MicrosoftYaHei;
-							font-weight:400;color:rgba(153,153,153,1);">260</text>		
+					<view class="three">
+						<image class="pic" src="../../static/images/share.png" mode=""></image>
+						<text class="num">260</text>		
 					</view>
 				</view>
-				<view class="">
+				<view class="sort">
 					<s-tabs effect @change="change" @render="render">
 					  <s-tab title="兴趣">
-							<view class="" style="width:94rpx;
-								height:41rpx;background:rgba(255,255,255,1);
-								border:2rpx solid rgba(238, 238, 238, 1);display: inline-block;
-								border-radius:8rpx;font-size:22rpx;line-height: 41rpx;text-align: center;
-								font-family:MicrosoftYaHei;font-weight:400;margin-right:14rpx;
-								color:rgba(22,30,73,1);">普洱茶</view>
-							<view class=""  style="width:94rpx;
-								height:41rpx;background:rgba(255,255,255,1);
-								border:2rpx solid rgba(238, 238, 238, 1);display: inline-block;
-								border-radius:8rpx;font-size:22rpx;line-height: 41rpx;text-align: center;
-								font-family:MicrosoftYaHei;font-weight:400;margin-right:14rpx;
-								color:rgba(22,30,73,1);">红茶</view>
-							<view class=""  style="width:94rpx;
-								height:41rpx;background:rgba(255,255,255,1);
-								border:2rpx solid rgba(238, 238, 238, 1);display: inline-block;
-								border-radius:8rpx;font-size:22rpx;line-height: 41rpx;text-align: center;
-								font-family:MicrosoftYaHei;font-weight:400;
-								color:rgba(22,30,73,1);margin-right:14rpx;">茶艺</view>
+							<view class="intreast">						
+								<view class="interone">普洱茶</view>
+								<view class="intertwo">红茶</view>
+								<view class="interthree">茶艺</view>	
+							</view>
 						</s-tab>
 						<s-tab title="品茶"></s-tab>
 						<s-tab title="阅读"></s-tab>
@@ -218,7 +183,10 @@
 					</s-tabs>
 				</view>
 			</view>
-		</view>
+			<view class="sayhi">
+				打个招呼吧
+			</view>
+		</view>		
 	</view>
 </template>
 
@@ -466,20 +434,18 @@
 						.swiperitemli{
 							width:250rpx;
 							text-align: center;
-							height:278rpx;
+							height:278rpx;							
 							box-sizing: border-box;
-							background:rgba(255,255,255,1);
-							display: flex;
-							justify-content: center;
-							box-shadow:0px 3rpx 6rpx 0px rgba(0, 0, 0, 0.2);
+							// box-shadow:0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+							border:1px solid rgba(0, 0, 0, 0.04);
+							border-bottom:1px solid rgba(0, 0, 0, 0.07);
 							border-radius:11rpx;
 							margin-right: 14px;
 							.swiperimg{
-								// width:250rpx;
+								width:254rpx;
 								height:181rpx!important;
-								border-top-left-radius:11rpx;
-								border-top-right-radius:11rpx;
-								height:181rpx;
+								// border-top-left-radius:11rpx;
+								// border-top-right-radius:11rpx;
 							}
 							.swipernav{
 								font-size:25rpx;
@@ -499,6 +465,168 @@
 						}
 					}
 				}				
+			}
+		}
+		.friendactive{
+			width: 694rpx;
+			margin:0 auto;
+			height: 300rpx;
+			border: 1px soid black;
+			.title{
+				font-size:32rpx;
+				font-family:FZLTZHUNHK;
+				font-weight:normal;
+				color:rgba(22,30,73,1);
+				margin-bottom:30rpx;
+			}
+			.actli{
+				display: flex;
+				justify-content: space-between;
+				.left{
+					.lefpic{
+						display: inline-block;
+						.avatar{
+							width: 56rpx;
+							height: 56rpx;
+							border-radius:50%;
+						}
+					}
+					.lefinfo{
+						position: relative;
+						margin-left:14rpx;
+						top: -24rpx;
+						display: inline-flex;
+						flex-direction: column;
+						.name{
+							font-size:26rpx;
+							font-family:MicrosoftYaHei;
+							font-weight:400;
+							color:rgba(22,30,73,1);
+						}
+						.desc{
+							font-size:21rpx;
+							font-family:FZLTZHUNHK;
+							font-weight:normal;
+							color:rgba(153,153,153,1);
+							line-height:13rpx;
+							margin-top: 6rpx;
+						}
+					}
+				}
+				.right{
+					display: inline-block;
+					.notice{
+						display: inline-block;
+						width:96rpx;
+						height:46rpx;
+						background:rgba(255,255,255,1);
+						text-align: center;
+						border:4rpx solid rgba(22, 30, 73, 1);
+						line-height:46rpx;
+						border-radius:11rpx;
+						font-size:21rpx;
+						font-family:FZLTZHUNHK;
+						font-weight:normal;
+						color:rgba(22,30,73,1);
+					}
+					.more{
+						display: inline-block;
+						.morepic{
+							width:7rpx;
+							height: 31rpx;
+							margin-left:38rpx;
+						}
+					}
+				}
+			}
+			.actpic{
+				display: flex;
+				justify-content: space-between;
+				.lef,.rig{
+					display: inline-block;
+					width:333rpx;
+					height:319rpx;
+					border-radius:21rpx;
+				}
+			}
+			.daliy{
+				.tag{
+					font-size:26rpx;
+					font-family:MicrosoftYaHei;
+					font-weight:400;
+					color:rgba(22,30,73,1);
+					margin-top:28rpx;
+					margin-bottom:25rpx;
+				}
+				.content{
+					width: 100%;
+					height: 92rpx;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp:3;
+					-webkit-box-orient: vertical;
+					font-size:22rpx;
+					font-family:MicrosoftYaHei;
+					font-weight:400;
+					color:#999999;
+					line-height:31rpx;
+				}
+				.looknum{
+				  display: flex;
+				  justify-content: space-between;
+				  padding-bottom:20rpx;
+				  border-bottom: 2rpx solid rgba(22,30,73,.4);
+					.one,.two,.three{
+						.pic{
+							width: 24rpx;
+							height: 22rpx;
+							margin-right: 10rpx;
+						}
+						.num{
+							font-size:18rpx;
+							font-family:MicrosoftYaHei;
+							font-weight:400;
+							color:rgba(153,153,153,1);
+						}
+					}
+				}
+				.sort{
+					margin-left:-28rpx;				
+					.intreast{
+						padding-left:28rpx;
+						.interone,.intertwo,.interthree{
+							width:94rpx;
+							height:41rpx;
+							background:rgba(255,255,255,1);
+							border:2rpx solid rgba(238, 238, 238, 1);
+							display: inline-block;
+							border-radius:8rpx;
+							font-size:22rpx;
+							line-height: 41rpx;
+							text-align: center;
+							font-family:MicrosoftYaHei;
+							font-weight:400;
+							margin-right:14rpx;
+							color:rgba(22,30,73,1);
+						}
+					}
+				}
+			}
+			.sayhi{
+				width:278rpx;
+				height:84rpx;
+				text-align:center;
+				line-height: 84rpx;
+				background:#161E49;
+				border-radius:42rpx;
+				font-size:32rpx;
+				font-family:MicrosoftYaHei;
+				font-weight:400;
+				color:rgba(255,255,255,1);
+				margin:0 auto;
+				margin-top:38rpx;
+				margin-bottom: 24rpx;
 			}
 		}
 	}
