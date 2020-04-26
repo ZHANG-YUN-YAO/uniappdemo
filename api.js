@@ -1,0 +1,1 @@
+export const login = "/api/api/login";//获取图片验证信息

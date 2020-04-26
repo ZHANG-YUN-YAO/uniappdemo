@@ -1,6 +1,36 @@
 <template>
 	<view class="addresslist">
-		<view class="address">
+		<view class="address" v-for="(item, index) in list" :key="item.address_id">
+			<view class="name">
+				{{item.consignee}}  {{item.mobile}}
+			</view>
+			<view class="area">
+				<view class="areastatus">
+					{{item.province_name}}{{item.city_name}}{{item.district_name}}
+				</view>
+				<view class="use" @click="touse()" v-if="ifuse">
+					使用
+				</view>
+				<view class="use2" @click="nouse()" v-if="useok">
+					<image class="useok" src="../../static/images/ok.png" mode=""></image>
+				</view>
+			</view>			
+			<view class="btns">
+				<view class="btnfir">
+					<radio value="" v-model="is_default" :checked="item.is_default==1?true:false"/>
+					设为默认
+				</view>
+				<view class="btnrig">
+					<view class="dele" @click="dele(item.address_id)">
+						删除
+					</view>
+					<view class="edit" @click="edit(item.address_id)">
+						修改
+					</view>
+				</view>
+			</view>
+		</view>
+<!-- 		<view class="address">
 			<view class="name">
 				王先生  13687653845
 			</view>
@@ -13,38 +43,6 @@
 				<view class="use" @click="touse()" v-if="ifuse">
 					使用
 				</view>
-				<view class="use2" @click="nouse()" v-if="useok">
-					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view>
-			</view>			
-			<view class="btns">
-				<view class="btnfir">
-					<radio value=""/>
-					设为默认
-				</view>
-				<view class="btnrig">
-					<view class="dele">
-						删除
-					</view>
-					<view class="edit">
-						修改
-					</view>
-				</view>
-			</view>
-		</view>
-		<view class="address">
-			<view class="name">
-				王先生  13687653845
-			</view>
-			<view class="area">
-				<view class="areastatus">
-					北京市 海淀区 中关村南大街18号韦
-					伯时代A座603北京市 海淀区 中关村南大街18号韦
-					伯时代A座603
-				</view>
-				<!-- <view class="use" @click="touse()" v-if="ifuse">
-					使用
-				</view> -->
 				<view class="use2">
 					<image class="useok" src="../../static/images/ok.png" mode=""></image>
 				</view>
@@ -63,7 +61,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="addarea" @click="addarea()">
 			<image class="addicon" src="../../static/images/add.png" mode=""></image>
 			添加收货地址
@@ -121,8 +119,12 @@
 		},
 		data() {
 			return {
+				select:[],
+				is_default:'0',
+				token:'',
 				ifuse:true,
 				useok:false,
+				list:[],
 				citySet: {
 					defaultValue: [0, 0, 0]
 				},
@@ -133,7 +135,73 @@
 				city:''
 			};
 		},
+		onLoad() {
+			if(uni.getStorageSync('token')){
+				this.token = uni.getStorageSync('token');
+				this.getinfo()
+			}			
+		},
 		methods:{
+			dele(val){
+				uni.request({
+				    url: this.global_api+'/api/address/del',
+				    data: {
+				      address_id:val
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+							if(res.data.status==200){								
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+								this.getinfo()
+							}else{
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});					
+							}						
+				   }
+				});
+			},
+			edit(val){
+				console.log(val);
+			},
+			addarea(){
+				this.add = true;
+
+			},
+			getinfo(){
+				let token = uni.getStorageSync('token');
+				uni.request({
+				    url: this.global_api+'/api/address/list',
+				    data: {
+				      // token:this.token
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+							if(res.data.status==200){
+								this.list = res.data.result;
+								// uni.showToast({
+								// 	icon: 'none',
+								// 	title: res.data.message
+								// });
+							}else{
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});					
+							}						
+				   }
+				});
+			},
 			receivename(e){				
 				this.name = e.target.value;
 			},
@@ -161,34 +229,63 @@
 				console.log(`pickerId为${res.pickerId},类型为${res.type}的QS-picker隐藏了了`);
 			},
 			confirm(res) {
-				console.log(JSON.stringify(res));
 				let selearea = JSON.stringify(res).data;
 				this.city = JSON.parse(JSON.stringify(res)).data.label;
-				
-			},
-			addarea(){
-				this.add = true;
-			},
+				this.select = JSON.parse(JSON.stringify(res)).value;
+				console.log(JSON.parse(JSON.stringify(res)));
+			},			
 			closeadd(){
 				this.add = false;
 			},
-			save(){
-				this.add = false;
+			save(){				
+				// uni.request({
+				//     url: this.global_api+'/api/address/set_up',
+				//     data: {
+				//       mobile: this.name,
+				// 			consignee:this.phone,
+				// 			province:this.select[0],			
+				// 			city:this.select[1],
+				// 			district:this.select[2],
+				// 			address:this.address
+				//     },
+				//     header: {
+				//       'User-Token': this.token //自定义请求头信息
+				//     },
+				//     success: (res) => {
+				//       if(res.data.status==200){
+				// 				this.add = false;
+				// 			}
+				//     }
+				// });
 				uni.request({
-				    url: '',
+				    url: this.global_api+'/api/address/set_up',
 				    data: {
-				      name: this.name,
-							phone:this.phone,
-							city:this.city,
+							consignee:this.name,
+				      mobile:this.phone,
+							province:this.select[0],
+							city:this.select[1],
+							district:this.select[2],
 							address:this.address
 				    },
+				    method:'POST',
 				    header: {
-				      'custom-header': 'hello' //自定义请求头信息
+				      'User-Token': this.token //请求头信息
 				    },
 				    success: (res) => {
-				      console.log(res.data);
-				      this.text = 'request success';
-				    }
+							if(res.data.status==200){								
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+								this.add = false;
+								this.getinfo();
+							}else{
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});					
+							}						
+				   }
 				});
 			}
 		}

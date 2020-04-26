@@ -10,7 +10,7 @@
 					<view class="input-row border">
 						<image class="inputimg" src="../../../static/images/phone.png" mode=""></image>
 						<!-- clearable -->
-						<m-input class="m-input" type="text" focus v-model="account" placeholder="输入手机号"></m-input>
+						<m-input class="m-input" minlength="11" maxlength="11" type="text" focus v-model="account" placeholder="输入手机号"></m-input>
 					</view>
 					<view class="input-row">
 						<image class="inputimg" src="../../../static/images/lock.png" mode=""></image>
@@ -23,7 +23,8 @@
 					<text class="two">用户协议、隐私政策</text>
 				</view>
 				<view class="btn-row">
-					<button id="button" class="cu-btn bg-green block lg button" @tap="bindLogin">同意协议并登录</button>
+					<button id="button" v-if="notclick" class="cu-btn bg-green block lg button">同意协议并登录</button>
+					<button id="button" v-else style="backgroundColor:#161E49" class="cu-btn bg-green block lg button" @tap="bindLogin">同意协议并登录</button>
 				</view>
 				<view class="action-row">
 					<navigator url="../codeLogin/codeLogin">
@@ -42,6 +43,7 @@
 
 <script>
 	// import service from '../../service.js';
+	import urls from '../../../api.js'
 	import {
 		mapState,
 		mapMutations
@@ -52,8 +54,13 @@
 		components: {
 			mInput
 		},
+		onShow() {
+			// console.log(this.global_api)
+			// console.log(this.url);			
+		},
 		data() {
 			return {
+				notclick:true,
 				providerList: [],
 				hasProvider: false,
 				account: '',
@@ -65,18 +72,22 @@
 		},
 		computed: mapState(['forcedLogin']),
 		watch:{
-			account(){
-				if(this.account.length > 5&&this.password.length >=6){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+			account(){				
+				if(this.account.length == 11&&this.password.length >=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			},
 			password(){
-				if(this.account.length > 5&&this.password.length >=6){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.password.length >=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			}
 		},
@@ -91,25 +102,52 @@
 				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
 			},
 			bindLogin() {
-				// uni.request({
-				//     url: 'https://www.example.com/request',
-				//     data: {
-				//          phone: this.phone,
-				//					password:this.password
-				//     },
-				//     header: {
-				//         'custom-header': 'hello' //请求头信息
-				//     },
-				//     success: (res) => {
-				//         console.log(res.data);
-				//         this.text = 'request success';
-				//     }
-				// });
-								
-				if (this.account.length < 5) {
+				let reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				if (!reg.test(this.account)) {
 					uni.showToast({
 						icon: 'none',
-						title: '账号最短为 5 个字符'
+						title: '请输入正确的手机号'
+					});
+					return false;
+				}
+				
+				uni.request({
+				    url: this.global_api+'/api/login',
+				    data: {
+				      phone: this.account,
+							password:this.password,
+							login_type:2
+				    },
+				    method:'POST',
+				    header: {
+				      'content-type': 'application/json; charset=utf-8' //请求头信息
+				    },
+				    success: (res) => {
+							if(res.data.status==200){
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+								uni.setStorageSync('token',res.data.result.token);
+							}else{
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+								setTimeout(function(){
+									//返回登录页
+									uni.navigateTo({
+										url:'../passwordLogin/passwordLogin'
+									})
+								},2000)							
+							}						
+				   }
+				});
+								
+				if (this.account.length <11||this.account.length >11) {
+					uni.showToast({
+						icon: 'none',
+						title: '请输入正确的手机号'
 					});
 					return;
 				}
@@ -120,8 +158,9 @@
 					});
 					return;
 				}
-				if(this.account.length > 5&&this.password.length >=6){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.password.length >=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}
 				/**
 				 * 下面简单模拟下服务端的处理
@@ -131,19 +170,19 @@
 					account: this.account,
 					password: this.password
 				};
-				const validUser = service.getUsers().some(function(user) {
-					return data.account === user.account && data.password === user.password;
-				});
-				if (validUser) {
-					console.log(this.account)
-					this.toMain(this.account);
+				// const validUser = service.getUsers().some(function(user) {
+				// 	return data.account === user.account && data.password === user.password;
+				// });
+				// if (validUser) {
+				// 	console.log(this.account)
+				// 	this.toMain(this.account);
 					
-				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '用户账号或密码不正确',
-					});
-				}
+				// } else {
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		title: '用户账号或密码不正确',
+				// 	});
+				// }
 			},
 			getUserInfo({
 				detail

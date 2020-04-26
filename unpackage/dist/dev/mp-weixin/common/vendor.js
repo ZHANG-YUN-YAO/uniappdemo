@@ -2635,6 +2635,19 @@ var index_esm = {
 
 /***/ }),
 
+/***/ 176:
+/*!****************************************************!*\
+  !*** C:/Users/t/Desktop/unitest/uniappdemo/api.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.login = void 0;var login = "/api/api/login"; //获取图片验证信息
+exports.login = login;
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -8807,18 +8820,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 276:
+/***/ 277:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 277);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 278);
 
 /***/ }),
 
-/***/ 277:
+/***/ 278:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8849,7 +8862,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 278);
+module.exports = __webpack_require__(/*! ./runtime */ 279);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8866,7 +8879,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 278:
+/***/ 279:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9629,7 +9642,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 335:
+/***/ 336:
 /*!****************************************************************************!*\
   !*** C:/Users/t/Desktop/unitest/uniappdemo/components/QuShe-picker/app.js ***!
   \****************************************************************************/
@@ -9713,7 +9726,7 @@ _app;exports.default = _default;
 
 /***/ }),
 
-/***/ 336:
+/***/ 337:
 /*!*******************************************************************************************!*\
   !*** C:/Users/t/Desktop/unitest/uniappdemo/components/QuShe-picker/city-data/province.js ***!
   \*******************************************************************************************/
@@ -9863,7 +9876,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 337:
+/***/ 338:
 /*!***************************************************************************************!*\
   !*** C:/Users/t/Desktop/unitest/uniappdemo/components/QuShe-picker/city-data/city.js ***!
   \***************************************************************************************/
@@ -11377,7 +11390,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 338:
+/***/ 339:
 /*!***************************************************************************************!*\
   !*** C:/Users/t/Desktop/unitest/uniappdemo/components/QuShe-picker/city-data/area.js ***!
   \***************************************************************************************/
@@ -23933,7 +23946,7 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 339:
+/***/ 340:
 /*!******************************************************************************************!*\
   !*** C:/Users/t/Desktop/unitest/uniappdemo/components/QuShe-picker/city-data/streets.js ***!
   \******************************************************************************************/
@@ -24864,7 +24877,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "top-search": "/components/topSearch", "top-tabbar": "/components/topTabbar" }, "usingAutoImportComponents": {} }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "navigationBarTitleText": "文章详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园", "usingComponents": {}, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom", "usingComponents": { "chunlei-video": "/components/chunlei-video/chunlei-video", "goods-swiper": "/components/pyh-goodsSwiper/pyh-goodsSwiper", "ms-tabs": "/components/ms-tabs/ms-tabs" }, "usingAutoImportComponents": { "ms-tabs": "/components/ms-tabs/ms-tabs", "chunlei-video": "/components/chunlei-video/chunlei-video", "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationStyle": "custom", "usingComponents": { "uni-grid": "/components/uni-grid/uni-grid" }, "usingAutoImportComponents": { "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "top-search": "/components/topSearch" }, "usingAutoImportComponents": { "uni-icons": "/components/uni-icons/uni-icons" } }, "pages/information/information": { "navigationBarTitleText": "消息", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" }, "usingAutoImportComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" } }, "pages/car/car": { "navigationBarTitleText": "购物车", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/confirmOrder/confirmOrder": { "navigationBarTitleText": "确认订单", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "uni-badge": "/components/uni-badge/uni-badge" }, "usingAutoImportComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item" } }, "pages/teaFriends/teaFriends": { "navigationBarTitleText": " ", "usingComponents": { "s-tabs": "/components/s-tabs/index", "s-tab": "/components/s-tab/index" }, "usingAutoImportComponents": {} }, "pages/registerLogin/codeLogin/codeLogin": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/registerLogin/registerLogin": { "navigationBarTitleText": " ", "navigationBarBackgroundColor": "#20223b", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/forgectPassword/forgectPassword": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/registerLogin/passwordLogin/passwordLogin": { "navigationBarTitleText": " ", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/allOrders/allOrders": { "navigationBarTitleText": "我的订单", "usingComponents": { "s-tabs": "/components/s-tabs/index", "s-tab": "/components/s-tab/index" }, "usingAutoImportComponents": {} }, "pages/waitPayOrder/waitPayOrder": { "navigationBarTitleText": "待支付", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/waitSendgoodsOrder/waitSendgoodsOrder": { "navigationBarTitleText": "待发货", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/waitReceiveOrder/waitReceiveOrder": { "navigationBarTitleText": "待收货", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/waitEvaluateOrder/waitEvaluateOrder": { "navigationBarTitleText": "待评价", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/addressList/addressList": { "navigationBarTitleText": "收货地址", "usingComponents": { "q-spicker": "/components/QuShe-picker/QuShe-picker" }, "usingAutoImportComponents": {} }, "pages/addEvaluate/addEvaluate": { "navigationBarTitleText": "评价", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/gardenDetail/gardenDetail": { "navigationBarTitleText": " ", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/sortSearch/sortSearch": { "navigationBarTitleText": " ", "usingComponents": { "s-tabs": "/components/s-tabs/index", "s-tab": "/components/s-tab/index" }, "usingAutoImportComponents": { "uni-icons": "/components/uni-icons/uni-icons", "uni-grid": "/components/uni-grid/uni-grid", "uni-grid-item": "/components/uni-grid-item/uni-grid-item" } } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/goodsList/goodsList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaArticle/teaArticle": { "navigationBarTitleText": "文章详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teaGarden/teaGarden": { "navigationBarTitleText": "茶园" }, "pages/teaCeremony/teaCeremony": { "navigationStyle": "custom" }, "pages/teaHouse/teaHouse": { "navigationBarTitleText": "茶社" }, "pages/mine/mine": { "navigationStyle": "custom" }, "pages/search/search": { "navigationBarTitleText": "搜索" }, "pages/information/information": { "navigationBarTitleText": "消息" }, "pages/car/car": { "navigationBarTitleText": "购物车" }, "pages/confirmOrder/confirmOrder": { "navigationBarTitleText": "确认订单" }, "pages/teaFriends/teaFriends": { "navigationBarTitleText": " " }, "pages/registerLogin/codeLogin/codeLogin": { "navigationBarTitleText": " " }, "pages/registerLogin/registerLogin/registerLogin": { "navigationBarTitleText": " ", "navigationBarBackgroundColor": "#20223b" }, "pages/registerLogin/forgectPassword/forgectPassword": { "navigationBarTitleText": " " }, "pages/registerLogin/passwordLogin/passwordLogin": { "navigationBarTitleText": " " }, "pages/allOrders/allOrders": { "navigationBarTitleText": "我的订单" }, "pages/waitPayOrder/waitPayOrder": { "navigationBarTitleText": "待支付" }, "pages/waitSendgoodsOrder/waitSendgoodsOrder": { "navigationBarTitleText": "待发货" }, "pages/waitReceiveOrder/waitReceiveOrder": { "navigationBarTitleText": "待收货" }, "pages/waitEvaluateOrder/waitEvaluateOrder": { "navigationBarTitleText": "待评价" }, "pages/addressList/addressList": { "navigationBarTitleText": "收货地址" }, "pages/addEvaluate/addEvaluate": { "navigationBarTitleText": "评价" }, "pages/gardenDetail/gardenDetail": { "navigationBarTitleText": " " }, "pages/sortSearch/sortSearch": { "navigationBarTitleText": " " } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#161E49", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

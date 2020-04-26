@@ -16,7 +16,7 @@
 				<navigator url="../codeLogin/codeLogin">
 					<image class="weiboimg" src="../../../static/images/weibo.png" mode=""></image>
 					微博
-				</navigator>
+				</navigator>		
 				<navigator url="../forgectPassword/forgectPassword">
 					<image class="qqimg" src="../../../static/images/qq.png" mode=""></image>
 						QQ
@@ -63,12 +63,11 @@
 				 */
 				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
 			},
-			bindLogin() {
-				
+			bindLogin() {				
 				if (this.account.length < 5) {
 					uni.showToast({
 						icon: 'none',
-						title: '账号最短为 5 个字符'
+						title: '未接通'
 					});
 					return;
 				}

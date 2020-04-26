@@ -8,28 +8,29 @@
 				<view class="input-group">
 					<view class="input-row border">
 						<image class="inputimg" src="../../../static/images/phone.png" mode=""></image>
-						<m-input class="m-input" type="text" focus v-model="account" placeholder="输入手机号"></m-input>
+						<m-input class="m-input" type="text" maxlength="11" focus v-model="account" placeholder="输入手机号"></m-input>
 					</view>
 					<view class="input-row">
 						<image class="inputimg" style="width: 31rpx;" src="../../../static/images/codenum.png" mode=""></image>
 						<!-- displayable   眼睛-->
-						<m-input type="password"  v-model="code" placeholder="输入验证码"></m-input>
-						<text class="getcode">获取验证码</text>
+						<m-input type="number" maxlength="4" v-model="code" placeholder="输入验证码"></m-input>
+						<text class="getcode" @click.once="getCode">获取验证码</text>
 					</view>
 					<view class="input-row">
 						<image class="inputimg" src="../../../static/images/lock.png" mode=""></image>
-						<m-input class="m-input" type="text" focus v-model="password1" placeholder="输入新密码"></m-input>
+						<m-input class="m-input" type="password" focus v-model="password1" placeholder="输入新密码"></m-input>
 					</view>
 					<view class="input-row">
 						<image class="inputimg" src="../../../static/images/lock.png" mode=""></image>
-						<m-input class="m-input" type="text" focus v-model="password2" placeholder="再次输入密码"></m-input>
+						<m-input class="m-input" type="password" focus v-model="password2" placeholder="再次输入密码"></m-input>
 					</view>
 				</view>
 				<view class="zhuyi">
 					<text class="one">6-16位密码、数字或字母</text>
 				</view>
 				<view class="btn-row">
-					<button id="button" class="cu-btn bg-green block lg button" @tap="bindLogin">确定</button>
+					<button id="button" v-if="notclick" class="cu-btn bg-green block lg button">确定</button>
+					<button id="button" v-else style="backgroundColor:#161E49" class="cu-btn bg-green block lg button" @tap="bindLogin">确定</button>
 				</view>
 				<view class="action-row">
 					<navigator url="../codeLogin/codeLogin">
@@ -42,7 +43,7 @@
 					</navigator>
 				</view>
 			</view>
-		<!-- </template>		 -->
+		<!-- </template> -->
 	</view>
 </template>
 
@@ -69,41 +70,70 @@
 				isDevtools: false,
 				active:false,
 				code:'',
+				notclick:true
 				
 			}
 		},
 		computed: mapState(['forcedLogin']),
 		watch:{
 			account(){
-				if(this.account.length > 5&&this.code.length >=4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.code.length ==4&&this.password1==this.password2&&this.password1.length>=6==this.password2.length>=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			},
 			code(){
-				if(this.account.length > 5&&this.code.length >=4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.code.length ==4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			},
 			password1(){
-				if(this.account.length > 5&&this.code.length >=4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.code.length ==4&&this.password1.length >=6&&this.password2.length >=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			},
 			password2(){
-				if(this.account.length > 5&&this.code.length >=4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if(this.account.length ==11&&this.code.length ==4&&this.password1.length >=6&&this.password2.length >=6){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
 				}else{
-					document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#ccc'
+					this.notclick=true
 				}
 			},
 		},
 		methods: {
+			getCode(){
+				uni.request({
+				    url: this.global_api+'/api/sendcode',
+				    data: {
+						  phone: this.account
+				    },
+						method:'POST',
+				    header: {
+				      'content-type': 'application/json; charset=utf-8' //请求头信息
+				    },
+				    success: (res) => {
+							if(res.data.status==200){
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+							}
+				    }
+				});
+			},
 			...mapMutations(['login']),
 			
 			initPosition() {
@@ -113,46 +143,99 @@
 				 */
 				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
 			},
-			bindLogin() {
-				
-				if (this.account.length < 5) {
+			bindLogin() {				
+				if (this.account.length !==11) {
 					uni.showToast({
 						icon: 'none',
-						title: '账号最短为 5 个字符'
+						title: '请输入正确的手机号'
 					});
 					return;
 				}
-				if (this.password.length < 6) {
+				if (this.code.length !==4) {
+					uni.showToast({
+						icon: 'none',
+						title: '请输入正确的验证码'
+					});
+					return;
+				}
+				if (this.password1.length < 6) {
 					uni.showToast({
 						icon: 'none',
 						title: '密码最短为 6 个字符'
 					});
 					return;
 				}
-				if(this.account.length > 5&&this.password.length >=6){
-					document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+				if (this.password2 !== this.password1) {
+					uni.showToast({
+						icon: 'none',
+						title: '密码输入不一致'
+					});
+					return;
 				}
+				if(this.account.length ==11&&this.code.length ==4&&this.password1.length >=6&&this.password2.length >=6&&this.password1==this.password2){
+					// document.getElementsByClassName('button')[0].style.backgroundColor='#161E49'
+					this.notclick=false
+				}
+				let reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				if (!reg.test(this.account)) {
+					uni.showToast({
+						icon: 'none',
+						title: '请输入正确的手机号'
+					});
+					return false;
+				}
+				uni.request({
+				    url: this.global_api+'/api/forget_pass',
+				    data: {
+				      phone: this.account,
+							password:this.password2,
+							code:this.code
+				    },
+				    method:'POST',
+				    header: {
+				      'content-type': 'application/json; charset=utf-8' //请求头信息
+				    },
+				    success: (res) => {
+							if(res.data.status==200){
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+							}else {
+								uni.showToast({
+									icon: 'none',
+									title: res.data.message
+								});
+								setTimeout(function(){
+									//返回登录页
+									uni.navigateTo({
+										url:'../forgectPassword/forgectPassword'
+									})
+								},2000)								
+							}						
+				   }
+				});
 				/**
 				 * 下面简单模拟下服务端的处理
 				 * 检测用户账号密码是否在已注册的用户列表中				
 				 */
-				const data = {
-					account: this.account,
-					password: this.password
-				};
-				const validUser = service.getUsers().some(function(user) {
-					return data.account === user.account && data.password === user.password;
-				});
-				if (validUser) {
-					console.log(this.account)
-					this.toMain(this.account);
+				// const data = {
+				// 	account: this.account,
+				// 	password: this.password
+				// };
+				// const validUser = service.getUsers().some(function(user) {
+				// 	return data.account === user.account && data.password === user.password;
+				// });
+				// if (validUser) {
+				// 	console.log(this.account)
+				// 	this.toMain(this.account);
 					
-				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '用户账号或密码不正确',
-					});
-				}
+				// } else {
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		title: '用户账号或密码不正确',
+				// 	});
+				// }
 			},
 			getUserInfo({
 				detail

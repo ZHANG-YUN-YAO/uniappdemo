@@ -209,22 +209,14 @@
   text-align: center;
   height: 278rpx;
   box-sizing: border-box;
-  background: #ffffff;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  box-shadow: 0px 3rpx 6rpx 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   border-radius: 11rpx;
   margin-right: 14px;
 }
 .teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitemli .swiperimg {
+  width: 254rpx;
   height: 181rpx!important;
-  border-top-left-radius: 11rpx;
-  border-top-right-radius: 11rpx;
-  height: 181rpx;
 }
 .teaFriend .teabody .teamiddle .tabthree .imageContainer .swiperitemli .swipernav {
   font-size: 25rpx;
@@ -240,5 +232,185 @@
   font-weight: 400;
   margin-top: 12rpx;
   color: #666666;
+}
+.teaFriend .friendactive {
+  width: 694rpx;
+  margin: 0 auto;
+  height: 300rpx;
+  border: 1px soid black;
+}
+.teaFriend .friendactive .title {
+  font-size: 32rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #161e49;
+  margin-bottom: 30rpx;
+}
+.teaFriend .friendactive .actli {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.teaFriend .friendactive .actli .left .lefpic {
+  display: inline-block;
+}
+.teaFriend .friendactive .actli .left .lefpic .avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+}
+.teaFriend .friendactive .actli .left .lefinfo {
+  position: relative;
+  margin-left: 14rpx;
+  top: -24rpx;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.teaFriend .friendactive .actli .left .lefinfo .name {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #161e49;
+}
+.teaFriend .friendactive .actli .left .lefinfo .desc {
+  font-size: 21rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #999999;
+  line-height: 13rpx;
+  margin-top: 6rpx;
+}
+.teaFriend .friendactive .actli .right {
+  display: inline-block;
+}
+.teaFriend .friendactive .actli .right .notice {
+  display: inline-block;
+  width: 96rpx;
+  height: 46rpx;
+  background: #ffffff;
+  text-align: center;
+  border: 4rpx solid #161e49;
+  line-height: 46rpx;
+  border-radius: 11rpx;
+  font-size: 21rpx;
+  font-family: FZLTZHUNHK;
+  font-weight: normal;
+  color: #161e49;
+}
+.teaFriend .friendactive .actli .right .more {
+  display: inline-block;
+}
+.teaFriend .friendactive .actli .right .more .morepic {
+  width: 7rpx;
+  height: 31rpx;
+  margin-left: 38rpx;
+}
+.teaFriend .friendactive .actpic {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.teaFriend .friendactive .actpic .lef,
+.teaFriend .friendactive .actpic .rig {
+  display: inline-block;
+  width: 333rpx;
+  height: 319rpx;
+  border-radius: 21rpx;
+}
+.teaFriend .friendactive .daliy .tag {
+  font-size: 26rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #161e49;
+  margin-top: 28rpx;
+  margin-bottom: 25rpx;
+}
+.teaFriend .friendactive .daliy .content {
+  width: 100%;
+  height: 92rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 22rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #999999;
+  line-height: 31rpx;
+}
+.teaFriend .friendactive .daliy .looknum {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid rgba(22, 30, 73, 0.4);
+}
+.teaFriend .friendactive .daliy .looknum .one .pic,
+.teaFriend .friendactive .daliy .looknum .two .pic,
+.teaFriend .friendactive .daliy .looknum .three .pic {
+  width: 24rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+.teaFriend .friendactive .daliy .looknum .one .num,
+.teaFriend .friendactive .daliy .looknum .two .num,
+.teaFriend .friendactive .daliy .looknum .three .num {
+  font-size: 18rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #999999;
+}
+.teaFriend .friendactive .daliy .sort {
+  margin-left: -28rpx;
+}
+.teaFriend .friendactive .daliy .sort .intreast {
+  padding-left: 28rpx;
+}
+.teaFriend .friendactive .daliy .sort .intreast .interone,
+.teaFriend .friendactive .daliy .sort .intreast .intertwo,
+.teaFriend .friendactive .daliy .sort .intreast .interthree {
+  width: 94rpx;
+  height: 41rpx;
+  background: #ffffff;
+  border: 2rpx solid #eeeeee;
+  display: inline-block;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  line-height: 41rpx;
+  text-align: center;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  margin-right: 14rpx;
+  color: #161e49;
+}
+.teaFriend .friendactive .sayhi {
+  width: 278rpx;
+  height: 84rpx;
+  text-align: center;
+  line-height: 84rpx;
+  background: #161E49;
+  border-radius: 42rpx;
+  font-size: 32rpx;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 auto;
+  margin-top: 38rpx;
+  margin-bottom: 24rpx;
 }
 

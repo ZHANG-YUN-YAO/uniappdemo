@@ -217,6 +217,12 @@
 							"navigationBarTitleText":" "
 						}
         }
+        ,{
+            "path" : "pages/video/video",
+            "style" : {
+							"navigationBarTitleText":" 视频"
+						}
+        }
     ],
 	"tabBar": {
 	    "color": "#3E455E",
