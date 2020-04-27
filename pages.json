@@ -194,11 +194,17 @@
 						}
         }
         ,{
-            "path" : "pages/addressList/addressList",
+            "path" : "pages/toseleAddress/toseleAddress",
             "style" : {
 							"navigationBarTitleText":"收货地址"
 						}
-        }
+        },
+				{
+				    "path" : "pages/addressList/addressList",
+				    "style" : {
+							"navigationBarTitleText":"收货地址"
+						}
+				}
         ,{
             "path" : "pages/addEvaluate/addEvaluate",
             "style" : {

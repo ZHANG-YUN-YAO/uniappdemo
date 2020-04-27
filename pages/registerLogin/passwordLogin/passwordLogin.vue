@@ -218,7 +218,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.passwordlogin{
 		text-align: center;
 		.toptitle{

@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 Vue.prototype.global_api = 'http://www.51error.cn'; 
 Vue.prototype.global_url = url;
+Vue.prototype.seledefaultaddress = {};
 
 export default {
   components: {

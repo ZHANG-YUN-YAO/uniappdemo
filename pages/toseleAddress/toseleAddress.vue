@@ -1,69 +1,38 @@
 <template>
-	<view class="addresslist">
+	<view class="toseleAddress">
 		<radio-group @change="radioChange">
-		<view class="address" v-for="(item, index) in list" :key="item.address_id">
-			<view class="name">
-				{{item.consignee}}  {{item.mobile}}
-			</view>
-			<view class="area">
-				<view class="areastatus">
-					{{item.province}}{{item.city}}{{item.district}}
+			<view class="address" v-for="(item, index) in list" :key="item.address_id">
+				<view class="name">
+					{{item.consignee}}  {{item.mobile}}
 				</view>
-				<!-- <view class="use" @click="touse()" v-if="ifuse">
-					使用
-				</view> -->
-				<view class="use2" @click="nouse()" v-if="useok">
-					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view>
-			</view>			
-			<view class="btns">
-				<view class="btnfir">
-						<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
-						设为默认
-				</view>
-				<view class="btnrig">
-					<view class="dele" @click="dele(item.address_id)">
-						删除
+				<view class="area">
+					<view class="areastatus">
+						{{item.province}}{{item.city}}{{item.district}}{{item.address}}
 					</view>
-					<view class="edit" @click="edit(item.address_id)">
-						修改
+					<!-- :class="ifuse==true?'use2':'use'" -->
+					<view class="use2" @click="nouse(item,index)"  v-if="item.useok==true" >
+						<image class="useok" src="../../static/images/ok.png" mode=""></image>
 					</view>
-				</view>
-			</view>
-		</view>
-	</radio-group>
-<!-- 		<view class="address">
-			<view class="name">
-				王先生  13687653845
-			</view>
-			<view class="area">
-				<view class="areastatus">
-					北京市 海淀区 中关村南大街18号韦
-					伯时代A座603北京市 海淀区 中关村南大街18号韦
-					伯时代A座603
-				</view>
-				<view class="use" @click="touse()" v-if="ifuse">
-					使用
-				</view>
-				<view class="use2">
-					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view>
-			</view>			
-			<view class="btns">
-				<view class="btnfir">
-					<radio value="" checked/>
-					设为默认
-				</view>
-				<view class="btnrig">
-					<view class="dele">
-						删除
+					<view class="use"  @click="touse(item,index)" v-else>
+						使用
+					</view>				
+				</view>			
+				<view class="btns">
+					<view class="btnfir">
+							<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
+							设为默认
 					</view>
-					<view class="edit">
-						修改
+					<view class="btnrig">
+						<view class="dele" @click="dele(item.address_id)">
+							删除
+						</view>
+						<view class="edit" @click="edit(item.address_id)">
+							修改
+						</view>
 					</view>
 				</view>
 			</view>
-		</view> -->
+		</radio-group>
 		<view class="addarea" @click="addarea()">
 			<image class="addicon" src="../../static/images/add.png" mode=""></image>
 			添加收货地址
@@ -95,7 +64,7 @@
 								<button class="margin10px_0" type="">
 									>
 								</button>
-								<text class="read">{{city}}</text>
+								<text class="read">{{editcity}}</text>
 								<QSpicker @showQSPicker="showQSPicker($event)" type="city" ref="QS_Picekr_city" mode="top" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
 								 @confirm="confirm($event)" />
 						</view>
@@ -149,12 +118,6 @@
 								<input class="uni-input" v-model="address" @input="receiveaddress" placeholder="如街道、门牌号、小区、乡镇、村等" />
 						</view>
 					</view>
-					<!-- <view>
-						<pick-regions :default-regions="defaultRegions" @getRegions="handleGetRegions">
-								<h2>选择省市区</h2>
-						</pick-regions>
-						<h3>{{regionsName}}</h3>
-				</view> -->
 				</view>
 				<view class="save" @click="editsave()">保存</view>
 			</view>
@@ -163,25 +126,24 @@
 </template>
 
 <script>
-	import pickRegions from '@/components/pick-regions/pick-regions.vue'
 	import QSpicker from '@/components/QuShe-picker/QuShe-picker.vue';
 	export default {
 		components: {
-			QSpicker,
-			pickRegions
+			QSpicker
 		},
 		computed:{
-				regionsName(){
-						// 转为字符串
-						return this.regions.map(item=>item.name).join(' ')
-				}
+			regionsName(){
+				// 转为字符串
+				return this.regions.map(item=>item.name).join(' ')
+			}
 		},
 		data() {
-			return {
+			return {				
 				regions:[],
-				selename:'',
 				defaultRegions:['广东省','广州市','番禺区'],
 				select:[],
+				selename:'',
+				defaultsele :'',//上页面穿的参数id
 				is_default:'0',
 				token:'',
 				ifuse:true,
@@ -201,7 +163,8 @@
 				detailinfo:{}
 			};
 		},
-		onLoad() {
+		onLoad(option) {
+			this.defaultsele = option.addressid
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');
 				this.getinfo()
@@ -219,11 +182,7 @@
 				      'User-Token': this.token //请求头信息
 				    },
 				    success: (res) => {
-							if(res.data.status==200){								
-								// uni.showToast({
-								// 	icon: 'none',
-								// 	title: res.data.message
-								// });
+							if(res.data.status==200){		
 								this.getinfo()
 							}else{
 								uni.showToast({
@@ -283,7 +242,15 @@
 								this.name = res.data.result.consignee;
 								this.phone = res.data.result.mobile;								
 								this.address = res.data.result.address;
-								this.editcity = res.data.result.province_name
+								if(res.data.result.province){
+									this.editcity = res.data.result.province
+								}
+								if(res.data.result.city){
+									this.editcity = res.data.result.province+res.data.result.city
+								}
+								if(res.data.result.district){
+									this.editcity = res.data.result.province+res.data.result.city+res.data.result.district
+								}
 							}else{
 								uni.showToast({
 									icon: 'none',
@@ -301,7 +268,6 @@
 				uni.request({
 				    url: this.global_api+'/api/address/list',
 				    data: {
-				      // token:this.token
 				    },
 				    method:'POST',
 				    header: {
@@ -310,10 +276,12 @@
 				    success: (res) => {
 							if(res.data.status==200){
 								this.list = res.data.result;
-								// uni.showToast({
-								// 	icon: 'none',
-								// 	title: res.data.message
-								// });
+								for(let i=0;i<this.list.length;i++){
+									if(this.defaultsele == this.list[i].address_id){										
+										this.list[i].ifuse = false;
+										this.list[i].useok = true;
+									}
+								}
 							}else{
 								uni.showToast({
 									icon: 'none',
@@ -332,13 +300,24 @@
 			receiveaddress(e){
 				this.address = e.target.value;
 			},
-			nouse(){
-				this.useok = false;
-				this.ifuse = true;
+			nouse(val,val2){
+				for(let i=0;i<this.list.length;i++){
+					if(val.address_id==this.list[i].address_id){
+						this.list[i].ifuse = true;
+						this.list[i].useok = false;
+					}
+				}
 			},
-			touse(){				
-				this.useok = true;
-				this.ifuse = false;
+			touse(val,val2){			
+				for(let i=0;i<this.list.length;i++){
+					if(val.address_id==this.list[i].address_id){
+						this.list[i].ifuse = false;
+						this.list[i].useok = true;
+						uni.navigateTo({
+							url:"../confirmOrder/confirmOrder?address_id="+val.address_id+"&&province="+val.province+"&&address="+val.address
+						})
+					}
+				}
 			},
 			changeShow(name) {
 				this.$refs[name].show();
@@ -371,7 +350,7 @@
 							// city:this.select[1],
 							// district:this.select[2],
 							address:this.address,
-							address_id:this.editid,							
+							address_id:this.editid,
 							province:this.selename[0],
 							city:this.selename[1],							
 							district:this.selename[2]
@@ -445,7 +424,8 @@
 </script>
 
 <style lang="scss">
-	.addresslist{
+	.toseleAddress{
+		display: none;
 		.uni-input-placeholder{
 			color: #BABDCF;
 			font-size:28rpx!important;
@@ -493,8 +473,10 @@
 					color:rgba(191,194,210,1);
 					border:2rpx solid rgba(186,189,207,1);
 					border-radius:7rpx;
+					cursor: pointer;
 				}
 				.use2{
+					cursor: pointer;
 					.useok{
 						width: 34rpx;
 						height: 22rpx;
