@@ -125,7 +125,8 @@
 		methods: {
 			articledetail(){
 				uni.navigateTo({
-					url:'../teaArticle/teaArticle'
+					// url:'../teaArticle/teaArticle'
+					url:'../gardenDetail/gardenDetail'
 				})
 			},
 			changeIndicatorDots(e) {

@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "chun-lei-slider": "/components/chunlei-video/chunLei-slider/chunLei-slider",
-    "chun-lei-moon": "/components/chunlei-video/chunLei-moon/chunLei-moon"
-  }
-}

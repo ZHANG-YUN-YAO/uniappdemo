@@ -4,62 +4,118 @@
 		  <s-tab title="全部">
 				<!-- <view class="noinfo">
 					<image class="noimg" src="../../static/images/noresult.png" mode=""></image>
-				</view>	 -->			
-				<view class="orderlist">
-					<view class="orderli">
-						<view class="timestatus">
-							<view class="lef">
-								<image class="timeicon" src="../../static/images/timeicon.png" mode=""></image>
-								<text class="status">2020-04-18 13：38</text>
+				</view>	 -->		
+				 <scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+					@scroll="scroll">					
+					<view class="orderlist">
+						<view class="orderli">
+							<view class="timestatus">
+								<view class="lef">
+									<image class="timeicon" src="../../static/images/timeicon.png" mode=""></image>
+									<text class="status">2020-04-18 13：38</text>
+								</view>
+								<view class="rig">待支付	</view>
 							</view>
-							<view class="rig">待支付	</view>
+							<view class="goods">
+								<view class="left">
+									<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
+								</view>
+								<view class="right">
+									<view class="goodsname">桂花普洱茶</view>
+									<view class="goodsweigh">
+										<text>净含量：180克</text>
+										<text>x1</text>
+									</view>
+									<view class="goodsprice">
+										<view class="goodstype">珍藏版</view>
+										<view class="goodsmoney">￥ 999.00</view>
+									</view>
+								</view>
+							</view>
+							<view class="goods">
+								<view class="left">
+									<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
+								</view>
+								<view class="right">
+									<view class="goodsname">桂花普洱茶</view>
+									<view class="goodsweigh">
+										<text>净含量：180克</text>
+										<text>x1</text>
+									</view>
+									<view class="goodsprice">
+										<view class="goodstype">珍藏版</view>
+										<view class="goodsmoney">￥ 999.00</view>
+									</view>
+								</view>
+							</view>
+							<view class="pricebtn">
+								<view class="realprice">实付：￥1398.0</view>
+								<view class="btngroup">
+									<view class="btn btn1">取消订单</view>
+									<view class="btn btn2">去支付</view>								
+									<!-- <view class="btn btn3">再次购买</view>								
+									<view class="btn btn4">查看物流</view>
+									<view class="btn btn5">确认收货</view>								
+									<view class="btn btn6">删除订单</view>
+									<view class="btn btn7">立即评价</view> -->
+								</view>
+							</view>
 						</view>
-						<view class="goods">
-							<view class="left">
-								<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
-							</view>
-							<view class="right">
-								<view class="goodsname">桂花普洱茶</view>
-								<view class="goodsweigh">
-									<text>净含量：180克</text>
-									<text>x1</text>
+						<view class="orderli">
+							<view class="timestatus">
+								<view class="lef">
+									<image class="timeicon" src="../../static/images/timeicon.png" mode=""></image>
+									<text class="status">2020-04-18 13：38</text>
 								</view>
-								<view class="goodsprice">
-									<view class="goodstype">珍藏版</view>
-									<view class="goodsmoney">￥ 999.00</view>
-								</view>
+								<view class="rig">待支付	</view>
 							</view>
-						</view>
-						<view class="goods">
-							<view class="left">
-								<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
-							</view>
-							<view class="right">
-								<view class="goodsname">桂花普洱茶</view>
-								<view class="goodsweigh">
-									<text>净含量：180克</text>
-									<text>x1</text>
+							<view class="goods">
+								<view class="left">
+									<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
 								</view>
-								<view class="goodsprice">
-									<view class="goodstype">珍藏版</view>
-									<view class="goodsmoney">￥ 999.00</view>
+								<view class="right">
+									<view class="goodsname">桂花普洱茶</view>
+									<view class="goodsweigh">
+										<text>净含量：180克</text>
+										<text>x1</text>
+									</view>
+									<view class="goodsprice">
+										<view class="goodstype">珍藏版</view>
+										<view class="goodsmoney">￥ 999.00</view>
+									</view>
 								</view>
 							</view>
-						</view>
-						<view class="pricebtn">
-							<view class="realprice">实付：￥1398.0</view>
-							<view class="btngroup">
-								<view class="btn btn1">取消订单</view>
-								<view class="btn btn2">去支付</view>								
-								<!-- <view class="btn btn3">再次购买</view>								
-								<view class="btn btn4">查看物流</view>
-								<view class="btn btn5">确认收货</view>								
-								<view class="btn btn6">删除订单</view>
-								<view class="btn btn7">立即评价</view> -->
+							<view class="goods">
+								<view class="left">
+									<image class="goodsimg" src="../../static/images/83.png" mode=""></image>
+								</view>
+								<view class="right">
+									<view class="goodsname">桂花普洱茶</view>
+									<view class="goodsweigh">
+										<text>净含量：180克</text>
+										<text>x1</text>
+									</view>
+									<view class="goodsprice">
+										<view class="goodstype">珍藏版</view>
+										<view class="goodsmoney">￥ 999.00</view>
+									</view>
+								</view>
+							</view>
+							<view class="pricebtn">
+								<view class="realprice">实付：￥1398.0</view>
+								<view class="btngroup">
+									<view class="btn btn1">取消订单</view>
+									<view class="btn btn2">去支付</view>								
+									<!-- <view class="btn btn3">再次购买</view>								
+									<view class="btn btn4">查看物流</view>
+									<view class="btn btn5">确认收货</view>								
+									<view class="btn btn6">删除订单</view>
+									<view class="btn btn7">立即评价</view> -->
+								</view>
 							</view>
 						</view>
 					</view>
-				</view>
+				</scroll-view>
 			</s-tab>
 		  <s-tab title="待支付">
 				<!-- <view class="noinfo">
@@ -300,10 +356,20 @@
 		},
 		data() {
 			return {
-				
+				 scrollTop: 0,
 			}
 		},
 		methods: {
+			upper: function(e) {
+					console.log(e)
+			},
+			lower: function(e) {
+					console.log(e)
+			},
+			scroll: function(e) {
+					console.log(e)
+					this.old.scrollTop = e.detail.scrollTop
+			},
 			handleChange(){},
 			change (index) {
 				console.log('change:', index);
@@ -318,8 +384,9 @@
 <style lang="less">	
 	.allorders{
 		/deep/.s-tabs{	
-			// height:111rpx;
-			background:rgba(22,30,73,1);
+			padding-left: 0;
+			// background:rgba(22,30,73,1);
+			background-color: #F4F4F4;
 		}
 		/deep/.s-tabs .s-tab-nav{
 			border-radius:28rpx;		
@@ -333,6 +400,18 @@
 		/deep/.s-tabs .s-tab-nav.is-active{
 			color:rgba(22,30,73,1)!important;
 			background-color: #fff;
+		}
+		/deep/.s-tabs-nav-wrap{
+			height: 40px;
+			position: fixed;
+			width: 750rpx;
+			top: 44px;
+			z-index: 99;
+			background: rgb(22, 30, 73);
+			padding-left: -28rpx;
+			.s-tab-nav-view{
+				padding-left:28rpx;
+			}
 		}
 		.noinfo{
 			margin-left: -28rpx;
@@ -348,7 +427,7 @@
 		}
 		.orderlist{
 			width:750rpx;
-			margin-left: -28rpx;
+			margin-left: 0rpx;
 			.orderli{
 				width: 100%;
 				background-color: #F4F4F4;

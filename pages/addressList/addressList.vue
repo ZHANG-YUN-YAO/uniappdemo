@@ -1,69 +1,42 @@
 <template>
 	<view class="addresslist">
-		<radio-group @change="radioChange">
-		<view class="address" v-for="(item, index) in list" :key="item.address_id">
-			<view class="name">
-				{{item.consignee}}  {{item.mobile}}
-			</view>
-			<view class="area">
-				<view class="areastatus">
-					{{item.province}}{{item.city}}{{item.district}}
-				</view>
-				<!-- <view class="use" @click="touse()" v-if="ifuse">
-					使用
-				</view> -->
-				<view class="use2" @click="nouse()" v-if="useok">
-					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view>
-			</view>			
-			<view class="btns">
-				<view class="btnfir">
-						<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
-						设为默认
-				</view>
-				<view class="btnrig">
-					<view class="dele" @click="dele(item.address_id)">
-						删除
+		<scroll-view scroll-y="true" >
+			<view>
+				<radio-group @change="radioChange">
+					<view class="address" v-for="(item, index) in list" :key="item.address_id">
+						<view class="name">
+							{{item.consignee}}  {{item.mobile}}
+						</view>
+						<view class="area">
+							<view class="areastatus">
+								{{item.province}}{{item.city}}{{item.district}}{{item.address}}
+							</view>
+							<!-- <view class="use" @click="touse()" v-if="ifuse">
+								使用
+							</view> -->
+							<view class="use2" @click="nouse()" v-if="useok">
+								<image class="useok" src="../../static/images/ok.png" mode=""></image>
+							</view>
+						</view>			
+						<view class="btns">
+							<view class="btnfir">
+									<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
+									设为默认
+							</view>
+							<view class="btnrig">
+								<view class="dele" @click="dele(item.address_id)">
+									删除
+								</view>
+								<view class="edit" @click="edit(item.address_id)">
+									修改
+								</view>
+							</view>
+						</view>
 					</view>
-					<view class="edit" @click="edit(item.address_id)">
-						修改
-					</view>
-				</view>
+				</radio-group>
 			</view>
-		</view>
-	</radio-group>
-<!-- 		<view class="address">
-			<view class="name">
-				王先生  13687653845
-			</view>
-			<view class="area">
-				<view class="areastatus">
-					北京市 海淀区 中关村南大街18号韦
-					伯时代A座603北京市 海淀区 中关村南大街18号韦
-					伯时代A座603
-				</view>
-				<view class="use" @click="touse()" v-if="ifuse">
-					使用
-				</view>
-				<view class="use2">
-					<image class="useok" src="../../static/images/ok.png" mode=""></image>
-				</view>
-			</view>			
-			<view class="btns">
-				<view class="btnfir">
-					<radio value="" checked/>
-					设为默认
-				</view>
-				<view class="btnrig">
-					<view class="dele">
-						删除
-					</view>
-					<view class="edit">
-						修改
-					</view>
-				</view>
-			</view>
-		</view> -->
+		</scroll-view>
+		
 		<view class="addarea" @click="addarea()">
 			<image class="addicon" src="../../static/images/add.png" mode=""></image>
 			添加收货地址
@@ -137,7 +110,7 @@
 								<button class="margin10px_0" type="">
 									>
 								</button>
-								<text class="read">{{city}}</text>
+								<text class="read">{{editcity}}</text>
 								<!-- <text class="read">{{detailinfo.province_name}}{{detailinfo.district_name}}{{detailinfo.city_name}}</text> -->
 								<QSpicker @showQSPicker="showQSPicker($event)" type="city" ref="QS_Picekr_city" mode="bottom" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
 								 @confirm="confirm($event)" />
@@ -171,10 +144,10 @@
 			pickRegions
 		},
 		computed:{
-				regionsName(){
-						// 转为字符串
-						return this.regions.map(item=>item.name).join(' ')
-				}
+			regionsName(){
+					// 转为字符串
+					return this.regions.map(item=>item.name).join(' ')
+			}
 		},
 		data() {
 			return {
@@ -197,7 +170,7 @@
 				phone:'',
 				address:'',
 				city:'',
-				editcity:'北京-朝阳区-大悦城',
+				editcity:'',
 				detailinfo:{}
 			};
 		},
@@ -205,6 +178,11 @@
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');
 				this.getinfo()
+			}else{
+				uni.showToast({
+					icon:'none',
+					title:'请登录'
+				})
 			}			
 		},
 		methods:{
@@ -283,7 +261,15 @@
 								this.name = res.data.result.consignee;
 								this.phone = res.data.result.mobile;								
 								this.address = res.data.result.address;
-								this.editcity = res.data.result.province_name
+								if(res.data.result.province){
+									this.editcity = res.data.result.province
+								}
+								if(res.data.result.city){
+									this.editcity = res.data.result.province+res.data.result.city
+								}
+								if(res.data.result.district){
+									this.editcity = res.data.result.province+res.data.result.city+res.data.result.district
+								}
 							}else{
 								uni.showToast({
 									icon: 'none',
@@ -352,6 +338,7 @@
 			confirm(res) {
 				let selearea = JSON.stringify(res).data;
 				this.city = JSON.parse(JSON.stringify(res)).data.label;
+				this.editcity = JSON.parse(JSON.stringify(res)).data.label;
 				this.select = JSON.parse(JSON.stringify(res)).value;
 				this.selename = JSON.parse(JSON.stringify(res)).data.label.split('-');
 			},			
@@ -365,16 +352,16 @@
 				uni.request({
 				    url: this.global_api+'/api/address/edit',
 				    data: {
-							consignee:this.name,
-				      mobile:this.phone,
-							// province:this.select[0],
-							// city:this.select[1],
-							// district:this.select[2],
-							address:this.address,
-							address_id:this.editid,							
-							province:this.selename[0],
-							city:this.selename[1],							
-							district:this.selename[2]
+						consignee:this.name,
+				        mobile:this.phone,
+						// province:this.select[0],
+						// city:this.select[1],
+						// district:this.select[2],
+						address:this.address,
+						address_id:this.editid,							
+						province:this.selename[0],
+						city:this.selename[1],							
+						district:this.selename[2]
 				    },
 				    method:'POST',
 				    header: {

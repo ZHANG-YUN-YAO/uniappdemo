@@ -14,7 +14,7 @@
 		<view class="main">
 			<scroll-view  scroll-y="true" :style="{ 'height':scrollHeight + 'px' }" @scroll="mainScroll" :scroll-into-view="scrollInto" scroll-with-animation="true">
 				<view class="item main-item" v-for="(item,index) in mainArray" :key="index" :id="'item-'+index">
-					<view class="goods" v-for="(item2,index2) in item.list" :key="index2">
+					<view class="goods" v-for="(item2,index2) in item.list" :key="index2" @click="goodsdetail">
 						<image src="/static/images/aa.png" mode=""></image>
 						<view class="goodsnav">
 							<view class="describe">中粮中茶牌 云南普洱茶 2019年冰岛铜庆...</view>
@@ -54,6 +54,12 @@
 			this.getListData();
 		},
 		methods: {
+			goodsdetail(){
+				uni.navigateTo({
+					// url:'../teaArticle/teaArticle'
+					url:'../gardenDetail/gardenDetail'
+				})
+			},
 			/* 获取列表数据 */
 			getListData(){
 				new Promise((resolve,reject)=>{

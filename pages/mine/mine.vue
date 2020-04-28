@@ -1,8 +1,8 @@
 <template>
 	<view class="mine">		
 		<view class="topbtn">
-			<view class="lef">
-				<image src="../../static/images/talk.png"  @click="infopage"mode=""></image>
+			<view class="lef" @click="infopage">
+				<image src="../../static/images/talk.png"mode=""></image>
 			</view>
 			<view class="rig">
 				<image src="../../static/images/btncar.png" @click="tocar" mode=""></image>
@@ -132,8 +132,24 @@
 		},
 		data() {
 			return {
-				
+				token:''
 			}
+		},
+		onShow() {
+			if(uni.getStorageSync('token')){
+				this.token = uni.getStorageSync('token');
+				// this.getinfo()
+			}else{
+				uni.showToast({
+					icon:'none',
+					title:'请登录'
+				})
+				setTimeout(function() {
+					uni.navigateTo({
+						url:'../registerLogin/passwordLogin/passwordLogin'
+					})
+				}, 1000);
+			}		
 		},
 		methods: {
 			toaddress(){

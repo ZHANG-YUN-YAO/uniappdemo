@@ -129,6 +129,9 @@
 									title: res.data.message
 								});
 								uni.setStorageSync('token',res.data.result.token);
+								uni.navigateBack({
+									delta:1
+								})
 							}else{
 								uni.showToast({
 									icon: 'none',

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "top-search": "/components/topSearch",
-    "top-tabbar": "/components/topTabbar"
-  }
-}

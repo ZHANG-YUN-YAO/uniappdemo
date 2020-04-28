@@ -55,8 +55,25 @@
 				</view>
 			</view>
 		</view>		
-		<view class="goodslist">
-			<view class="goodsli">
+		<view class="goodslist" v-for="(item,index) in list" :key="item.goods_id">
+			<view class="goodsli" @click="goodsdetail(item.sku_id)">
+				<template  v-if="item.video_path">
+					<view class="goodsvideo">
+					  <video id="myVideo" controls :poster="item.carousel_image[0]" :src="item.video_path" @error="videoErrorCallback" show-center-play-btn ></video>
+					</view>					
+				</template>	
+				<view class="goodspic" v-else>
+					<image :src="item.carousel_image[0]" mode=""></image>
+				</view>
+				<view class="goodsname">
+					<text class="goodslook1"></text>
+					<text class="nametext">{{item.title}}</text>
+					<text class="goodslook">品鉴</text>
+				</view>
+			</view>
+			
+			
+	<!-- 		<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods01.png" mode=""></image>
 				</view>
@@ -66,7 +83,7 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods02.png" mode=""></image>
 				</view>
@@ -76,7 +93,7 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods03.png" mode=""></image>
 				</view>
@@ -86,7 +103,7 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods01.png" mode=""></image>
 				</view>
@@ -96,7 +113,7 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods05.png" mode=""></image>
 				</view>
@@ -106,7 +123,7 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods06.png" mode=""></image>
 				</view>
@@ -116,9 +133,14 @@
 					<text class="goodslook">品鉴</text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
-					<image src="../../static/images/goods07.png" mode=""></image>
+					<template v-if="videosrc">
+						<view>
+						  <video id="myVideo" :src="videosrc" @error="videoErrorCallback" show-center-play-btn ></video>
+						</view>
+					</template>	
+					<image v-else src="../../static/images/goods07.png" mode=""></image>
 				</view>
 				<view class="goodsname namegoods7">
 					<text class="goodslook1"></text>
@@ -126,7 +148,7 @@
 					<text class="goodslook"></text>
 				</view>
 			</view>
-			<view class="goodsli">
+			<view class="goodsli" @click="goodsdetail()">
 				<view class="goodspic">
 					<image src="../../static/images/goods08.png" mode=""></image>
 				</view>
@@ -135,8 +157,18 @@
 					<text class="nametext">茶具</text>
 					<text class="goodslook"></text>
 				</view>
-			</view>
+			</view> -->
 		</view>
+<!-- 		<refresh ref="refresh" @refresh='$refs.list.refresh()'>			
+			<list class="goodslist" ref="list" :options="options" @success="$refs.refresh.endAfter()">
+				<template v-slot="{list}">
+					<view class="title">列表组件封装</view>
+					<view class="item" v-for="(item, index) in list" :key="index">
+						我是第{{index}}项
+					</view>
+				</template>
+			</list>
+		</refresh> -->
 		<view class="bottom" style="width: 100%;height: 1340rpx;position: relative;z-index: 2;top: -56rpx;">
 			<image style="width: 100%;height: 1340rpx;" src="../../static/indexbottom.png" mode=""></image>
 		</view>
@@ -146,10 +178,13 @@
 <script>
 	import topSearch from '../../components/topSearch.vue'
 	import topTabbar from '../../components/topTabbar.vue'
+	import chunleiVideo from '../../components/chunlei-video/chunlei-video.nvue'	
+
 	export default {
 		components:{
 			topSearch,
-			topTabbar
+			topTabbar,
+			chunleiVideo
 		},
 		onNavigationBarButtonTap(e) {
 			if(e.index==0){
@@ -160,22 +195,162 @@
 				});
 			}		
 		},
+		mounted() {
+			// 调用组件的request方法开始获取数据
+			// this.$refs.list.request()
+			
+		},
+		computed: {			
+			// 定义请求的配置，配置详情请查看文档说明
+			options() {
+				return {
+					url:'/test',
+					// url:this.global_api+'/api/goods/list',
+					params: {
+						
+					}
+				}
+				
+			}
+			
+		},
 		data() {
 			return {
-				title: 'Hello'
+				list:[],
+				page:1,
+				limit:5,
+				category_id:'',
+				indicatorDots: false,
+				autoplay: false,
+				interval: 2000,
+				duration: 500,
+				detail:{
+					// title:"推荐",
+					// subLable:"超划算",
+					list:[
+						{
+							id:1,
+							img:"../../static/images/4.png",
+							name:"全部"
+						},
+						{
+							id:2,
+							img:"../../static/images/5.png",
+							name:"红茶"
+						},
+						{
+							id:3,
+							img:"../../static/images/11.png",
+							name:"黑茶"
+						},
+						{
+							id:4,
+							img:"../../static/images/2.png",
+							name:"普洱"
+						},
+						{
+							id:5,
+							img:"../../static/images/4.png",
+							name:"普洱"
+						},
+						{
+							id:6,
+							img:"../../static/images/5.png",
+							name:"普洱"
+						}
+					]
+				},
+				config:{
+					more:true,
+					autoplay:false,
+					multiple:4,
+					shadow:true
+				},
+				videosrc:'../../static/videos/f2.mp4',  
+				poster:'../../static/images/swiper2 .png',//封面图片
+				title:"视频",
+				gDuration:60,
+				first:true,
+				second:false,
 			}
 		},
+		onReady: function(res) {
+				// #ifndef MP-ALIPAY
+				this.videoContext = uni.createVideoContext('myVideo')
+				// #endif
+		},
 		onLoad() {
-
+			this.getlist();
 		},
 		methods: {
-
+			getlist(){
+				uni.request({
+				    url: this.global_api+'/api/goods/list',
+				    data: {
+							page:1,
+							limit:5
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){
+							this.list = res.data.result.data
+							// if(res.data.result){
+							// 	this.objcart = res.data.result;
+							// }														
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
+			handleChange(){},
+			changeIndicatorDots(e) {
+					this.indicatorDots = !this.indicatorDots
+			},
+			changeAutoplay(e) {
+					this.autoplay = !this.autoplay
+			},
+			intervalChange(e) {
+					this.interval = e.target.value
+			},
+			durationChange(e) {
+					this.duration = e.target.value
+			},
+			swiperChange(current){
+				console.log(current);
+			},
+			tapFun(e){
+				console.log(e.type,e.id,e.index);
+			},
+			videoErrorCallback: function(e) {
+			// 	uni.showModal({
+			// 			content: e.target.errMsg,
+			// 			showCancel: false
+			// 	})
+			},
+			goodsdetail(val){
+				uni.navigateTo({
+					url:'../gardenDetail/gardenDetail?sku_id='+val
+				})
+			},
+			togoodsdetail(val){
+				uni.navigateTo({
+					url:'../gardenDetail/gardenDetail?goods_id='+val
+				})
+			},
 		}
 	}
 </script>
 
-<style lang="less">
-	.content {
+<style lang="scss" scoped>
+	// .content {
+		
 		.click-feedback{
 			display: flex;
 			justify-content: space-around;
@@ -335,7 +510,7 @@
 			width: 100%;
 			background: #876F70;
 			position: relative;
-			z-index: -2;
+			z-index: 9;
 			top: -32rpx;
 			padding-top: 33rpx;
 			.goodsli{
@@ -343,8 +518,23 @@
 				height: 576rpx;
 				background: #876F70;
 				padding-top: 28rpx;
+				position: relative;
+				z-index: 9;
+				.goodsvideo{
+					width:698rpx;
+					// width: 100%;
+					height:486rpx;
+					margin: 0 auto;
+					display: flex;
+					justify-content: center;
+					#myVideo{
+						width: 100%;
+						height: 100%;
+						border-radius: 12rpx;
+					}
+				}
 				.goodspic{
-					width:695rpx;
+					width:698rpx;
 					height:486rpx;
 					margin: 0 auto;
 					display: flex;
@@ -363,7 +553,12 @@
 					margin-top: -24rpx;
 					font-family: 经典繁毛楷;	
 					line-height: 110rpx;
+					display: flex;
 					.nametext{					
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+						flex:1;
 					}
 					.goodslook{					
 						width: 78rpx;
@@ -371,6 +566,7 @@
 						margin-right: 28rpx;
 						position: relative;
 						float: right;
+						
 					}
 					.goodslook1{					
 						width: 78rpx;
@@ -410,6 +606,6 @@
 				}
 			}
 		}
-	}
+	// }
  
 </style>

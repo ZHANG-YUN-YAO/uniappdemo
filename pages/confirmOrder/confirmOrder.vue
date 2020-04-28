@@ -77,10 +77,10 @@
 			</template>
 		</uni-list-item>
 		<uni-list-item @click="toseleaddress()" title="" thumb="../../static/images/didian.png" :showArrow="true">
-			<template >				
+			<template style="color:rgba(51,51,51,1)!important;font-size:24rpx;">				
 				<text>{{defaultaddress}}{{address}}</text>
 				<text>
-					哈哈   1553546598858
+					{{getname}}   {{getphone}}
 				</text>
 			</template>
 		</uni-list-item>
@@ -106,7 +106,8 @@
 			<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥{{ cntitems }} </text>			
 		</view>
 		<!-- 立即下单 -->
-		<view class="glance-shop-cart-create-order" @click="createorder">去支付</view>
+		<!-- <view class="glance-shop-cart-create-order" @click="createorder">去支付</view> -->
+		<view class="glance-shop-cart-create-order" @click="topay">去支付</view>
 	</view>
 	
 	<view class="toseleAddress" v-if="ifdisplay">
@@ -174,7 +175,7 @@
 								<button class="margin10px_0" type="">
 									>
 								</button>
-								<text class="read">{{editcity}}</text>
+								<text class="read">{{city}}</text>
 								<QSpicker @showQSPicker="showQSPicker($event)" type="city" ref="QS_Picekr_city" mode="top" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
 								 @confirm="confirm($event)" />
 						</view>
@@ -216,7 +217,7 @@
 								<button class="margin10px_0" type="">
 									>
 								</button>
-								<text class="read">{{city}}</text>
+								<text class="read">{{editcity}}</text>
 								<!-- <text class="read">{{detailinfo.province_name}}{{detailinfo.district_name}}{{detailinfo.city_name}}</text> -->
 								<QSpicker @showQSPicker="showQSPicker($event)" type="city" ref="QS_Picekr_city" mode="bottom" top="200px" pickerId="city_1" :dataSet="citySet" showReset @hideQSPicker="hideQSPicker($event)"
 								 @confirm="confirm($event)" />
@@ -245,6 +246,8 @@
 		components: {QSpicker,uniList,uniListItem,uniBadge},
 		data() {
 			return {
+				getname:'',
+				getphone:"",
 				ifdisplay:false,
 				regions:[],
 				defaultRegions:['广东省','广州市','番禺区'],
@@ -324,10 +327,12 @@
 			}
 		},
 		onLoad:function(option) {
+			
 			this.defaultsele = option.addressid;
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');	
-						this.getinfo()
+				this.getinfo()
+				this.confirminfo(option.sku_idarr)
 			}
 			this.getdefaultaddress();	
 			
@@ -401,6 +406,33 @@
 			}
 		},
 		methods:{
+			topay(){},
+			confirminfo(val){
+				uni.request({
+				    url: this.global_api+'/api/order/affirm',						
+				    data: {
+							sku_ids:val,
+							is_cart:1
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							})												
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
 			radioChange(event){
 					uni.request({
 					    url: this.global_api+'/api/address/set_def',
@@ -549,6 +581,8 @@
 							this.ifdisplay = false;
 							this.defaultaddress = val.province+val.city+val.district;
 							this.address = val.address;
+							this.getname = val.consignee;
+							this.getphone = val.mobile;
 						}
 					}
 				},
@@ -564,6 +598,7 @@
 				confirm(res) {
 					let selearea = JSON.stringify(res).data;
 					this.city = JSON.parse(JSON.stringify(res)).data.label;
+					this.editcity = JSON.parse(JSON.stringify(res)).data.label;
 					this.select = JSON.parse(JSON.stringify(res)).value;
 					this.selename = JSON.parse(JSON.stringify(res)).data.label.split('-');
 				},			
@@ -578,7 +613,7 @@
 					    url: this.global_api+'/api/address/edit',
 					    data: {
 								consignee:this.name,
-					      mobile:this.phone,
+								mobile:this.phone,
 								// province:this.select[0],
 								// city:this.select[1],
 								// district:this.select[2],
@@ -672,6 +707,8 @@
 							if(res.data.status==200){		
 								this.getaddress_id = res.data.result.address_id;
 								this.address = res.data.result.address;
+								this.getname = res.data.result.consignee;
+								this.getphone = res.data.result.mobile;
 								if(res.data.result.province){
 									this.defaultaddress = res.data.result.province
 								}
@@ -954,7 +991,7 @@
 	}
 </script>
 
-<style lang="less" sccoped>
+<style lang="scss" scoped>
 	.toseleAddress{
 		width: 100vw;
 		height: 100vh;

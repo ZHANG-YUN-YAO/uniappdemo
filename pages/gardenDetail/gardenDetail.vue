@@ -1,30 +1,35 @@
 <template>
 	<view class="gardendetail">
 		<view class="topvideo">
-			<!-- <template>
-				<div class="content">
-					<chunlei-video :title="title" :poster="poster" :autoplay="true" :srcList="videosrc" class="video" ref="video" color="#c93756" :gDuration="gDuration">				
-					</chunlei-video>
-				</div>
-			</template>	 -->
+			<!-- <template v-if="item.video_path">
+				<view class="goodsvideo">
+				  <video id="myVideo" :src="item.video_path" @error="videoErrorCallback" show-center-play-btn ></video>
+				</view>
+			</template>	
+			<view class="goodspic" v-else>
+				<image :src="item.carousel_image[0]" mode=""></image>
+			</view> -->
 			<template>
-				<view>
+				<view v-if="goodsinfo.video_path">
 					<view class="uni-padding-wrap uni-common-mt">
 						<view>
 							<!-- :poster="poster" controls videosrc-->
-							<video id="myVideo" src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20181126.mp4" @error="videoErrorCallback" show-center-play-btn ></video>
+							<video id="myVideo" :src="goodsinfo.video_path" @error="videoErrorCallback" show-center-play-btn ></video>
 						</view>
 					</view>
 				</view>
-			</template>
+				<view class="goodspic" v-else>
+					<!-- <image :src="goodsinfo.carousel_image[0]" style="width: 750rpx;" mode=""></image> -->
+				</view>
+			</template>			
 		</view>
 		<view class="gardenname"> 
-			冰岛、昔归、小户赛、曼岗、大雪山、小勐峨龙珠试喝 装8克小沱茶  共6颗  普洱生茶                            
+		{{goodsinfo.title}}
 		</view>
 		<view class="moneynum">
-			<view class="money">￥92</view>
+			<view class="money">￥{{goodsinfo.price?goodsinfo.price:0}}</view>
 			<text class="line">|</text>
-			<view class="num">库存36件</view>			
+			<view class="num">库存{{goodsinfo.stock?goodsinfo.stock:0}}件</view>			
 		</view>
 		<view class="goodstalk">
 			<view class="" style="display: flex;justify-content: space-between;">
@@ -42,7 +47,7 @@
 						<view class="" style="display: inline-flex;flex-direction: column;">
 							<view style="font-size:25rpx;font-family:PingFang SC;
 								font-weight:400;color:rgba(157,157,157,1);">项飞田</view>
-							<view class="" >
+							<view class="">
 								<image style="width: 19rpx;height: 19rpx;display: inline-block;" src="../../static/images/stary.png" mode=""></image>
 								<image style="width: 19rpx;height: 19rpx;display: inline-block;" src="../../static/images/stary.png" mode=""></image>
 								<image style="width: 19rpx;height: 19rpx;display: inline-block;" src="../../static/images/stary.png" mode=""></image>
@@ -76,10 +81,12 @@
 		<view class="goodsdetail">
 			<view class="" style="font-size:31rpx;
 				font-family:PingFang SC;font-weight:bold;
-				color:rgba(0,0,0,1);line-height:80rpx;text-align: left;">商品详情</view>
+				color:rgba(0,0,0,1);line-height:80rpx;text-align: left;">
+				商品详情
+			</view>
 			<view class="infodetails" style="font-size:25rpx;font-family:PingFang SC;
 				font-weight:400;color:rgba(101,101,101,1);line-height:21rpx;">
-				<view class="" style="height: 80rpx;line-height:80rpx;display: flex;justify-content: space-between;">
+				<!-- <view class="" style="height: 80rpx;line-height:80rpx;display: flex;justify-content: space-between;">
 					<view class="">叶底</view>
 					<view class="">肥厚有活性，叶脉清晰</view>						
 				</view>
@@ -121,9 +128,13 @@
 				<view class="" style="height: 80rpx;line-height:80rpx;display: flex;justify-content: center;">
 					查看更多作品属性			
 				</view>
+			 -->
+			 <view class="detai" style="width: 750rpx;margin: 0 auto;margin-left:-28rpx;padding-bottom: 60rpx;" v-html="goodsinfo.description">
+			 	
+			 </view>
 			</view>				
 		</view>
-		<view class="special">
+		<!-- <view class="special">
 			<view class="top">
 				<view class="word">特点</view>
 				<view class="word">/</view>							
@@ -143,10 +154,10 @@
 					<image style="width: 332rpx;height: 176rpx;display: inline-block;margin-top: 4rpx;" src="../../static/images/diss.png" mode=""></image>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="btns">
 			<view class="btnlef">客服</view>
-			<view class="btnmid">加入购物车</view>
+			<view class="btnmid" @click="addcar(goodsinfo.sku_id)">加入购物车</view>
 			<view class="btnrig">立即购买</view>
 		</view>
 	</view>
@@ -161,10 +172,81 @@
 		},
 		data() {
 			return {
-				
+				goodsinfo:{},
+				sku_id:''
 			};
 		},
+		onLoad(option) {
+			this.sku_id = option.sku_id;			
+			this.goodsdetail(option.sku_id);
+			if(uni.getStorageSync('token')){
+				this.token = uni.getStorageSync('token');				
+			}else{
+				// uni.showToast({
+				// 	icon:'none',
+				// 	title:'请登录'
+				// })
+				// setTimeout(function() {
+				// 	uni.navigateTo({
+				// 		url:'../registerLogin/passwordLogin/passwordLogin'
+				// 	})
+				// }, 1000);
+			}	
+		},
 		methods:{
+			goodsdetail(val){
+				uni.request({
+				    url: this.global_api+'/api/goods/info',
+				    data: {
+							sku_id:val
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+							
+						if(res.data.status==200){
+							this.goodsinfo = res.data.result;
+							// uni.showToast({
+							// 	icon: 'none',
+							// 	title: res.data.message
+							// });												
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
+			addcar(val){
+				uni.request({
+				    url: this.global_api+'/api/cart/insert',
+				    data: {
+							sku_id:val,
+							num:1
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});												
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
 			videoErrorCallback: function(e) {
 				// uni.showModal({
 				// 	content: e.target.errMsg,
@@ -249,8 +331,13 @@
 			}
 		}
 		.btns{
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			z-index: 9;
 			font-size:31rpx;
 			font-family:MicrosoftYaHei;
+			background:#fff;
 			color:rgba(52,52,52,1);
 			font-weight:bold;
 			width: 750rpx;

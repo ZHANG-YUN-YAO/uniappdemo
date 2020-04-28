@@ -24,6 +24,9 @@
 			height: 28rpx!important;
 		}
 	/* } */
+	.uni-video-cover-duration{
+		display: none;
+	}
 	.uni-radio-input-checked{
 		background-color: #EF104A!important;
 		border-color: #EF104A!important;

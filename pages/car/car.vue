@@ -11,38 +11,39 @@
 				<view style="height: 30px;width: 100%;font-size: 15px;line-height: 30px;text-align: center;">您的购物车为空，快去添加心爱的商品吧！</view>
 			</view>
 			
-			<!-- 购物车商品 -->
-			<view v-for="(thiscart,index) in cart" :key="index" style="background-color: #FFFFFF;">
+			<!-- 购物车商品 -->			 
+			<view v-for="(item,index) in cart" :key="index" style="background-color: #FFFFFF;">
+				
 				<!-- 营销标签 加购 换购或其他 -->
 				<!-- <view style="height: 30px;line-height: 30px; width: 100%;font-size: 15px;" v-if="thiscart.groupkey && cntitems >0" @click="clickgroupkey(thiscart.groupkey)">{{ thiscart.groupkey }}</view> -->
 				<!-- 按营销活动分组的商品 -->
-				<view v-for="(item,i) in thiscart.items" :key="i">
-					<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.id > -99">
+				<!-- <view v-for="(item,i) in cart" :key="i"> -->
+					<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.goods_id > -99">
 						<view class="glance-shop-cart-scrollx-items" style="display: inline-block;width: 100%;">
 							<view class="glance-shop-cart-scrollx-items-item">
 								<!-- 勾选 -->
 								<view style="width: 10%;height: 100%;background-color: #FFFFFF;">
 									<!-- 勾选 -->
-									<view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.id)"></view>
+									<view class="glance-shop-cart-scrollx-items-item-sel" :class="[ item.goods_id > 0 ? 'glance-shop-cart-itemselected-img':'glance-shop-cart-itemunselected-img']" @click="clickitemselected(item.goods_id)"></view>
 								</view>
 								<!-- 图片 -->
 								<view style="width: 30%;height: 100%;text-align:center;">
-									<image src="../../static/logo.png" mode="widthFix" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
+									<image :src="item.carousel_image[0]" mode="aspectFill" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
 								</view>
 								<!-- 描述 -->
 								<view class="glance-shop-cart-items-item-des">
 									<!-- 名称 -->
-									<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.name }}</view>
+									<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.title }}</view>
 									<!-- 属性 -->
 									<view class="glance-shop-cart-items-item-pq">
-										<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">净含量：{{ item.attributes }}克</view>
+										<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">库存：{{ item.stock }}{{item.goods_unit}}</view>
 										<view class="glance-shop-cart-items-item-opt">
 											<!-- 减数量 -->
-											<view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view>
+											<view class="glance-shop-cart-items-item-opt-quantity-minus" @click="num(item.goods_id,item.sku_id)">-</view>
 											<!-- 数量 -->
-											<view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view>
+											<view class="glance-shop-cart-items-item-opt-quantity">{{ item.num }}</view>
 											<!-- 加数量 -->
-											<view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view>
+											<view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.goods_id,item.sku_id)">+</view>
 										</view>
 									</view>
 									<!-- 价格 & 数量-->
@@ -58,13 +59,14 @@
 										<!-- 数量操作 -->
 										<view class="glance-shop-cart-items-item-opt">
 											<!-- 减数量 -->
-											<!-- <view class="glance-shop-cart-items-item-opt-quantity-minus" @click="minusitem(item.id)">-</view> -->
+											<!-- <view class="glance-shop-cart-items-item-opt-quantity-minus" @click="num(item.id)">-</view> -->
 											<!-- 数量 -->
 											<!-- <view class="glance-shop-cart-items-item-opt-quantity">{{ item.quantity }}</view> -->
 											<!-- 加数量 -->
 											<!-- <view class="glance-shop-cart-items-item-opt-quantity-plus" @click="plusitem(item.id)">+</view> -->
 											<view class="glance-shop-cart-total-cnt">
-												<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);float: right;">￥ {{ item.price }} </text>	
+												<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);float: right;display: block;
+												margin-top: 40rpx;">￥ {{ item.price }} </text>	
 											</view>
 										</view>
 									</view>
@@ -73,12 +75,12 @@
 						</view>
 						
 						<!-- 删除 -->
-						<view class="glance-shop-cart-del" @click="clickdel(item.id)">
+						<view class="glance-shop-cart-del" @click="clickdel(item.goods_id)">
 							<view class="glance-shop-cart-del-img"></view>
 						</view>
 
 					</scroll-view>
-				</view>
+				<!-- </view> -->
 				<view style="height: 10px;background-color: #F5F5F5;"></view>
 			</view>
 			<!-- 购买此商品的人还买了 -->
@@ -99,12 +101,10 @@
 			
 			<!-- 总数量 -->
 			<view class="glance-shop-cart-total-cnt" style="    display: inline-block;
-    position: relative;
-    top: -30rpx;
-    left: 40px;">已选：( {{ cntitems }} )</view>
+				position: relative;top: -30rpx;left: 40px;">已选：( {{ cntitems }} )</view>
 			<view class="glance-shop-cart-total-cnt" style="position:relative;left:10rpx;top: -10px;">
 				<text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);">合计</text>
-				<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥ {{ cntitems }} </text>				
+				<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥ {{ totalamount }} </text>				
 			</view>
 			
 			<!-- 总金额 -->
@@ -123,6 +123,8 @@
 	export default {
 		data() {
 			return {
+				token:'',
+				objcart:[],
 				// 全选 默认全选
 				isselectedall:true,
 				// scroll position
@@ -144,64 +146,69 @@
 			};
 		},
 		onLoad:function() {
+			if(uni.getStorageSync('token')){
+				this.token = uni.getStorageSync('token');	
+				this.getinfo()
+			}
 			// 从缓存或服务端获取到购物车商品 这里示例数据如下：
-			let objcart = [{'groupkey':'另加10元任意换购>>',
-											'items':[
-												{'id':1,
-												'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-												'imgsrc':'../../static/logo.png',
-												'href':'点击了商品请跳转至商品详情页',
-												'attributes':'120',
-												'quantity':5,
-												'price':1
-												},
-												{'id':2,
-												'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-												'imgsrc':'../../static/logo.png',
-												'href':'点击了商品请跳转至商品详情页',
-												'attributes':'160',
-												'quantity':8,
-												'price':1,
-												},
-												{'id':6,
-												'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-												'imgsrc':'../../static/logo.png',
-												'href':'点击了商品请跳转至商品详情页',
-												'attributes':'250',
-												'quantity':8,
-												'price':1,
-												},
-												{'id':7,
-												'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-												'imgsrc':'../../static/logo.png',
-												'href':'点击了商品请跳转至商品详情页',
-												'attributes':'185',
-												'quantity':8,
-												'price':1,
-												}]},
-												{'groupkey':'',
-												'items':[
-													{'id':3,
-													'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-													'imgsrc':'../../static/logo.png',
-													'href':'点击了商品请跳转至商品详情页',
-													'attributes':'545',
-													'quantity':3,
-													'price':1,
-													'marketinglabel':'',
-													},
-													{'id':4,
-													'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
-													'imgsrc':'../../static/logo.png',
-													'href':'点击了商品请跳转至商品详情页',
-													'attributes':'445',
-													'quantity':9,
-													'price':1}],
-												}]
+			this.objcart = [
+				{'groupkey':'另加10元任意换购>>',
+				'items':[
+					{'id':1,//goods_id
+					'name':'网易智造苹果快充数据线网易智造苹果快充数据线',//name
+					'imgsrc':'../../static/logo.png',//image_url
+					'href':'点击了商品请跳转至商品详情页',
+					'attributes':'120',//suttle
+					'quantity':5,//num
+					'price':1//price
+					},
+					{'id':2,
+					'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
+					'imgsrc':'../../static/logo.png',
+					'href':'点击了商品请跳转至商品详情页',
+					'attributes':'160',
+					'quantity':8,
+					'price':1,
+					},
+					{'id':6,
+					'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
+					'imgsrc':'../../static/logo.png',
+					'href':'点击了商品请跳转至商品详情页',
+					'attributes':'250',
+					'quantity':8,
+					'price':1,
+					},
+					{'id':7,
+					'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
+					'imgsrc':'../../static/logo.png',
+					'href':'点击了商品请跳转至商品详情页',
+					'attributes':'185',
+					'quantity':8,
+					'price':1,
+					}]},
+					{'groupkey':'',
+					'items':[
+						{'id':3,
+						'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
+						'imgsrc':'../../static/logo.png',
+						'href':'点击了商品请跳转至商品详情页',
+						'attributes':'545',
+						'quantity':3,
+						'price':1,
+						'marketinglabel':'',
+						},
+						{'id':4,
+						'name':'网易智造苹果快充数据线网易智造苹果快充数据线',
+						'imgsrc':'../../static/logo.png',
+						'href':'点击了商品请跳转至商品详情页',
+						'attributes':'445',
+						'quantity':9,
+						'price':1}],
+					}]
 
 			// 这里示例数据对象存入缓存
 			try {
-				uni.setStorageSync('cart', objcart);
+				uni.setStorageSync('cart', this.cart);
 			} catch (e) {
 				// error
 			}
@@ -219,12 +226,14 @@
 			// console.log(this.cart)
 			// 默认勾选购物车所有商品 合计金额 合计数量
 			for (let i = 0; i < this.cart.length; i++) {
-				for (let k = 0; k < this.cart[i].items.length; k++) {
+				// for (let k = 0; k < this.cart[i].items.length; k++) {
 					// 总金额 
-					this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+					this.totalamount = Number(this.totalamount) + Number(this.cart[i].price) * Number(this.cart[i].num)
+					console.log(this.totalamount)
 					// 总数量
-					this.cntitems = this.cntitems + this.cart[i].items[k].quantity
-				}
+					this.cntitems = Number(this.cntitems) + Number(this.cart[i].num)
+					console.log(this.cntitems)
+				// }
 			}
 			this.totalamount = this.fmamount(this.totalamount)
 		},
@@ -236,8 +245,7 @@
 		onPullDownRefresh() {
 			setTimeout(function () {
 				uni.stopPullDownRefresh();
-			}, 1000);
-		
+			}, 1000);		
 		},
 		computed:{},
 			// 关闭购物车前 存入缓存
@@ -249,7 +257,98 @@
 					// error
 			}
 		},
+		onNavigationBarButtonTap(e) {
+			if(e.index==0){
+				//清空购物车
+				this.clearcar();
+			}else if(e.index==1){
+			}		
+		},
 		methods:{
+			getinfo(){				
+				uni.request({
+				    url: this.global_api+'/api/cart/list',
+				    data: {
+							
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){
+							if(res.data.result){
+								// this.objcart.items = res.data.result;
+								this.cart = res.data.result;
+								// console.log(this.objcart)
+								let num =0;
+								let total = 0;
+								for(let i=0;i<this.cart.length;i++){
+									 num +=Number( this.cart[i].num)								 
+									 total +=Number( this.cart[i].num)*Number( this.cart[i].price)
+								}
+								this.cntitems = num
+								this.totalamount = total
+							}														
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
+			//修改商品数量
+			editnum(sku_id,num){
+				console.log(sku_id,num)
+				uni.request({
+				    url: this.global_api+'/api/cart/list',
+				    data: {
+							sku_id:sku_id,
+							num:num
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){
+							if(res.data.result){
+								// this.objcart.items = res.data.result;
+								this.cart = res.data.result;
+								// console.log(this.objcart)
+							}														
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
+			clearcar(){
+				uni.request({
+				    url: this.global_api+'/api/cart/clear',
+				    data: {
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){			
+							this.getinfo();													
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
 			// scroll x 归位
 			scrollhoming(){
 				this.scrollposition = this.scrollposition -1
@@ -267,36 +366,66 @@
 				if (this.isselectedall){
 					if (this.cart){
 						for (var i = 0; i < this.cart.length; i++) {
-							for (let k = 0; k < this.cart[i].items.length; k++) {
+							// for (let k = 0; k < this.cart[i].items.length; k++) {
 								// 未选的则选
-								if (this.cart[i].items[k].id < 0){
-									this.cart[i].items[k].id = - this.cart[i].items[k].id
+								if (this.cart[i].goods_id < 0){
+									this.cart[i].goods_id = - this.cart[i].goods_id
 									// 更新总数量
-									this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+									this.cntitems = Number(this.cntitems) + Number(this.cart[i].num)
 									// 更新总金额
-									this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+									this.totalamount = this.totalamount + this.cart[i].price * this.cart[i].num
 									this.totalamount = this.fmamount(this.totalamount)
 								}
-							}
+							// }
 						}
+						
+						// for (var i = 0; i < this.cart.length; i++) {
+						// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+						// 		// 未选的则选
+						// 		if (this.cart[i].items[k].id < 0){
+						// 			this.cart[i].items[k].id = - this.cart[i].items[k].id
+						// 			// 更新总数量
+						// 			this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+						// 			// 更新总金额
+						// 			this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+						// 			this.totalamount = this.fmamount(this.totalamount)
+						// 		}
+						// 	}
+						// }
 					}
 				}else{
 					// 全不选
 					// this.cntitems = 0
 					if (this.cart){
 						for (var i = 0; i < this.cart.length; i++) {
-							for (let k = 0; k < this.cart[i].items.length; k++) {
+							// for (let k = 0; k < this.cart[i].items.length; k++) {
 								// 累计总金额和总数量 勾选时加
-								if (this.isselected(this.cart[i].items[k].id)){
-									this.cart[i].items[k].id = - this.cart[i].items[k].id
+								if (this.isselected(this.cart[i].goods_id)){
+									this.cart[i].goods_id = - this.cart[i].goods_id
 									// 更新总数量
-									this.cntitems = this.cntitems - this.cart[i].items[k].quantity
+									this.cntitems = Number(this.cntitems) - Number(this.cart[i].num)
 									// 更新总金额
-									this.totalamount = this.totalamount - this.cart[i].items[k].price * this.cart[i].items[k].quantity
+									this.totalamount = this.totalamount - this.cart[i].price * this.cart[i].num
 									this.totalamount = this.fmamount(this.totalamount)
 								}
-							}
+							// }
 						}
+						
+						
+						
+						// for (var i = 0; i < this.cart.length; i++) {
+						// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+						// 		// 累计总金额和总数量 勾选时加
+						// 		if (this.isselected(this.cart[i].items[k].id)){
+						// 			this.cart[i].items[k].id = - this.cart[i].items[k].id
+						// 			// 更新总数量
+						// 			this.cntitems = this.cntitems - this.cart[i].items[k].quantity
+						// 			// 更新总金额
+						// 			this.totalamount = this.totalamount - this.cart[i].items[k].price * this.cart[i].items[k].quantity
+						// 			this.totalamount = this.fmamount(this.totalamount)
+						// 		}
+						// 	}
+						// }
 					}
 				}
 			},
@@ -304,15 +433,15 @@
 			clickitemselected(id){
 				if (this.cart){
 					for (var i = 0; i < this.cart.length; i++) {
-						for (let k = 0; k < this.cart[i].items.length; k++) {
-							if (this.cart[i].items[k].id == id){
-								this.cart[i].items[k].id = - this.cart[i].items[k].id
+						// for (let k = 0; k < this.cart[i].items.length; k++) {
+							if (this.cart[i].goods_id == id){
+								this.cart[i].goods_id = - this.cart[i].goods_id
 								// 累计总金额和总数量 勾选时加
-								if (this.isselected(this.cart[i].items[k].id)){
+								if (this.isselected(this.cart[i].goods_id)){
 									// 更新总数量
-									this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+									this.cntitems = Number(this.cntitems) + Number(this.cart[i].num)
 									// 更新总金额
-									this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+									this.totalamount = Number(this.totalamount) + Number(this.cart[i].price) * Number(this.cart[i].num)
 									this.totalamount = this.fmamount(this.totalamount)
 									// 最后已勾选则 全选
 									if (this._isselectedall()){
@@ -321,16 +450,45 @@
 								}else{
 									// 取消勾选时减
 									// 更新总数量
-									this.cntitems = this.cntitems - this.cart[i].items[k].quantity
+									this.cntitems = Number(this.cntitems) - Number(this.cart[i].num)
 									// 更新总金额
-									this.totalamount = this.totalamount - this.cart[i].items[k].price * this.cart[i].items[k].quantity
+									this.totalamount = Number(this.totalamount) - Number(this.cart[i].price) * Number(this.cart[i].num)
 									this.totalamount = this.fmamount(this.totalamount)
 									this.isselectedall = false
 								}
 								return
 							}
-						}
+						// }
 					}
+					
+					// for (var i = 0; i < this.cart.length; i++) {
+					// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+					// 		if (this.cart[i].items[k].id == id){
+					// 			this.cart[i].items[k].id = - this.cart[i].items[k].id
+					// 			// 累计总金额和总数量 勾选时加
+					// 			if (this.isselected(this.cart[i].items[k].id)){
+					// 				// 更新总数量
+					// 				this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+					// 				// 更新总金额
+					// 				this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+					// 				this.totalamount = this.fmamount(this.totalamount)
+					// 				// 最后已勾选则 全选
+					// 				if (this._isselectedall()){
+					// 					this.isselectedall = true
+					// 				}
+					// 			}else{
+					// 				// 取消勾选时减
+					// 				// 更新总数量
+					// 				this.cntitems = this.cntitems - this.cart[i].items[k].quantity
+					// 				// 更新总金额
+					// 				this.totalamount = this.totalamount - this.cart[i].items[k].price * this.cart[i].items[k].quantity
+					// 				this.totalamount = this.fmamount(this.totalamount)
+					// 				this.isselectedall = false
+					// 			}
+					// 			return
+					// 		}
+					// 	}
+					// }
 				}
 			},
 			// 点击删除
@@ -364,60 +522,156 @@
 				
 			},
 			// 减数量
-			minusitem(itemid){
+			num(itemid,sku_id){
 				for (let i = 0; i < this.cart.length; i++) {
-					for (let k = 0; k < this.cart[i].items.length; k++) {
-						if ((this.cart[i].items[k].id == itemid) && (this.cart[i].items[k].quantity > 0)) {
+					// for (let k = 0; k < this.cart[i].items.length; k++) {
+						if ((this.cart[i].goods_id == itemid) && (this.cart[i].num > 0)) {
 							// 更新item数量
-							this.cart[i].items[k].quantity = this.cart[i].items[k].quantity - 1
+							this.cart[i].num = this.cart[i].num - 1
+							uni.request({
+							    url: this.global_api+'/api/cart/update',
+							    data: {
+										sku_id:sku_id,
+										num:this.cart[i].num
+							    },
+							    method:'POST',
+							    header: {
+							      'User-Token': this.token //请求头信息
+							    },
+							    success: (res) => {
+									if(res.data.status==200){
+										console.log(-1)														
+									}else{
+										uni.showToast({
+											icon: 'none',
+											title: res.data.message
+										});					
+									}						
+							   }
+							});
 							// 勾选状态下更新数量和金额
-							if (this.isselected(this.cart[i].items[k].id)){
+							if (this.isselected(this.cart[i].goods_id)){
 								// 更新总数量
 								this.updatecntitems(-1)
 								// 更新总金额
-								this.updatetotalamt(-this.cart[i].items[k].price)
+								this.updatetotalamt((-1)*Number(this.cart[i].price))
 							}
 							// 数量减为0时 不勾选
-							if (this.cart[i].items[k].quantity == 0){
-								this.cart[i].items[k].id = this._unselected(this.cart[i].items[k].id)
+							if (this.cart[i].num == 0){
+								this.cart[i].goods_id = this._unselected(this.cart[i].goods_id)
 							}
 							return
 						}
 					}
-				}
+				
+				
+				
+				// for (let i = 0; i < this.cart.length; i++) {
+				// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+				// 		if ((this.cart[i].items[k].goods_id == itemid) && (this.cart[i].items[k].num > 0)) {
+				// 			// 更新item数量
+				// 			this.cart[i].items[k].num = this.cart[i].items[k].num - 1
+				// 			// 勾选状态下更新数量和金额
+				// 			if (this.isselected(this.cart[i].items[k].goods_id)){
+				// 				// 更新总数量
+				// 				this.updatecntitems(-1)
+				// 				// 更新总金额
+				// 				this.updatetotalamt(-this.cart[i].items[k].price)
+				// 			}
+				// 			// 数量减为0时 不勾选
+				// 			if (this.cart[i].items[k].num == 0){
+				// 				this.cart[i].items[k].goods_id = this._unselected(this.cart[i].items[k].goods_id)
+				// 			}
+				// 			return
+				// 		}
+				// 	}
+				// }
 			},
 			// 加数量
-			plusitem(itemid){
-				for (let i = 0; i < this.cart.length; i++) {
-					for (let k = 0; k < this.cart[i].items.length; k++) {
+			plusitem(itemid,sku_id){				
+				for (let i = 0; i < this.cart.length; i++) {					
+					// for (let k = 0; k < this.cart[i].items.length; k++) {
 						// 这里需要进行超卖控制 商品可售卖的数量 这里面示例可售卖100
-						if ((this.cart[i].items[k].id == itemid) && (this.cart[i].items[k].quantity < 100)){
+						if ((this.cart[i].goods_id == itemid) && (this.cart[i].num < 100)){
 							// 更新item数量
-							this.cart[i].items[k].quantity = this.cart[i].items[k].quantity +1
+							this.cart[i].num = Number(this.cart[i].num) +1;
+							uni.request({
+							    url: this.global_api+'/api/cart/update',
+							    data: {
+										sku_id:sku_id,
+										num:this.cart[i].num
+							    },
+							    method:'POST',
+							    header: {
+							      'User-Token': this.token //请求头信息
+							    },
+							    success: (res) => {
+									if(res.data.status==200){
+										console.log(1)														
+									}else{
+										uni.showToast({
+											icon: 'none',
+											title: res.data.message
+										});					
+									}						
+							   }
+							});
 							// 勾选状态下更新数量和金额
-							if (this.isselected(this.cart[i].items[k].id)){
+							if (this.isselected(this.cart[i].goods_id)){
 								// 更新总数量
 								this.updatecntitems(1)
 								// 更新总金额
-								this.updatetotalamt(this.cart[i].items[k].price)
+								this.updatetotalamt(Number(this.cart[i].price))
 							} else {
 								// 加数量时未勾选则 勾选
-								this.cart[i].items[k].id = this._selected(this.cart[i].items[k].id)
+								this.cart[i].goods_id = this._selected(this.cart[i].goods_id)
 								// 更新总数量、
-								this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+								this.cntitems = Number(this.cntitems) + Number(this.cart[i].num)
 								// 更新总金额
-								this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+								this.totalamount = Number(this.totalamount) + Number(this.cart[i].price) * Number(this.cart[i].num)
 								this.totalamount = this.fmamount(this.totalamount)
 							}
-						
+							
 							// 最后已勾选则 全选
 							if (this._isselectedall()){
 								this.isselectedall = true
 							}
 							return
 						}
-					}
+					// }
 				}
+				
+				
+				// for (let i = 0; i < this.cart.length; i++) {
+				// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+				// 		// 这里需要进行超卖控制 商品可售卖的数量 这里面示例可售卖100
+				// 		if ((this.cart[i].items[k].id == itemid) && (this.cart[i].items[k].quantity < 100)){
+				// 			// 更新item数量
+				// 			this.cart[i].items[k].quantity = this.cart[i].items[k].quantity +1
+				// 			// 勾选状态下更新数量和金额
+				// 			if (this.isselected(this.cart[i].items[k].id)){
+				// 				// 更新总数量
+				// 				this.updatecntitems(1)
+				// 				// 更新总金额
+				// 				this.updatetotalamt(this.cart[i].items[k].price)
+				// 			} else {
+				// 				// 加数量时未勾选则 勾选
+				// 				this.cart[i].items[k].id = this._selected(this.cart[i].items[k].id)
+				// 				// 更新总数量、
+				// 				this.cntitems = this.cntitems + this.cart[i].items[k].quantity
+				// 				// 更新总金额
+				// 				this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+				// 				this.totalamount = this.fmamount(this.totalamount)
+				// 			}
+						
+				// 			// 最后已勾选则 全选
+				// 			if (this._isselectedall()){
+				// 				this.isselectedall = true
+				// 			}
+				// 			return
+				// 		}
+				// 	}
+				// }
 			},
 			// 点击商品href
 			clickitemhref(str){
@@ -434,13 +688,13 @@
 			},
 			// 更新合计金额
 			updatetotalamt(amt){
-				this.totalamount = this.totalamount + amt
+				this.totalamount = Number(this.totalamount) + amt
 				this.totalamount = this.fmamount(this.totalamount)
 				
 			},
 			// 更新合计数量
 			updatecntitems(cnt){
-				this.cntitems = this.cntitems + cnt
+				this.cntitems = Number(this.cntitems) + cnt
 			},
 			// 格式化金额
 			fmamount(amt){
@@ -461,13 +715,23 @@
 			// 是否全部已勾选
 			_isselectedall(){
 				for (let i = 0; i < this.cart.length; i++) {
-					for (let k = 0; k < this.cart[i].items.length; k++) {
+					// for (let k = 0; k < this.cart[i].items.length; k++) {
 						// 存在一个未勾选 则未全选
-						if (this.cart[i].items[k].id < 0 ){
+						if (this.cart[i].goods_id < 0 ){
 							return false
 						}
-					}
+					// }
 				}
+				
+				
+				// for (let i = 0; i < this.cart.length; i++) {
+				// 	for (let k = 0; k < this.cart[i].items.length; k++) {
+				// 		// 存在一个未勾选 则未全选
+				// 		if (this.cart[i].items[k].id < 0 ){
+				// 			return false
+				// 		}
+				// 	}
+				// }
 				return true
 			},
 			// 是否全部删除
@@ -488,27 +752,74 @@
 				return '营销活动页面'
 			},
 			// 生成订单
+			// createorder(){
+			// 	uni.navigateTo({
+			// 		url:this.global_api+'/api/order/affirm'
+			// 	})
+			// 	// 合计金额大于0 创建订单
+			// 	if (this.totalamount == 0){
+			// 		uni.showModal({
+			// 			content: '请选择下单的商品！'
+			// 		})
+			// 	}else{
+			// 		// 1、处理购物车内已选择的订单生成商品
+			// 		for (let i = 0; i < this.cart.length; i++) {
+			// 			for (let k = 0; k < this.cart[i].items.length; k++) {
+			// 				// item id 大于0 的是勾选的
+			// 				if (this.cart[i].items > 0){
+			// 					//这里的item 是下单的
+			// 				}
+			// 			}
+			// 		}
+			// 		// 2、生成订单成功后 删除购物车内已生成订单的商品
+			// 	}
+			// }
 			createorder(){
-				uni.navigateTo({
-					url:'../confirmOrder/confirmOrder'
-				})
-				// 合计金额大于0 创建订单
-				if (this.totalamount == 0){
-					uni.showModal({
-						content: '请选择下单的商品！'
-					})
-				}else{
-					// 1、处理购物车内已选择的订单生成商品
-					for (let i = 0; i < this.cart.length; i++) {
-						for (let k = 0; k < this.cart[i].items.length; k++) {
+				
+				var sku_idarr = [];
+					if (this.totalamount == 0){
+						uni.showModal({
+							content: '请选择下单的商品！'
+						})
+					}else{
+						// 1、处理购物车内已选择的订单生成商品
+						for (let i = 0; i < this.cart.length; i++) {
 							// item id 大于0 的是勾选的
-							if (this.cart[i].items > 0){
+							if (this.cart[i].goods_id > 0){
 								//这里的item 是下单的
+								sku_idarr.push(this.cart[i].sku_id)
 							}
 						}
+						// 2、生成订单成功后 删除购物车内已生成订单的商品
 					}
-					// 2、生成订单成功后 删除购物车内已生成订单的商品
-				}
+					var sku_ids = sku_idarr.toString()
+						uni.navigateTo({
+							url:'../confirmOrder/confirmOrder?sku_idarr='+sku_ids
+						})
+				// uni.request({
+				//     url: this.global_api+'/api/order/affirm',						
+				//     data: {
+				// 			sku_ids:sku_idarr.toString(),
+				// 			is_cart:1
+				//     },
+				//     method:'POST',
+				//     header: {
+				//       'User-Token': this.token //请求头信息
+				//     },
+				//     success: (res) => {
+				// 		if(res.data.status==200){
+				// 			uni.showToast({
+				// 				icon: 'none',
+				// 				title: res.data.message
+				// 			})												
+				// 		}else{
+				// 			uni.showToast({
+				// 				icon: 'none',
+				// 				title: res.data.message
+				// 			});					
+				// 		}						
+				//    }
+				// });
 			}
 		}
 	}
@@ -629,6 +940,8 @@
 		line-height:40rpx;
 		font-size: 13px;
 		margin-left: 0rpx;
+		position: relative;
+		right: 22px;
 	}
 	
 	// 合计金额样式
