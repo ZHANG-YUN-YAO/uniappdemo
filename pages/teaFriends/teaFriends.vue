@@ -243,7 +243,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.teaFriend{
 		.tab__item{
 			text-align: left;

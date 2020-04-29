@@ -42,7 +42,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.uni-badge{
 		padding: 0!important;
 		width: 22rpx!important;

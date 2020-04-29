@@ -257,7 +257,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.gardendetail{
 		uni-video {
 				width: 100%!important;

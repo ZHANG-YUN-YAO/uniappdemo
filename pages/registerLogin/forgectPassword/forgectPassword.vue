@@ -271,7 +271,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.forgectpassword{
 		text-align: center;
 		.toptitle{

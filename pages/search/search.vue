@@ -86,7 +86,7 @@
 	}
 </script>
 
-<style lang="less">	
+<style lang="scss">	
 	.search{
 		.searchWapper{		
 			background-color: #161E49;		

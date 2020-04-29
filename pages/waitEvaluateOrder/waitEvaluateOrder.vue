@@ -129,7 +129,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.waitevaluateorder{
 		.address{
 			height: 112rpx;

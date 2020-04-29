@@ -118,7 +118,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.waitsendgoodsorder{
 		.address{
 			height: 112rpx;

@@ -181,7 +181,7 @@
 	}
 </script>
 
-<style lang="less">	
+<style lang="scss">	
 	.mine{
 		padding: 28rpx;
 		.topbtn{

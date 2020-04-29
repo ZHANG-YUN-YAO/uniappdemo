@@ -215,7 +215,7 @@
 	}
 </script>
 
-<style lang="less">	
+<style lang="scss">	
 	.sortsearch{
 		/deep/.s-tabs{
 			width: 750rpx!important;

@@ -145,7 +145,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.teaGarden{	
 		.uni-padding-wrap{
 			padding: 28rpx;		

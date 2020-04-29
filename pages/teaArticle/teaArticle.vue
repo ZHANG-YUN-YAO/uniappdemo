@@ -58,9 +58,10 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.teaarticle{
 		padding: 42rpx 28rpx;
+		
 		.articletitle{
 			width:693rpx;
 			font-size:35rpx;

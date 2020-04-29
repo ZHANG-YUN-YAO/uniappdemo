@@ -235,7 +235,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.codelogin{
 		text-align: center;
 		.toptitle{

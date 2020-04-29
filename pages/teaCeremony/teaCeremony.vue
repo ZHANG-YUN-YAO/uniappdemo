@@ -395,7 +395,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.teaCaremoney{	
 		background-color: #161E49;
 		uni-video {

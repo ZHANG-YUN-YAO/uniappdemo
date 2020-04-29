@@ -121,7 +121,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.waitrecesiveorder{
 		.address{
 			height: 112rpx;

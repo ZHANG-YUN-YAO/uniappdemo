@@ -107,7 +107,7 @@
 		}
 	}
 </script>
-<style lang="less">
+<style lang="scss">
 	.addevaluate{
 		padding:16rpx 28rpx 16rpx 28rpx;
 		margin-top: 28rpx;

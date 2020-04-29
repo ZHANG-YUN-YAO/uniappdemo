@@ -108,7 +108,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="scss">
 	.waitpayorder{
 		.address{
 			height: 112rpx;

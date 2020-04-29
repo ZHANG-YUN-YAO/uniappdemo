@@ -381,7 +381,7 @@
 	}
 </script>
 
-<style lang="less">	
+<style lang="scss">	
 	.allorders{
 		/deep/.s-tabs{	
 			padding-left: 0;
