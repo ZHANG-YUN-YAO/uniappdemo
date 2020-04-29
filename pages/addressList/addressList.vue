@@ -371,7 +371,7 @@
 							if(res.data.status==200){								
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
 								this.ifedit = false;
 								this.getinfo();
@@ -414,7 +414,7 @@
 							if(res.data.status==200){								
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
 								this.add = false;
 								this.getinfo();
@@ -433,6 +433,7 @@
 
 <style lang="scss">
 	.addresslist{
+		padding-bottom:100rpx;
 		.uni-input-placeholder{
 			color: #BABDCF;
 			font-size:28rpx!important;

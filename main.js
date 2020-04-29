@@ -14,6 +14,7 @@ Vue.prototype.global_api = 'http://api.shhcha.com';
 
 Vue.prototype.global_url = url;
 Vue.prototype.seledefaultaddress = {};
+Vue.prototype.sku_idsarr = [];//购物车里的skuids
 
 export default {
   components: {

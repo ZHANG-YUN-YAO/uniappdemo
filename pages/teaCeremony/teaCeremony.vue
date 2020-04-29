@@ -562,11 +562,11 @@
 					}
 				}
 				.bodybottom{
-					width:750rpx;
+					// width:750rpx;
 					background:rgba(255,255,255,1);
 					border-top-left-radius:49rpx;
 					border-top-right-radius:49rpx;
-					margin-left: -28rpx;
+					// margin-left: -28rpx;
 					padding-bottom:80rpx;
 					.water{
 						font-size:32rpx;
@@ -583,13 +583,16 @@
 							image{
 								width: 694rpx;
 								height: 389rpx;
+								margin-left: -28rpx;
 							}
 						}		
 						.navbody{
 							border-bottom-left-radius:49rpx;
 							border-bottom-right-radius:49rpx;
 							background-color: #161E49;
-							margin-top: -12rpx;						
+							margin-top: -12rpx;	
+							width: 694rpx;
+							margin-left: -28rpx;
 							.navbody-desc{
 								width:635rpx;
 								height:28rpx;

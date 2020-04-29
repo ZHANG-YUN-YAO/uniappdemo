@@ -91,6 +91,14 @@
 				}
 			}
 		},
+		onBackPress(e) {
+		// 这里可以自定义返回逻辑，比如下面跳转其他页面
+			uni.switchTab({
+				url: '/pages/index/index'
+			});
+			// return true 表示禁止默认返回
+			return true
+		}, 
 		methods: {
 			...mapMutations(['login']),
 			
@@ -126,11 +134,14 @@
 							if(res.data.status==200){
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
 								uni.setStorageSync('token',res.data.result.token);
-								uni.navigateBack({
-									delta:1
+								// uni.navigateBack({
+								// 	delta:1
+								// })
+								uni.switchTab({
+									url:'../../index/index'
 								})
 							}else{
 								uni.showToast({
@@ -223,6 +234,10 @@
 
 <style lang="scss">
 	.passwordlogin{
+		.uni-input-placeholder{
+			text-align: left;
+			margin-left:20rpx;
+		}
 		text-align: center;
 		.toptitle{
 			font-size:70rpx;

@@ -113,25 +113,26 @@
 				}
 			},
 		},
+		
 		methods: {
 			getCode(){
 				uni.request({
-				    url: this.global_api+'/api/sendcode',
-				    data: {
-						  phone: this.account
-				    },
-						method:'POST',
-				    header: {
-				      'content-type': 'application/json; charset=utf-8' //请求头信息
-				    },
-				    success: (res) => {
-							if(res.data.status==200){
-								uni.showToast({
-									icon: 'none',
-									title: res.data.message
-								});
-							}
-				    }
+					url: this.global_api+'/api/sendcode',
+					data: {
+						phone: this.account
+					},
+					method:'POST',
+					header: {
+						'content-type': 'application/json; charset=utf-8' //请求头信息
+					},
+					success: (res) => {
+						if(res.data.status==200){
+							uni.showToast({
+								icon: 'none',
+								title: '成功'
+							});
+						}
+					}
 				});
 			},
 			...mapMutations(['login']),
@@ -199,8 +200,11 @@
 							if(res.data.status==200){
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
+								uni.switchTab({									
+									url:'../../index/index'
+								})
 							}else {
 								uni.showToast({
 									icon: 'none',
@@ -272,8 +276,13 @@
 </script>
 
 <style lang="scss">
+	.uni-input-placeholder{
+		text-align: left;
+		margin-left:20rpx;
+	}
 	.forgectpassword{
 		text-align: center;
+		
 		.toptitle{
 			font-size:70rpx;
 			font-family:经典繁毛楷;

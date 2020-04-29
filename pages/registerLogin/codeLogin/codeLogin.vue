@@ -85,6 +85,14 @@
 				}
 			}
 		},
+		onBackPress(e) {  
+		// 这里可以自定义返回逻辑，比如下面跳转其他页面
+			uni.switchTab({
+				url: '/pages/index/index'
+			});
+			// return true 表示禁止默认返回
+			return true
+		}, 
 		methods: {
 			getCode(){
 				uni.request({
@@ -100,7 +108,7 @@
 							if(res.data.status==200){
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
 							}
 							// this.text = 'request success';
@@ -161,10 +169,12 @@
 							if(res.data.status==200){
 								uni.showToast({
 									icon: 'none',
-									title: res.data.message
+									title: '成功'
 								});
-								console.log(res.data.result.token);
 								uni.setStorageSync('token',res.data.result.token);
+								uni.switchTab({									
+									url:'../../index/index'
+								})
 							}else{
 								uni.showToast({
 									icon: 'none',
@@ -236,6 +246,10 @@
 </script>
 
 <style lang="scss">
+	.uni-input-placeholder{
+		text-align: left;
+		margin-left:20rpx;
+	}
 	.codelogin{
 		text-align: center;
 		.toptitle{

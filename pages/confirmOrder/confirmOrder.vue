@@ -11,25 +11,25 @@
 		</view>
 		
 		<!-- 购物车商品 -->
-		<view v-for="(thiscart,index) in cart" :key="index" style="background-color: #FFFFFF;">
-			<view v-for="(item,i) in thiscart.items" :key="i">
-				<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.id > -99">
+		<view v-for="(item,index) in cart" :key="index" style="background-color: #FFFFFF;">
+			<!-- <view v-for="(item,i) in thiscart.items" :key="i"> -->
+				<scroll-view style="width: 100%;white-space: nowrap;" scroll-x= "true" :scroll-left='scrollposition' scroll-with-animation="true" v-if="item.goods_id > -99">
 					<view class="glance-shop-cart-scrollx-items" style="display: inline-block;width: 100%;">
 						<view class="glance-shop-cart-scrollx-items-item">
 							<!-- 图片 -->
 							<view style="width: 30%;height: 100%;text-align:center;">
-								<image src="../../static/logo.png" mode="widthFix" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
+								<image :src="item.carousel_image[0]" mode="aspectFill" style="height: 75px;width: 75px;line-height: 75px;margin-top: 10rpx;border-radius: 21rpx;" @click="clickitemhref(item.href)"></image>
 							</view>
 							<!-- 描述 -->
 							<view class="glance-shop-cart-items-item-des">
 								<!-- 名称 -->
-								<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.name }}</view>
+								<view class="sigle-line-text" style="font-size: 16px;height: 33.33%;text-align: left;" @click="clickitemhref(item.href)">{{ item.title }}</view>
 								<!-- 属性 -->
 								<view class="glance-shop-cart-items-item-pq">
-									<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">净含量：{{ item.attributes }}克</view>
+									<view class="sigle-line-text" style="font-size: 13px;text-align: left;color: #ADADAD;width: 50%;display: inline-block;" @click="clickitemhref(item.href)">库存：{{ item.stock }}{{item.goods_unit}}</view>
 									<view class="glance-shop-cart-items-item-opt" style="width: 6%;font-size:25rpx;font-family:PingFang SC;font-weight:400;color:rgba(185,189,207,1);line-height:13rpx;">
 										<!-- 数量 -->
-											x{{ item.quantity }}
+											x{{ item.number }}
 									</view>
 								</view>
 								<!-- 价格 & 数量-->
@@ -54,12 +54,12 @@
 					</view>
 					
 					<!-- 删除 -->
-					<view class="glance-shop-cart-del" @click="clickdel(item.id)">
+					<view class="glance-shop-cart-del" @click="clickdel(item.goods_id)">
 						<view class="glance-shop-cart-del-img"></view>
 					</view>
 
 				</scroll-view>
-			</view>
+			<!-- </view> -->
 			<view style="height: 10px;background-color: #F5F5F5;"></view>
 		</view>	
 	<view style="height: 10px;background-color: #F5F5F5;"></view>
@@ -67,7 +67,7 @@
 	<uni-list>
 		<uni-list-item title="商品金额" :showArrow="false">
 			<template v-slot:right="">
-				<text>￥1390</text>
+				<text>￥{{totalamount}}</text>
 			</template>
 			</uni-list-item>
 		</uni-list-item>	
@@ -85,25 +85,26 @@
 			</template>
 		</uni-list-item>
 	</uni-list>	
-	<uni-list>
-		<radio-group @change="radioChange">
+	<uni-list style="padding-bottom: 100rpx;">
+		<!-- bottom:132rpx; -->
+		<radio-group @change="zhifuChange">
 			<uni-list-item title="支付宝支付" thumb="../../static/images/zhifubao.png" :showArrow="false">
 				<template v-slot:right="">
-					<radio :checked="zhifubao" value="zhifubao" />
+					<radio :checked="zhifubao" value="1" />
 				</template>
 			</uni-list-item>
 			<uni-list-item title="微信支付" thumb="../../static/images/weixins.png" :showArrow="false">
 				<template v-slot:right="">
-					<radio :checked="weixin" value="weixin" />
+					<radio :checked="weixin" value="3" />
 				</template>
 			</uni-list-item>
 		</radio-group>
 	</uni-list>	
 	<!-- 金额合计 -->
 	<view class="glance-shop-cart-order">
-		<view class="glance-shop-cart-total-cnt">
+		<view class="glance-shop-cart-total-cnt" style="right: 0;">
 			<text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:rgba(239,16,74,1);">合计</text>
-			<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥{{ cntitems }} </text>			
+			<text style="font-size:42rpx;font-family:PingFang SC;font-weight:400;color:rgba(22,30,73,1);">￥{{ totalamount }} </text>			
 		</view>
 		<!-- 立即下单 -->
 		<!-- <view class="glance-shop-cart-create-order" @click="createorder">去支付</view> -->
@@ -111,39 +112,44 @@
 	</view>
 	
 	<view class="toseleAddress" v-if="ifdisplay">
-		<radio-group @change="radioChange">
-			<view class="address" v-for="(item, index) in list" :key="item.address_id">
-				<view class="name">
-					{{item.consignee}}  {{item.mobile}}
-				</view>
-				<view class="area">
-					<view class="areastatus">
-						{{item.province}}{{item.city}}{{item.district}}{{item.address}}
-					</view>
-					<!-- :class="ifuse==true?'use2':'use'" -->
-					<view class="use2" @click="nouse(item,index)"  v-if="item.useok==true" >
-						<image class="useok" src="../../static/images/ok.png" mode=""></image>
-					</view>
-					<view class="use"  @click="touse(item,index)" v-else>
-						使用
-					</view>				
-				</view>			
-				<view class="btns">
-					<view class="btnfir">
-							<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
-							设为默认
-					</view>
-					<view class="btnrig">
-						<view class="dele" @click="dele(item.address_id)">
-							删除
+		 <!-- :style="{height: scrollHeight}" -->
+		<scroll-view scroll-y="true">
+			<view>	
+				<radio-group @change="radioChange">
+					<view class="address" v-for="(item, index) in list" :key="item.address_id">
+						<view class="name">
+							{{item.consignee}}  {{item.mobile}}
 						</view>
-						<view class="edit" @click="edit(item.address_id)">
-							修改
+						<view class="area">
+							<view class="areastatus">
+								{{item.province}}{{item.city}}{{item.district}}{{item.address}}
+							</view>
+							<!-- :class="ifuse==true?'use2':'use'" -->
+							<view class="use2" @click="nouse(item,index)"  v-if="item.useok==true" >
+								<image class="useok" src="../../static/images/ok.png" mode=""></image>
+							</view>
+							<view class="use"  @click="touse(item,index)" v-else>
+								使用
+							</view>				
+						</view>			
+						<view class="btns">
+							<view class="btnfir">
+									<radio :value="JSON.stringify(item.address_id)" :checked="item.is_default==1?true:false"/>
+									设为默认
+							</view>
+							<view class="btnrig">
+								<view class="dele" @click="dele(item.address_id)">
+									删除
+								</view>
+								<view class="edit" @click="edit(item.address_id)">
+									修改
+								</view>
+							</view>
 						</view>
 					</view>
-				</view>
+				</radio-group>
 			</view>
-		</radio-group>
+		</scroll-view>
 		<view class="addarea" @click="addarea()">
 			<image class="addicon" src="../../static/images/add.png" mode=""></image>
 			添加收货地址
@@ -234,6 +240,7 @@
 			</view>
 		</view>
 	</view>
+
 	</view>
 </template>
 
@@ -246,6 +253,12 @@
 		components: {QSpicker,uniList,uniListItem,uniBadge},
 		data() {
 			return {
+				scrollHeight:'',
+				sku_ids:'',
+				order_number:'',
+				goodslist:[],
+				paytype:'1',
+				address_id:'',
 				getname:'',
 				getphone:"",
 				ifdisplay:false,
@@ -275,8 +288,8 @@
 				address:'',
 				getaddress_id:'',
 				defaultaddress:'请填写收货地址',
-				weixin:true,
-				zhifubao:false,
+				zhifubao:true,
+				weixin:false,
 				// 全选 默认全选
 				isselectedall:true,
 				// scroll position
@@ -294,7 +307,8 @@
 				// 购物车商品数量 
 				cntitems:0,
 				// 显示空购物车背景
-				shownullcart:false
+				shownullcart:false,
+				payurl:''
 			};
 		},
 		watch:{
@@ -326,12 +340,21 @@
 				return this.regions.map(item=>item.name).join(' ')
 			}
 		},
-		onLoad:function(option) {
-			
+		onLoad:function(option) {			
+			// uni.getSystemInfo({
+			// 	success:  (res)=> {
+			// 	const wid = res.windowWidth
+			// 	const hei = res.windowHeight
+				// 230是除了可滚动区域外的其它部分占的rpx高度
+				// this.scrollHeight=(hei/(wid/750)-230)*(wid/750) +'px'
+				// this.scrollHeight=(hei/(wid/750)+230)*(wid/750) +'px'
+			// 	}
+			// });
 			this.defaultsele = option.addressid;
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');	
 				this.getinfo()
+				// console.log(this.sku_idsarr)
 				this.confirminfo(option.sku_idarr)
 			}
 			this.getdefaultaddress();	
@@ -376,14 +399,14 @@
 			// console.log(this.cart)
 			// 默认勾选购物车所有商品 合计金额 合计数量
 			for (let i = 0; i < this.cart.length; i++) {
-				for (let k = 0; k < this.cart[i].items.length; k++) {
+				// for (let k = 0; k < this.cart[i].items.length; k++) {
 					// 总金额 
-					this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
+					this.totalamount = Number(this.totalamount) + Number(this.cart[i].price) * Number(this.cart[i].num)
 					// 总数量
-					this.cntitems = this.cntitems + this.cart[i].items[k].quantity
-				}
+					this.cntitems = Number(this.cntitems) + Number(this.cart[i].num)
+				// }
 			}
-			this.totalamount = this.fmamount(this.totalamount)
+			// this.totalamount = this.fmamount(this.totalamount)
 		},
 		// 下拉刷新
 		onPullDownRefresh(){
@@ -406,8 +429,77 @@
 			}
 		},
 		methods:{
-			topay(){},
+			// 给钱
+			paymoney(){		
+			// let res = await	uniCloud.httpclient.request('http://pay.dianjuans.com/sanqlt', {
+			// 	    method: 'POST',
+			// 	    data: {
+			// 	      order_number:this.order_number,
+			// 	      pay_type:this.paytype
+			// 	    },
+			// 	    contentType: 'application/x-www-form-urlencoded'
+			// 	  })
+			// 	console.log(res)
+				uni.request({
+					url:'http://pay.dianjuans.com/sanqlt',
+					data:{
+						order_number:this.order_number,
+						pay_type:this.paytype
+					},
+					method:'POST',
+					header: {
+						'User-Token': this.token ,//请求头信息
+						'Content-Type':'application/x-www-form-urlencoded'
+					},
+					success: (res) => {
+						if(res.data.status==200){
+							window.document.write(res.data.result)
+						}else{
+							uni.showToast({
+								icon:'none',
+								title:res.data.message
+							})
+						}					
+					}
+				})
+			},
+			//点击去支付
+			topay(){
+				let address_id = '';
+				if(this.address_id){
+					address_id = this.address_id
+				}else{
+					address_id = this.getaddress_id
+				}
+				uni.request({
+				    url: this.global_api+'/api/order/commit',						
+				    data: {
+							sku_ids:this.sku_ids,
+							is_cart:1,
+							address_id:address_id							
+				    },
+				    method:'POST',
+				    header: {
+				      'User-Token': this.token //请求头信息
+				    },
+				    success: (res) => {
+						if(res.data.status==200){			
+							if(res.data.result.order_number){
+								this.order_number = res.data.result.order_number;
+								this.paymoney(this.order_number)
+							}							
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
+			//购物车跳转进来的详情
 			confirminfo(val){
+				this.sku_ids = val;
 				uni.request({
 				    url: this.global_api+'/api/order/affirm',						
 				    data: {
@@ -420,10 +512,9 @@
 				    },
 				    success: (res) => {
 						if(res.data.status==200){
-							uni.showToast({
-								icon: 'none',
-								title: res.data.message
-							})												
+							this.cart = res.data.result.goodsList		
+							this.totalamount = res.data.result.total_price
+							this.totalamount = Math.floor(Number(res.data.result.total_price) * 100) / 100 
 						}else{
 							uni.showToast({
 								icon: 'none',
@@ -474,7 +565,7 @@
 								if(res.data.status==200){								
 									uni.showToast({
 										icon: 'none',
-										title: res.data.message
+										title: '成功'
 									});
 									this.getinfo()
 								}else{
@@ -575,6 +666,7 @@
 						if(val.address_id==this.list[i].address_id){
 							this.list[i].ifuse = false;
 							this.list[i].useok = true;
+							this.address_id = val.address_id;
 							// uni.navigateTo({
 							// 	url:"../confirmOrder/confirmOrder?address_id="+val.address_id+"&&province="+val.province+"&&address="+val.address
 							// })
@@ -631,7 +723,7 @@
 								if(res.data.status==200){								
 									uni.showToast({
 										icon: 'none',
-										title: res.data.message
+										title: '成功'
 									});
 									this.ifedit = false;
 									this.getinfo();
@@ -674,7 +766,7 @@
 								if(res.data.status==200){								
 									uni.showToast({
 										icon: 'none',
-										title: res.data.message
+										title: '成功'
 									});
 									this.add = false;
 									this.getinfo();
@@ -727,8 +819,8 @@
 						}
 				});
 			},
-			radioChange(e){
-				console.log(e)
+			zhifuChange(e){
+				this.paytype = e.detail.value
 			},
 			// scroll x 归位
 			scrollhoming(){
@@ -993,13 +1085,12 @@
 
 <style lang="scss" scoped>
 	.toseleAddress{
-		width: 100vw;
-		height: 100vh;
-		background: pink;
+		background: #fff;
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 99;
+		z-index: 999;
+		padding-bottom:100rpx;
 		.uni-input-placeholder{
 			color: #BABDCF;
 			font-size:28rpx!important;
@@ -1402,7 +1493,8 @@
 		bottom: 0px;
 		}
 	// 合计金额样式
-	.glance-shop-cart-total-cnt{width:250rpx;text-align: left;line-height:40px;font-size: 13px;margin-left: 0rpx;}
+	.glance-shop-cart-total-cnt{width:300rpx;text-align: left;line-height:40px;font-size: 13px;margin-left: 0rpx;
+	position: relative;	right: 22px;}
 	
 	// 合计金额样式
 	.glance-shop-cart-total-amt{width:35%;text-align: right;margin-right: 15px; line-height:40px;font-size: 16px;margin-left: 10px;color: #f40;}

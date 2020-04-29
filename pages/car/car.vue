@@ -288,7 +288,8 @@
 									 total +=Number( this.cart[i].num)*Number( this.cart[i].price)
 								}
 								this.cntitems = num
-								this.totalamount = total
+								// this.totalamount = total
+								this.totalamount = Math.floor(total * 100) / 100 
 							}														
 						}else{
 							uni.showToast({
@@ -410,22 +411,7 @@
 								}
 							// }
 						}
-						
-						
-						
-						// for (var i = 0; i < this.cart.length; i++) {
-						// 	for (let k = 0; k < this.cart[i].items.length; k++) {
-						// 		// 累计总金额和总数量 勾选时加
-						// 		if (this.isselected(this.cart[i].items[k].id)){
-						// 			this.cart[i].items[k].id = - this.cart[i].items[k].id
-						// 			// 更新总数量
-						// 			this.cntitems = this.cntitems - this.cart[i].items[k].quantity
-						// 			// 更新总金额
-						// 			this.totalamount = this.totalamount - this.cart[i].items[k].price * this.cart[i].items[k].quantity
-						// 			this.totalamount = this.fmamount(this.totalamount)
-						// 		}
-						// 	}
-						// }
+
 					}
 				}
 			},
@@ -539,8 +525,7 @@
 							      'User-Token': this.token //请求头信息
 							    },
 							    success: (res) => {
-									if(res.data.status==200){
-										console.log(-1)														
+									if(res.data.status==200){											
 									}else{
 										uni.showToast({
 											icon: 'none',
@@ -607,7 +592,7 @@
 							    },
 							    success: (res) => {
 									if(res.data.status==200){
-										console.log(1)														
+														
 									}else{
 										uni.showToast({
 											icon: 'none',
@@ -640,38 +625,6 @@
 						}
 					// }
 				}
-				
-				
-				// for (let i = 0; i < this.cart.length; i++) {
-				// 	for (let k = 0; k < this.cart[i].items.length; k++) {
-				// 		// 这里需要进行超卖控制 商品可售卖的数量 这里面示例可售卖100
-				// 		if ((this.cart[i].items[k].id == itemid) && (this.cart[i].items[k].quantity < 100)){
-				// 			// 更新item数量
-				// 			this.cart[i].items[k].quantity = this.cart[i].items[k].quantity +1
-				// 			// 勾选状态下更新数量和金额
-				// 			if (this.isselected(this.cart[i].items[k].id)){
-				// 				// 更新总数量
-				// 				this.updatecntitems(1)
-				// 				// 更新总金额
-				// 				this.updatetotalamt(this.cart[i].items[k].price)
-				// 			} else {
-				// 				// 加数量时未勾选则 勾选
-				// 				this.cart[i].items[k].id = this._selected(this.cart[i].items[k].id)
-				// 				// 更新总数量、
-				// 				this.cntitems = this.cntitems + this.cart[i].items[k].quantity
-				// 				// 更新总金额
-				// 				this.totalamount = this.totalamount + this.cart[i].items[k].price * this.cart[i].items[k].quantity
-				// 				this.totalamount = this.fmamount(this.totalamount)
-				// 			}
-						
-				// 			// 最后已勾选则 全选
-				// 			if (this._isselectedall()){
-				// 				this.isselectedall = true
-				// 			}
-				// 			return
-				// 		}
-				// 	}
-				// }
 			},
 			// 点击商品href
 			clickitemhref(str){
@@ -793,6 +746,8 @@
 						// 2、生成订单成功后 删除购物车内已生成订单的商品
 					}
 					var sku_ids = sku_idarr.toString()
+					this.sku_idsarr = sku_idarr.toString()  //给全局赋值
+					
 						uni.navigateTo({
 							url:'../confirmOrder/confirmOrder?sku_idarr='+sku_ids
 						})
@@ -935,7 +890,7 @@
 		}
 	// 合计金额样式
 	.glance-shop-cart-total-cnt{
-		width:250rpx;
+		width:300rpx;
 		text-align: left;
 		line-height:40rpx;
 		font-size: 13px;

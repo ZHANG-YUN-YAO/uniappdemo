@@ -11,17 +11,17 @@
 		</view>
 		<view class="myhead">			
 			<view class="headpic">
-				<image class="picture" src="../../static/images/76.png" mode=""></image>
+				<image class="picture" :src="userinfo.head_pic" mode=""></image>
 			</view>
 			<view class="selfinfo">
 				<view class="selfup">
-					<text class="selfname">子然姐姐</text>
+					<text class="selfname">{{userinfo.nickname}}</text>
 				</view>
 				<view class="selfdown">
 					<text class="des">关注</text>
-					<text class="num">16</text>
+					<text class="num">0</text>
 					<text class="des2">粉丝</text>
-					<text class="num">352</text>
+					<text class="num">0</text>
 				</view>
 			</view>
 		</view>		
@@ -132,13 +132,14 @@
 		},
 		data() {
 			return {
-				token:''
+				token:'',
+				userinfo:{}
 			}
 		},
 		onShow() {
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');
-				// this.getinfo()
+				this.getuserinfo()
 			}else{
 				uni.showToast({
 					icon:'none',
@@ -152,6 +153,28 @@
 			}		
 		},
 		methods: {
+			getuserinfo(){
+				uni.request({
+					url: this.global_api+'/api/user/user_by_id',
+					data: {
+						
+					},
+					method:'POST',
+					header: {
+						'User-Token': this.token //请求头信息
+					},
+					success: (res) => {
+						if(res.data.status==200){												
+							this.userinfo = res.data.result;
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.message
+							});					
+						}						
+				   }
+				});
+			},
 			toaddress(){
 				uni.navigateTo({
 					url:'../addressList/addressList'

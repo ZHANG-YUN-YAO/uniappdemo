@@ -19,7 +19,7 @@
 					</view>
 				</view>
 				<view class="goodspic" v-else>
-					<!-- <image :src="goodsinfo.carousel_image[0]" style="width: 750rpx;" mode=""></image> -->
+					<image :src="goodsinfo.carousel_image[0]" style="width: 750rpx;" mode=""></image>
 				</view>
 			</template>			
 		</view>
@@ -84,7 +84,8 @@
 				color:rgba(0,0,0,1);line-height:80rpx;text-align: left;">
 				商品详情
 			</view>
-			<view class="infodetails" style="font-size:25rpx;font-family:PingFang SC;
+			<view class="infodetails" style="font-size:25rpx;font-family:PingFang SC; width: 694rpx;
+			box-sizing: content-box;margin: 0 auto;box-sizing: border-box;display: block;white-space: pre-wrap; word-break: break-all;
 				font-weight:400;color:rgba(101,101,101,1);line-height:21rpx;">
 				<!-- <view class="" style="height: 80rpx;line-height:80rpx;display: flex;justify-content: space-between;">
 					<view class="">叶底</view>
@@ -129,7 +130,7 @@
 					查看更多作品属性			
 				</view>
 			 -->
-			 <view class="detai" style="width: 750rpx;margin: 0 auto;margin-left:-28rpx;padding-bottom: 60rpx;" v-html="goodsinfo.description">
+			 <view class="detai" style="width: 694rpx;margin: 0 auto;padding-bottom: 60rpx;display: block;white-space: pre-wrap;overflow: hidden; word-break: break-all;" v-html="goodsinfo.description">
 			 	
 			 </view>
 			</view>				
@@ -178,10 +179,14 @@
 		},
 		onLoad(option) {
 			this.sku_id = option.sku_id;			
-			this.goodsdetail(option.sku_id);
+			if(option.sku_id){
+				this.goodsdetail(option.sku_id);
+			}
+			
 			if(uni.getStorageSync('token')){
 				this.token = uni.getStorageSync('token');				
-			}else{
+			}
+			// else{
 				// uni.showToast({
 				// 	icon:'none',
 				// 	title:'请登录'
@@ -191,7 +196,7 @@
 				// 		url:'../registerLogin/passwordLogin/passwordLogin'
 				// 	})
 				// }, 1000);
-			}	
+			// }	
 		},
 		methods:{
 			goodsdetail(val){
@@ -236,7 +241,7 @@
 						if(res.data.status==200){
 							uni.showToast({
 								icon: 'none',
-								title: res.data.message
+								title: '成功'
 							});												
 						}else{
 							uni.showToast({

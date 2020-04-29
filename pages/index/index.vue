@@ -296,7 +296,9 @@
 				    },
 				    success: (res) => {
 						if(res.data.status==200){
-							this.list = res.data.result.data
+							if(res.data.result.data){
+								this.list = res.data.result.data
+							}
 							// if(res.data.result){
 							// 	this.objcart = res.data.result;
 							// }														
@@ -410,7 +412,7 @@
 		.sayhi{
 			// padding-top: 16rpx;
 			height: 522rpx;
-			margin-top: -40rpx;
+			margin-top: -44rpx;
 			// background:url(../../static/images/sayhiback.png) no-repeat;
 			padding-right: 28rpx;
 			.saylist{

@@ -14,7 +14,12 @@
 </script>
 
 <style>
+	@font-face {
+		font-family:经典繁体白毛楷;
+		/* src: url('./static/font.css'); */
+	}
 	/*每个页面公共css */
+	
 	ul{
 		list-style: none;
 	}
